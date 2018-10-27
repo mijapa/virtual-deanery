@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">virtual-deanery</string>
+    <string name="app_name">Wirtualny dziekanat</string>
+
+    <string name="name_pk">Politechnika Krakowska</string>
+    <string name="name_of_pk">im. Tadeusza Kościuszki</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_NIU">ID użytkownika(NIU)</string>
+    <string name="prompt_password">Hasło</string>
+    <string name="action_sign_in">Zaloguj</string>
+    <string name="error_invalid_NIU">Wprowadź poprawny NIU</string>
+    <string name="error_field_required">To pole jest wymagane</string>
+    <string name="error_invalid_all">Użytkownik nie istnieje</string>
+    <string name="error_invalid_one">Niepoprawny NIU lub hasło</string>
+    <!-- ???? -->
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_menu">MenuActivity</string>
 </resources>
