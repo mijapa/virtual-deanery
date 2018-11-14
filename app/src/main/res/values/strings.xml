@@ -12,9 +12,18 @@
     <string name="error_field_required">To pole jest wymagane</string>
     <string name="error_invalid_all">Użytkownik nie istnieje</string>
     <string name="error_invalid_one">Niepoprawny NIU lub hasło</string>
+    
+    <!-- Strings related to menu -->
+    <string name="my_data">Moje\ndane</string>
+    <string name="my_studies">Moje\nstudia</string>
+    <string name="my_plan">Mój\nplan</string>
+    <string name="my_finances">Moje\nfinanse</string>
+    <string name="dorms">Akademiki</string>
+    <string name="password_change">Zmiana\nhasła</string>
     <!-- ???? -->
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
     <string name="title_activity_menu">MenuActivity</string>
+    <string name="log_out">Wyloguj</string>
 </resources>

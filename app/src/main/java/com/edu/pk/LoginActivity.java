@@ -29,8 +29,10 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -49,7 +51,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * TODO: remove after connecting to a real authentication system.
      */
     private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "95254:hello"
+            "95254:hello", "1:1"
     };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -61,6 +63,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private Button mNIUSignInButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,19 +73,31 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mNIUView = (AutoCompleteTextView) findViewById(R.id.NIU);
         populateAutoComplete();
 
+
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
+                if (id == EditorInfo.IME_ACTION_GO) {
                     attemptLogin();
+                    if (checkLog()) {
+                        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                        startActivity(intent);
+                    }else if(checkNIU()){
+                        mPasswordView.setText("");
+                    }else{
+                        mNIUView.setText("");
+                        mPasswordView.setText("");
+                    }
                     return true;
                 }
                 return false;
             }
         });
 
-        Button mNIUSignInButton = (Button) findViewById(R.id.NIU_sign_in_button);
+
+        mNIUSignInButton = (Button) findViewById(R.id.NIU_sign_in_button);
+
         mNIUSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -295,7 +310,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {}
+    public void onLoaderReset(Loader<Cursor> cursorLoader) {
+    }
+
+
 
     private interface ProfileQuery {
         String[] PROJECTION = {
@@ -350,6 +368,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         return false;
     }
 
+
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
@@ -374,6 +393,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
+            mNIUSignInButton.setEnabled(true);
+
+
             for (String credential : DUMMY_CREDENTIALS) {
                 String[] pieces = credential.split(":");
                 if (pieces[0].equals(mNIU)) {
@@ -381,7 +403,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     return pieces[1].equals(mPassword);
                 }
             }
-
             // TODO: register the new account here.
             return true;
         }
@@ -404,6 +425,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
+
+    }
+    public void onBackPressed(){
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
 
