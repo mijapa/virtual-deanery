@@ -84,6 +84,7 @@
         android:layout_below="@+id/button4"
         android:text="@string/password_change"
         android:textSize="20dp"
+        android:onClick="onClick"
         android:textStyle="bold"
         app:layout_heightPercent="33.33333333%"
         app:layout_widthPercent="50%"

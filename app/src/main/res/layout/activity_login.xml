@@ -88,9 +88,7 @@
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:imeOptions="actionGo"
-                    android:nextFocusDown="@id/NIU_sign_in_button"
-                    />
+                    android:imeOptions="actionGo"/>
 
             </android.support.design.widget.TextInputLayout>
 
