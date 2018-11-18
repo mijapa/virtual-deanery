@@ -20,9 +20,7 @@
     <string name="action_change">Zmień</string>
 
     <!-- Error messages -->
-    <string name="error_invalid_NIU">Wprowadź poprawny NIU</string>
     <string name="error_field_required">To pole jest wymagane</string>
-    <string name="error_invalid_all">Użytkownik nie istnieje</string>
     <string name="error_invalid_one">Niepoprawny NIU lub hasło</string>
 
     <!-- Strings related to MenuActivity -->

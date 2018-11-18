@@ -41,6 +41,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.edu.pk.MenuActivity" />
         </activity>
+        <activity
+            android:name=".LecturerMenuActivity"
+            android:label="@string/title_app"
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".EmployeeMenuActivity"
+            android:label="@string/title_app"
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.LoginActivity" />
+        </activity>
     </application>
 
 </manifest>
