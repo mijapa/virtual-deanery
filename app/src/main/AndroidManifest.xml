@@ -59,7 +59,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.edu.pk.LoginActivity" />
         </activity>
-        <activity android:name=".MyDataActivity"></activity>
+        <activity
+            android:name=".MyDataActivity"
+            android:label="Moje Dane"
+            android:parentActivityName=".MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.MenuActivity" />
+            >
+        </activity>
     </application>
 
 </manifest>
