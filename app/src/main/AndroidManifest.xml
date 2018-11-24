@@ -59,6 +59,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.edu.pk.LoginActivity" />
         </activity>
+        <activity android:name=".MyDataActivity"></activity>
     </application>
 
 </manifest>

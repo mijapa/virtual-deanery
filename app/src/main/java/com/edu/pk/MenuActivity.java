@@ -21,7 +21,8 @@ public class MenuActivity extends BaseActivity {
         Intent intent;
         switch(view.getId()){
             case R.id.button1:
-                break;
+                intent = new Intent(MenuActivity.this, MyDataActivity.class);
+                startActivity(intent);
             case R.id.button2:
                 break;
             case R.id.button3:
