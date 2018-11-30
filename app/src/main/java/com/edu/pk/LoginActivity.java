@@ -115,7 +115,7 @@ public class LoginActivity extends AppCompatActivity{
         View focusView = null;
 
         if(!checkLog()){
-            mNIUView.setError(getString(R.string.error_invalid_one));
+            //mNIUView.setError(getString(R.string.error_invalid_one));
             mPasswordView.setError(getString(R.string.error_invalid_one));
             focusView = mNIUView;
             cancel = true;
@@ -128,7 +128,7 @@ public class LoginActivity extends AppCompatActivity{
             focusView = mNIUView;
             cancel = true;
         } else if(!isNIUValid(NIU)) {
-            mNIUView.setError(getString(R.string.error_invalid_NIU));
+            //mNIUView.setError(getString(R.string.error_invalid_NIU));
             mPasswordView.setError(getString(R.string.error_invalid_one));
             focusView = mNIUView;
             cancel = true;
