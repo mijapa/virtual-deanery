@@ -1,6 +1,5 @@
 package com.edu.pk;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
@@ -18,9 +17,9 @@ public interface StudentDao {
     @Query("SELECT NIU FROM student")
     List<Integer> getAllNIU();
 
-    //    @Query("SELECT * FROM student where NIU = :niu")
-//    Student getStudent(Integer niu);
-//
+    @Query("SELECT * FROM student where NIU = :niu")
+    Student getStudent(Integer niu);
+
     @Query("SELECT password FROM student where NIU = :niu")
-    LiveData<String> getStudentPassword(Integer niu);
+    String getStudentPassword(Integer niu);
 }

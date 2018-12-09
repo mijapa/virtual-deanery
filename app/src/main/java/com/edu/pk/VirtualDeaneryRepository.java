@@ -1,7 +1,6 @@
 package com.edu.pk;
 
 import android.app.Application;
-import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
 import java.util.List;
@@ -9,15 +8,18 @@ import java.util.List;
 public class VirtualDeaneryRepository {
     private StudentDao mStudentDao;
     private List<Integer> mAllNIU;
+    private String DEBUG_TAG = "DEBUG_TAG";
 
     VirtualDeaneryRepository(Application application) {
         VirtualDeaneryRoomDatabase db = VirtualDeaneryRoomDatabase.getDatabase(application);
         mStudentDao = db.studentDao();
     }
 
-    LiveData<String> getStudentPassword(Integer NIU) {
+    //TODO: this should not be perormed on main thread
+    String getStudentPassword(Integer NIU) {
         return mStudentDao.getStudentPassword(NIU);
     }
+
 
     public void insert(Student student) {
         new insertAsyncTask(mStudentDao).execute(student);
