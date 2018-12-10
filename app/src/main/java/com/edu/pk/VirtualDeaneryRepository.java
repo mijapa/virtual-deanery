@@ -10,6 +10,16 @@ public class VirtualDeaneryRepository {
     private List<Integer> mAllNIU;
     private String DEBUG_TAG = "DEBUG_TAG";
 
+    private Integer NIU;
+
+    public Integer getNIU() {
+        return NIU;
+    }
+
+    public void setNIU(Integer NIU) {
+        this.NIU = NIU;
+    }
+
     VirtualDeaneryRepository(Application application) {
         VirtualDeaneryRoomDatabase db = VirtualDeaneryRoomDatabase.getDatabase(application);
         mStudentDao = db.studentDao();

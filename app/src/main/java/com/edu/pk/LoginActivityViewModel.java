@@ -20,4 +20,12 @@ public class LoginActivityViewModel extends AndroidViewModel {
             return true;
         return false;
     }
+
+    public Integer getNIU() {
+        return mRepository.getNIU();
+    }
+
+    public void setNIU(Integer NIU) {
+        mRepository.setNIU(NIU);
+    }
 }
