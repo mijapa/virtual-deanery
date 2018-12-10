@@ -33,7 +33,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                             // Migration is not part of this practical.
                             .fallbackToDestructiveMigration()
                             .addCallback(sRoomDatabaseCallback)
-                            .allowMainThreadQueries()
+                            .allowMainThreadQueries()//TODO: should be avoided (removed)
                             .build();
                 }
             }

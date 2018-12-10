@@ -20,7 +20,7 @@ import android.widget.TextView;
  */
 public class LoginActivity extends AppCompatActivity {
     private static String currentUser = null;
-    private LoginActivityViewModel mLoginActivityViewModel;
+    private LoginViewModel mLoginViewModel;
     private String DEBUG_TAG = "DEBUG_TAG";
     // UI references.
     private AutoCompleteTextView mNIUView;
@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mLoginActivityViewModel = ViewModelProviders.of(this).get(LoginActivityViewModel.class);
+        mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
 
         mNIUView = (AutoCompleteTextView) findViewById(R.id.NIU);
         mNIUSignInButton = (Button) findViewById(R.id.NIU_sign_in_button);
@@ -156,10 +156,10 @@ public class LoginActivity extends AppCompatActivity {
         String email = mNIUView.getText().toString();
         String password = mPasswordView.getText().toString();
         currentUser = "s";
-        if (mLoginActivityViewModel.checkLoginPassword(email, password)) {
+        if (mLoginViewModel.checkLoginPassword(email, password)) {
             Integer NIU = Integer.getInteger(email);
             //TODO: different email-NIU transformation needed;
-            mLoginActivityViewModel.setNIU(NIU);
+            mLoginViewModel.setNIU(NIU);
             return true;
         }
         return false;

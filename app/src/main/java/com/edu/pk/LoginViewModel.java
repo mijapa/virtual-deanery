@@ -4,11 +4,11 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
-public class LoginActivityViewModel extends AndroidViewModel {
+public class LoginViewModel extends AndroidViewModel {
     private VirtualDeaneryRepository mRepository;
     private String DEBUG_TAG = "DEBUG_TAG";
 
-    public LoginActivityViewModel(@NonNull Application application) {
+    public LoginViewModel(@NonNull Application application) {
         super(application);
         mRepository = new VirtualDeaneryRepository(application);
     }
