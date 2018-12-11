@@ -1,94 +1,85 @@
 package com.edu.pk;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
-import java.util.LinkedList;
+import java.util.List;
 
-/**
- * Implements a basic RecyclerView that displays a list of generated words.
- * - Clicking an item marks it as clicked.
- * - Clicking the fab button adds a new word to the list.
- */
-public class MyDataActivity extends AppCompatActivity {
 
-    private final LinkedList<String> mWordList = new LinkedList<>();
+public class MyDataActivity extends BaseActivity {
 
-    private RecyclerView mRecyclerView;
-    private MyDataAdapter mAdapter;
+    public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
+
+    private MyDataViewModel mMyDataViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_data);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        final MyDataAdapter adapter = new MyDataAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Get a new or existing ViewModel from the ViewModelProvider.
+        mMyDataViewModel = ViewModelProviders.of(this).get(MyDataViewModel.class);
+
+        // Add an observer on the LiveData returned by getAlphabetizedWords.
+        // The onChanged() method fires when the observed data changes and the activity is
+        // in the foreground.
+        mMyDataViewModel.getStudents().observe(this, new Observer<List<Student>>() {
+            @Override
+            public void onChanged(@Nullable final List<Student> words) {
+                // Update the cached copy of the words in the adapter.
+                adapter.setWords(words);
+            }
+        });
 
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                int wordListSize = mWordList.size();
-//                // Add a new word to the wordList.
-//                mWordList.addLast("+ Word " + wordListSize);
-//                // Notify the adapter, that the data has changed.
-//                mRecyclerView.getAdapter().notifyItemInserted(wordListSize);
-//                // Scroll to the bottom.
-//                mRecyclerView.smoothScrollToPosition(wordListSize);
+//                Intent intent = new Intent(MainActivity.this, NewWordActivity.class);
+//                startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
 //            }
 //        });
-
-        // Put initial data into the word list.
-        for (int i = 0; i < 20; i++) {
-            mWordList.addLast("Word " + i);
-        }
-
-        // Create recycler view.
-        mRecyclerView = findViewById(R.id.recyclerview);
-        // Create an adapter and supply the data to be displayed.
-        mAdapter = new MyDataAdapter(this, mWordList);
-        // Connect the adapter with the recycler view.
-        mRecyclerView.setAdapter(mAdapter);
-        // Give the recycler view a default layout manager.
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    /**
-     * Inflates the menu, and adds items to the action bar if it is present.
-     *
-     * @param menu Menu to inflate.
-     * @return Returns true if the menu inflated.
-     */
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
 //        getMenuInflater().inflate(R.menu.menu_main, menu);
 //        return true;
 //    }
-
-    /**
-     * Handles app bar item clicks.
-     *
-     * @param item Item clicked.
-     * @return True if one of the defined items was clicked.
-     */
+//
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
 //        int id = item.getItemId();
-//
-//        // This comment suppresses the Android Studio warning about simplifying
-//        // the return statements.
-//        //noinspection SimplifiableIfStatement
 //        if (id == R.id.action_settings) {
 //            return true;
 //        }
-//
 //        return super.onOptionsItemSelected(item);
+//    }
+
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+//            Word word = new Word(data.getStringExtra(NewWordActivity.EXTRA_REPLY));
+//            mMyDataViewModel.insert(word);
+//        } else {
+//            Toast.makeText(
+//                    getApplicationContext(),
+//                    R.string.empty_not_saved,
+//                    Toast.LENGTH_LONG).show();
+//        }
 //    }
 }

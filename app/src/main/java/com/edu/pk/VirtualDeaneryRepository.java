@@ -8,7 +8,6 @@ import java.util.List;
 
 public class VirtualDeaneryRepository {
     private StudentDao mStudentDao;
-    private List<Integer> mAllNIU;
     private String DEBUG_TAG = "DEBUG_TAG";
 
     private Integer NIU;
@@ -39,6 +38,10 @@ public class VirtualDeaneryRepository {
 
     public LiveData<Student> getStudent() {
         return mStudentDao.getStudent(NIU);
+    }
+
+    public LiveData<List<Student>> getStudents() {
+        return mStudentDao.getStudents();
     }
 
     private static class insertAsyncTask extends AsyncTask<Student, Void, Void> {

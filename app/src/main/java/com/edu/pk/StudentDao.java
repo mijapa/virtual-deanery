@@ -23,4 +23,7 @@ public interface StudentDao {
 
     @Query("SELECT password FROM student where NIU = :niu")
     String getStudentPassword(Integer niu);
+
+    @Query("SELECT * FROM student")
+    LiveData<List<Student>> getStudents();
 }
