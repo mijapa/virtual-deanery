@@ -12,9 +12,8 @@ import java.util.List;
 
 public class MyDataAdapter extends RecyclerView.Adapter<MyDataAdapter.MyDataViewHolder> {
 
-    private List<Student> mWords; // Cached copy of words
-
     private final LayoutInflater mInflater;
+    private List<Student> mWords; // Cached copy of words
 
     MyDataAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
