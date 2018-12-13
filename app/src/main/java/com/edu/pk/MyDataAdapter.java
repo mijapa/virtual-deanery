@@ -13,7 +13,7 @@ import java.util.List;
 public class MyDataAdapter extends RecyclerView.Adapter<MyDataAdapter.MyDataViewHolder> {
 
     private final LayoutInflater mInflater;
-    private List<Student> mWords; // Cached copy of words
+    private List<Student> mStudents; // Cached copy of students
 
     MyDataAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
@@ -27,30 +27,30 @@ public class MyDataAdapter extends RecyclerView.Adapter<MyDataAdapter.MyDataView
 
     @Override
     public void onBindViewHolder(MyDataViewHolder holder, int position) {
-        Student current = mWords.get(position);
-        holder.wordItemView.setText(current.getFirstName() + " " + current.getLastName());
+        Student current = mStudents.get(position);
+        holder.studentItemView.setText(current.getFirstName() + " " + current.getLastName());
     }
 
-    void setWords(List<Student> words) {
-        mWords = words;
+    void setWords(List<Student> students) {
+        mStudents = students;
         notifyDataSetChanged();
     }
 
     // getItemCount() is called many times, and when it is first called,
-    // mWords has not been updated (means initially, it's null, and we can't return null).
+    // mStudents has not been updated (means initially, it's null, and we can't return null).
     @Override
     public int getItemCount() {
-        if (mWords != null)
-            return mWords.size();
+        if (mStudents != null)
+            return mStudents.size();
         else return 0;
     }
 
     class MyDataViewHolder extends RecyclerView.ViewHolder {
-        private final TextView wordItemView;
+        private final TextView studentItemView;
 
         private MyDataViewHolder(View itemView) {
             super(itemView);
-            wordItemView = itemView.findViewById(R.id.textView);
+            studentItemView = itemView.findViewById(R.id.textView);
         }
     }
 }

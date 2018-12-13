@@ -38,9 +38,9 @@ public class MyDataActivity extends BaseActivity {
         // in the foreground.
         mMyDataViewModel.getStudents().observe(this, new Observer<List<Student>>() {
             @Override
-            public void onChanged(@Nullable final List<Student> words) {
-                // Update the cached copy of the words in the adapter.
-                adapter.setWords(words);
+            public void onChanged(@Nullable final List<Student> students) {
+                // Update the cached copy of the students in the adapter.
+                adapter.setWords(students);
             }
         });
 
