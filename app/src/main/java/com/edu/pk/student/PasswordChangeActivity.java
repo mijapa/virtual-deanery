@@ -1,8 +1,11 @@
-package com.edu.pk;
+package com.edu.pk.student;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.WindowManager;
+
+import com.edu.pk.BaseActivity;
+import com.edu.pk.R;
 
 public class PasswordChangeActivity extends BaseActivity {
 
