@@ -1,8 +1,11 @@
-package com.edu.pk;
+package com.edu.pk.student.mydata;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+
+import com.edu.pk.data.Student;
+import com.edu.pk.data.VirtualDeaneryRepository;
 
 import java.util.List;
 

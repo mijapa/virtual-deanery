@@ -1,9 +1,13 @@
-package com.edu.pk;
+package com.edu.pk.student;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import com.edu.pk.BaseActivity;
+import com.edu.pk.R;
+import com.edu.pk.student.mydata.MyDataActivity;
 
 public class MenuActivity extends BaseActivity {
 

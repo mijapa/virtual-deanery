@@ -15,6 +15,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.edu.pk.employee.EmployeeMenuActivity;
+import com.edu.pk.lecturer.LecturerMenuActivity;
+import com.edu.pk.student.MenuActivity;
+
 /**
  * A login screen that offers login via NIU/password.
  */

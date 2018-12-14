@@ -4,6 +4,8 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
+import com.edu.pk.data.VirtualDeaneryRepository;
+
 public class LoginViewModel extends AndroidViewModel {
     private VirtualDeaneryRepository mRepository;
     private String DEBUG_TAG = "DEBUG_TAG";
@@ -16,9 +18,7 @@ public class LoginViewModel extends AndroidViewModel {
     Boolean checkLoginPassword(String email, String password) {
         Integer NIU = Integer.valueOf(email);
         String passFromDB = mRepository.getStudentPassword(NIU);
-        if (passFromDB.equals(password))
-            return true;
-        return false;
+        return passFromDB.equals(password);
     }
 
     public Integer getNIU() {

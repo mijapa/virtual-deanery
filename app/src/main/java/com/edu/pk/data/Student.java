@@ -1,4 +1,4 @@
-package com.edu.pk;
+package com.edu.pk.data;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;

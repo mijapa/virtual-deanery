@@ -1,4 +1,4 @@
-package com.edu.pk;
+package com.edu.pk.data;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
@@ -12,7 +12,7 @@ public class VirtualDeaneryRepository {
 
     private Integer NIU;
 
-    VirtualDeaneryRepository(Application application) {
+    public VirtualDeaneryRepository(Application application) {
         VirtualDeaneryRoomDatabase db = VirtualDeaneryRoomDatabase.getDatabase(application);
         mStudentDao = db.studentDao();
     }
@@ -26,7 +26,7 @@ public class VirtualDeaneryRepository {
     }
 
     //TODO: this should not be perormed on main thread
-    String getStudentPassword(Integer NIU) {
+    public String getStudentPassword(Integer NIU) {
         return mStudentDao.getStudentPassword(NIU);
     }
 

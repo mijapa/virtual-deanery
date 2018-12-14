@@ -1,4 +1,4 @@
-package com.edu.pk;
+package com.edu.pk.data;
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;

@@ -1,4 +1,4 @@
-package com.edu.pk;
+package com.edu.pk.student.mydata;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -7,6 +7,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+
+import com.edu.pk.BaseActivity;
+import com.edu.pk.R;
+import com.edu.pk.data.Student;
 
 import java.util.List;
 

@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MenuActivity"
+            android:name=".student.MenuActivity"
             android:label="@string/title_app"
             android:parentActivityName=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -33,16 +33,16 @@
                 android:value="com.edu.pk.LoginActivity" />
         </activity>
         <activity
-            android:name=".PasswordChangeActivity"
+            android:name=".student.PasswordChangeActivity"
             android:label="@string/title_activity_password_change"
-            android:parentActivityName=".MenuActivity"
+            android:parentActivityName=".student.MenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.edu.pk.MenuActivity" />
+                android:value="com.edu.pk.student.MenuActivity" />
         </activity>
         <activity
-            android:name=".LecturerMenuActivity"
+            android:name=".lecturer.LecturerMenuActivity"
             android:label="@string/title_app"
             android:parentActivityName=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -51,7 +51,7 @@
                 android:value="com.edu.pk.LoginActivity" />
         </activity>
         <activity
-            android:name=".EmployeeMenuActivity"
+            android:name=".employee.EmployeeMenuActivity"
             android:label="@string/title_app"
             android:parentActivityName=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -60,14 +60,13 @@
                 android:value="com.edu.pk.LoginActivity" />
         </activity>
         <activity
-            android:name=".MyDataActivity"
+            android:name=".student.mydata.MyDataActivity"
             android:label="Moje Dane"
-            android:parentActivityName=".MenuActivity"
+            android:parentActivityName=".student.MenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.edu.pk.MenuActivity" />
-            >
+                android:value="com.edu.pk.student.MenuActivity" />
         </activity>
     </application>
 
