@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.edu.pk.BaseActivity;
+import com.edu.pk.PasswordChangeActivity;
 import com.edu.pk.R;
 import com.edu.pk.student.mydata.MyDataActivity;
 
@@ -36,7 +37,10 @@ public class MenuActivity extends BaseActivity {
             case R.id.button5:
                 break;
             case R.id.button6:
-                intent = new Intent(MenuActivity.this, PasswordChangeActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("goto", "MenuActivity");
+                intent = new Intent(getApplicationContext(), PasswordChangeActivity.class);
+                intent.putExtras(bundle);
                 startActivity(intent);
         }
     }

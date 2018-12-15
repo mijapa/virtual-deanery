@@ -18,7 +18,12 @@ public class LoginViewModel extends AndroidViewModel {
     Boolean checkLoginPassword(String email, String password) {
         Integer NIU = Integer.valueOf(email);
         String passFromDB = mRepository.getStudentPassword(NIU);
-        return passFromDB.equals(password);
+        try {
+            Boolean pom = new Boolean(passFromDB.equals(password));
+        }catch(Exception e){
+            return false;
+        }
+        return true;
     }
 
     public Integer getNIU() {
