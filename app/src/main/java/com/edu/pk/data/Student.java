@@ -9,7 +9,9 @@ public class Student {
     @PrimaryKey
     @NonNull
     private Integer NIU;
+    @NonNull
     private Integer albumNo;
+    @NonNull
     private String password;
     private Integer typeAcc;
     private String pesel;

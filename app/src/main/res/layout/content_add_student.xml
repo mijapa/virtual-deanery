@@ -426,7 +426,7 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:id="@+id/date_of_student_start_student"
+                    android:id="@+id/date_of_study_start_student"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_date_of_student_start_student"

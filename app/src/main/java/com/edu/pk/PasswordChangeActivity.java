@@ -21,12 +21,6 @@ public class PasswordChangeActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//        });
     }
 
     public void onBackPressed(){
@@ -52,7 +46,6 @@ public class PasswordChangeActivity extends BaseActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         }else{
             intent = new Intent(this, EmployeeMenuActivity.class);
-            intent.putExtra("something", "extra");
         }
         return intent;
     }
