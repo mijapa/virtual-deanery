@@ -30,6 +30,8 @@ public class EmployeeMenuActivity extends BaseActivity {
             case R.id.add_lecturer:
                 break;
             case R.id.add_employee:
+                intent = new Intent(this, AddEmployeeActivity.class);
+                startActivity(intent);
                 break;
             case R.id.change_password_employee:
                 Bundle bundle = new Bundle();
