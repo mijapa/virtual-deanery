@@ -33,13 +33,13 @@
                 android:value="com.edu.pk.LoginActivity" />
         </activity>
         <activity
-            android:name=".student.PasswordChangeActivity"
+            android:name=".PasswordChangeActivity"
             android:label="@string/title_activity_password_change"
-            android:parentActivityName=".student.MenuActivity"
+            android:parentActivityName=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.edu.pk.student.MenuActivity" />
+                android:value="com.edu.pk.LoginActivity" />
         </activity>
         <activity
             android:name=".lecturer.LecturerMenuActivity"
@@ -67,6 +67,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.edu.pk.student.MenuActivity" />
+        </activity>
+        <activity
+            android:name=".employee.AddStudentActivity"
+            android:label="@string/title_activity_add_student"
+            android:parentActivityName=".employee.EmployeeMenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.employee.EmployeeMenuActivity" />
         </activity>
     </application>
 
