@@ -9,6 +9,7 @@ import java.util.List;
 public class VirtualDeaneryRepository {
     private StudentDao mStudentDao;
     private EmployeeDao mEmployeeDao;
+    private LecturerDao mLecturerDao;
     private String DEBUG_TAG = "DEBUG_TAG";
 
     private Integer NIU;
@@ -17,6 +18,7 @@ public class VirtualDeaneryRepository {
         VirtualDeaneryRoomDatabase db = VirtualDeaneryRoomDatabase.getDatabase(application);
         mStudentDao = db.studentDao();
         mEmployeeDao = db.employeeDao();
+        mLecturerDao = db.lecturerDao();
     }
 
     public Integer getNIU() {
@@ -36,14 +38,20 @@ public class VirtualDeaneryRepository {
         return mEmployeeDao.getEmployeePassword(NIU);
     }
 
+    public String getLecturerPassword(Integer NIU) {
+        return mLecturerDao.getLecturerPassword(NIU);
+    }
+
 
 
     public void insert(Student student) {
         new insertAsyncTask(mStudentDao).execute(student);
-
     }
     public void insertEmployee(Employee employee){
         new insertEmployeeAsyncTask(mEmployeeDao).execute(employee);
+    }
+    public void insertLecturer(Lecturer lecturer){
+        new insertLecturerAsyncTask(mLecturerDao).execute(lecturer);
     }
 
     public LiveData<Student> getStudent() {
@@ -54,7 +62,21 @@ public class VirtualDeaneryRepository {
         return mStudentDao.getStudents();
     }
 
-        private static class insertEmployeeAsyncTask extends AsyncTask<Employee, Void, Void> {
+    private static class insertLecturerAsyncTask extends AsyncTask<Lecturer, Void, Void> {
+        private LecturerDao mLecturerAsyncTaskDao;
+
+        insertLecturerAsyncTask(LecturerDao dao) {
+            mLecturerAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final Lecturer... params) {
+            mLecturerAsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class insertEmployeeAsyncTask extends AsyncTask<Employee, Void, Void> {
         private EmployeeDao mEmployeeAsyncTaskDao;
 
         insertEmployeeAsyncTask(EmployeeDao dao) {

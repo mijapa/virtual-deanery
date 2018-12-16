@@ -9,7 +9,7 @@ public class Lecturer {
 
     @PrimaryKey
     @NonNull
-    private String niu;
+    private Integer niu;
     @NonNull
     private String password;
     @NonNull
@@ -19,9 +19,9 @@ public class Lecturer {
     @NonNull
     private String address;
     @NonNull
-    private String phoneNumber;
+    private Integer phoneNumber;
 
-    public Lecturer(@NonNull String niu, @NonNull String password, @NonNull String firstName, @NonNull String lastName, @NonNull String address, @NonNull String phoneNumber) {
+    public Lecturer(@NonNull Integer niu, @NonNull String password, @NonNull String firstName, @NonNull String lastName, @NonNull String address, @NonNull Integer phoneNumber) {
         this.niu = niu;
         this.password = password;
         this.firstName = firstName;
@@ -31,7 +31,7 @@ public class Lecturer {
     }
 
     @NonNull
-    public String getNiu() { return niu; }
+    public Integer getNiu() { return niu; }
 
     @NonNull
     public String getPassword() { return password; }
@@ -46,5 +46,5 @@ public class Lecturer {
     public String getAddress() { return address; }
 
     @NonNull
-    public String getPhoneNumber(){ return phoneNumber; }
+    public Integer getPhoneNumber(){ return phoneNumber; }
 }
