@@ -40,7 +40,7 @@
     <string name="add_lecturer">Dodaj\nprowadzącego</string>
     <string name="add_employee">Dodaj\npracownika</string>
 
-    <string name="title_activity_add_student">AddStudentActivity</string>
+    <string name="title_activity_add_student">Dodaj studenta</string>
     <string name="prompt_niu_student">Niu</string>
     <string name="prompt_album_number_student">Numer albumu</string>
     <string name="prompt_password_student">Hasło</string>
@@ -66,6 +66,7 @@
     <string name="prompt_bank_account_student">Konto bankowe studenta</string>
     <string name="prompt_email_student">Email</string>
     <string name="prompt_date_of_student_start_student">Data rozpoczęcia studiów</string>
-    <string name="title_activity_add_employee">AddEmployeeActivity</string>
+    <string name="title_activity_add_employee">Dodaj pracownika</string>
+    <string name="title_activity_add_lecturer">Dodaj prowadzącego</string>
 
 </resources>

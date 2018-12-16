@@ -9,10 +9,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AutoCompleteTextView;
 
+import com.edu.pk.BaseActivity;
 import com.edu.pk.R;
 import com.edu.pk.data.Employee;
 
-public class AddEmployeeActivity extends AppCompatActivity {
+public class AddEmployeeActivity extends BaseActivity {
 
     private AutoCompleteTextView mNiu;
     private AutoCompleteTextView mPassword;
