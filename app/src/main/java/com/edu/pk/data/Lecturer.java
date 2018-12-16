@@ -4,8 +4,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = "employee")
-public class Employee {
+@Entity(tableName = "lecturer")
+public class Lecturer {
 
     @PrimaryKey
     @NonNull
@@ -19,21 +19,15 @@ public class Employee {
     @NonNull
     private String address;
     @NonNull
-    private String cityOrVillage;
-    @NonNull
-    private String pesel;
-    @NonNull
-    private String email;
+    private String phoneNumber;
 
-    public Employee(@NonNull String niu, @NonNull String password, @NonNull String firstName, @NonNull String lastName, @NonNull String address, @NonNull String cityOrVillage, @NonNull String pesel, @NonNull String email) {
+    public Lecturer(@NonNull String niu, @NonNull String password, @NonNull String firstName, @NonNull String lastName, @NonNull String address, @NonNull String phoneNumber) {
         this.niu = niu;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-        this.cityOrVillage = cityOrVillage;
-        this.pesel = pesel;
-        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
     @NonNull
@@ -52,11 +46,5 @@ public class Employee {
     public String getAddress() { return address; }
 
     @NonNull
-    public String getCityOrVillage() { return cityOrVillage; }
-
-    @NonNull
-    public String getPesel() { return pesel; }
-
-    @NonNull
-    public String getEmail() { return email; }
+    public String getPhoneNumber(){ return phoneNumber; }
 }
