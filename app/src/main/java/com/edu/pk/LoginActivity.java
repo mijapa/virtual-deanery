@@ -159,10 +159,10 @@ public class LoginActivity extends AppCompatActivity {
     private boolean checkLog() {
         String email = mNIUView.getText().toString();
         String password = mPasswordView.getText().toString();
-        Integer NIU = Integer.getInteger(email);
+        Integer NIU = Integer.valueOf(email);
         //TODO: different email-NIU transformation needed;
         mLoginViewModel.setNIU(NIU);
-        if (email.equals("10")) {
+        if (NIU >= 10) {
             currentUser = "p";
         } else {
             currentUser = "s";

@@ -25,7 +25,7 @@ public class LoginViewModel extends AndroidViewModel {
             } catch (Exception e) {
                 passOK = false;
             }
-        } else if (NIU < 20) {//employee
+        } else {//employee
             String passFromDB = mRepository.getEmployeePassword(NIU);
             try {
                 passOK = passFromDB.equals(password);

@@ -64,6 +64,9 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             // Not needed if you only populate the database
             // when it is first created
 
+            sDao.deleteAll();
+            eDao.deleteAll();
+
             Student student;
             student = new Student(
                     3,

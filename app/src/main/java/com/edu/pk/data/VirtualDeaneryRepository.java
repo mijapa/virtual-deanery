@@ -42,6 +42,9 @@ public class VirtualDeaneryRepository {
         new insertAsyncTask(mStudentDao).execute(student);
 
     }
+    public void insertEmployee(Employee employee){
+        new insertEmployeeAsyncTask(mEmployeeDao).execute(employee);
+    }
 
     public LiveData<Student> getStudent() {
         return mStudentDao.getStudent(NIU);
@@ -49,6 +52,20 @@ public class VirtualDeaneryRepository {
 
     public LiveData<List<Student>> getStudents() {
         return mStudentDao.getStudents();
+    }
+
+        private static class insertEmployeeAsyncTask extends AsyncTask<Employee, Void, Void> {
+        private EmployeeDao mEmployeeAsyncTaskDao;
+
+        insertEmployeeAsyncTask(EmployeeDao dao) {
+            mEmployeeAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final Employee... params) {
+            mEmployeeAsyncTaskDao.insert(params[0]);
+            return null;
+        }
     }
 
     private static class insertAsyncTask extends AsyncTask<Student, Void, Void> {
