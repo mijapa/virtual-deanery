@@ -8,6 +8,7 @@ import java.util.List;
 
 public class VirtualDeaneryRepository {
     private StudentDao mStudentDao;
+    private EmployeeDao mEmployeeDao;
     private String DEBUG_TAG = "DEBUG_TAG";
 
     private Integer NIU;
@@ -15,6 +16,7 @@ public class VirtualDeaneryRepository {
     public VirtualDeaneryRepository(Application application) {
         VirtualDeaneryRoomDatabase db = VirtualDeaneryRoomDatabase.getDatabase(application);
         mStudentDao = db.studentDao();
+        mEmployeeDao = db.employeeDao();
     }
 
     public Integer getNIU() {
@@ -30,10 +32,15 @@ public class VirtualDeaneryRepository {
         return mStudentDao.getStudentPassword(NIU);
     }
 
+    public String getEmployeePassword(String NIU) { return mEmployeeDao.getEmployeePassword(NIU); }
+
 
     public void insert(Student student) {
         new insertAsyncTask(mStudentDao).execute(student);
 
+    }
+    public void insertEmployee(Employee employee){
+        new insertEmployeeAsyncTask(mEmployeeDao).execute(employee);
     }
 
     public LiveData<Student> getStudent() {
@@ -54,6 +61,20 @@ public class VirtualDeaneryRepository {
         @Override
         protected Void doInBackground(final Student... params) {
             mAsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class insertEmployeeAsyncTask extends AsyncTask<Employee, Void, Void> {
+        private EmployeeDao mEmployeeAsyncTaskDao;
+
+        insertEmployeeAsyncTask(EmployeeDao dao) {
+            mEmployeeAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final Employee... params) {
+            mEmployeeAsyncTaskDao.insert(params[0]);
             return null;
         }
     }
