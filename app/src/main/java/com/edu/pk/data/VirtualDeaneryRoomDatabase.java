@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class}, version = 1, exportSchema = false)
+@Database(entities = {Student.class, Employee.class}, version = 1, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -42,6 +42,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
     }
 
     public abstract StudentDao studentDao();
+    public abstract EmployeeDao employeeDao();
 
     /**
      * Populate the database in the background.
@@ -49,9 +50,11 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
         private final StudentDao mDao;
+        private final EmployeeDao mEmployeeDao;
 
         PopulateDbAsync(VirtualDeaneryRoomDatabase db) {
             mDao = db.studentDao();
+            mEmployeeDao = db.employeeDao();
         }
 
         @Override
@@ -60,6 +63,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             // Not needed if you only populate the database
             // when it is first created
             mDao.deleteAll();
+            mEmployeeDao.deleteAll();
 
             Student student;
             student = new Student(
