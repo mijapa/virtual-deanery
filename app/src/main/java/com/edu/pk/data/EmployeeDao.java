@@ -12,4 +12,7 @@ public interface EmployeeDao {
 
     @Query("DELETE FROM employee")
     void deleteAll();
+
+    @Query("SELECT password FROM employee WHERE NIU = :niu")
+    String getEmployeePassword(Integer niu);
 }

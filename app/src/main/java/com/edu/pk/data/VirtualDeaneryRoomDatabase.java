@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class}, version = 1, exportSchema = false)
+@Database(entities = {Student.class, Employee.class}, version = 2, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -43,15 +43,19 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     public abstract StudentDao studentDao();
 
+    public abstract EmployeeDao employeeDao();
+
     /**
      * Populate the database in the background.
      */
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
-        private final StudentDao mDao;
+        private final StudentDao sDao;
+        private final EmployeeDao eDao;
 
         PopulateDbAsync(VirtualDeaneryRoomDatabase db) {
-            mDao = db.studentDao();
+            sDao = db.studentDao();
+            eDao = db.employeeDao();
         }
 
         @Override
@@ -59,7 +63,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             // Start the app with a clean database every time.
             // Not needed if you only populate the database
             // when it is first created
-            mDao.deleteAll();
+            sDao.deleteAll();
 
             Student student;
             student = new Student(
@@ -91,8 +95,22 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                     "20160904"
             );
 
-            mDao.insert(student);
+            sDao.insert(student);
 
+            eDao.deleteAll();
+            Employee employee;
+            employee = new Employee(
+                    10,
+                    "10",
+                    "Grażyna",
+                    "Złońska",
+                    "ul. Warszawska 2, 10-101 Krakówek",
+                    "Krakówek",
+                    "97020110200",
+                    "graża@pk.pl"
+            );
+
+            eDao.insert(employee);
             return null;
         }
     }

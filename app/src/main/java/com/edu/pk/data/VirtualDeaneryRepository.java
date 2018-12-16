@@ -8,6 +8,7 @@ import java.util.List;
 
 public class VirtualDeaneryRepository {
     private StudentDao mStudentDao;
+    private EmployeeDao mEmployeeDao;
     private String DEBUG_TAG = "DEBUG_TAG";
 
     private Integer NIU;
@@ -15,6 +16,7 @@ public class VirtualDeaneryRepository {
     public VirtualDeaneryRepository(Application application) {
         VirtualDeaneryRoomDatabase db = VirtualDeaneryRoomDatabase.getDatabase(application);
         mStudentDao = db.studentDao();
+        mEmployeeDao = db.employeeDao();
     }
 
     public Integer getNIU() {
@@ -29,6 +31,11 @@ public class VirtualDeaneryRepository {
     public String getStudentPassword(Integer NIU) {
         return mStudentDao.getStudentPassword(NIU);
     }
+
+    public String getEmployeePassword(Integer NIU) {
+        return mEmployeeDao.getEmployeePassword(NIU);
+    }
+
 
 
     public void insert(Student student) {
