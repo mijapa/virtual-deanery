@@ -17,19 +17,23 @@ public class LoginViewModel extends AndroidViewModel {
 
     Boolean checkLoginPassword(String email, String password) {
         Integer NIU = Integer.valueOf(email);
-        String passFromDB = mRepository.getStudentPassword(NIU);
-        String passFromEmployeeDB = mRepository.getEmployeePassword(email);
-        try {
-            Boolean pom = new Boolean(passFromDB.equals(password));
-        }catch(Exception e){
-            try{
-                Boolean pom = new Boolean(passFromEmployeeDB.equals(password));
-                return true;
-            }catch(Exception ee){
-                return false;
+        Boolean passOK = false;
+        if (NIU < 10) {//student
+            String passFromDB = mRepository.getStudentPassword(NIU);
+            try {
+                passOK = passFromDB.equals(password);
+            } catch (Exception e) {
+                passOK = false;
+            }
+        } else if (NIU < 20) {//employee
+            String passFromDB = mRepository.getEmployeePassword(NIU);
+            try {
+                passOK = passFromDB.equals(password);
+            } catch (Exception e) {
+                passOK = false;
             }
         }
-        return true;
+        return passOK;
     }
 
     public Integer getNIU() {
