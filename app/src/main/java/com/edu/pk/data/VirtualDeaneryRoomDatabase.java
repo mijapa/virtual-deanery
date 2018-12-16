@@ -63,7 +63,6 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             // Start the app with a clean database every time.
             // Not needed if you only populate the database
             // when it is first created
-            sDao.deleteAll();
 
             Student student;
             student = new Student(
@@ -97,7 +96,6 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
             sDao.insert(student);
 
-            eDao.deleteAll();
             Employee employee;
             employee = new Employee(
                     10,
