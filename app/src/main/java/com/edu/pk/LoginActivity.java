@@ -159,17 +159,15 @@ public class LoginActivity extends AppCompatActivity {
     private boolean checkLog() {
         String email = mNIUView.getText().toString();
         String password = mPasswordView.getText().toString();
-        if(email.equals("3"))
+        Integer NIU = Integer.getInteger(email);
+        //TODO: different email-NIU transformation needed;
+        mLoginViewModel.setNIU(NIU);
+        if (email.equals("10")) {
             currentUser = "p";
-        else
+        } else {
             currentUser = "s";
-        if (mLoginViewModel.checkLoginPassword(email, password)) {
-            Integer NIU = Integer.getInteger(email);
-            //TODO: different email-NIU transformation needed;
-            mLoginViewModel.setNIU(NIU);
-            return true;
         }
-        return false;
+        return mLoginViewModel.checkLoginPassword(email, password);
     }
 
     public void onBackPressed() {
