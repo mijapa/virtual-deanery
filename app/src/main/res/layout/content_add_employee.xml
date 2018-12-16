@@ -68,7 +68,6 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <!-- TODO delete typeAcc from student -->
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

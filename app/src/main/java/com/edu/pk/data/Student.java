@@ -13,7 +13,6 @@ public class Student {
     private Integer albumNo;
     @NonNull
     private String password;
-    private Integer typeAcc;
     private String pesel;
     private String firstName;
     private String lastName;
@@ -37,11 +36,10 @@ public class Student {
     private String email;
     private String dateOfStudyStart; //date??
 
-    public Student(Integer NIU, Integer albumNo, String password, Integer typeAcc, String pesel, String firstName, String lastName, String familyName, Integer sex, String address, String cityOrVillage, String voivodeship, String country, Integer distanceFromTheCheck_InPlace, String dateOfBirth, String placeOfBirth, String fatherName, String motherName, String motherFamilyName, Integer maritalStatus, Integer foreigner, Integer phoneNumber, Integer otherNumber, String bankAccount, String email, String dateOfStudyStart) {
+    public Student(Integer NIU, Integer albumNo, String password, String pesel, String firstName, String lastName, String familyName, Integer sex, String address, String cityOrVillage, String voivodeship, String country, Integer distanceFromTheCheck_InPlace, String dateOfBirth, String placeOfBirth, String fatherName, String motherName, String motherFamilyName, Integer maritalStatus, Integer foreigner, Integer phoneNumber, Integer otherNumber, String bankAccount, String email, String dateOfStudyStart) {
         this.NIU = NIU;
         this.albumNo = albumNo;
         this.password = password;
-        this.typeAcc = typeAcc;
         this.pesel = pesel;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -76,10 +74,6 @@ public class Student {
 
     public String getPassword() {
         return password;
-    }
-
-    public Integer getTypeAcc() {
-        return typeAcc;
     }
 
     public String getPesel() {
