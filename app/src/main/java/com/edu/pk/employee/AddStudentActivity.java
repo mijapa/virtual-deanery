@@ -17,8 +17,7 @@ public class AddStudentActivity extends BaseActivity {
     private AutoCompleteTextView mNiu;
     private AutoCompleteTextView mAlbumNo;
     private AutoCompleteTextView mPassword;
-    private AutoCompleteTextView mTypeAcc;
-    private AutoCompleteTextView mPasel;
+    private AutoCompleteTextView mPesel;
     private AutoCompleteTextView mFirstName;
     private AutoCompleteTextView mLastName;
     private AutoCompleteTextView mFamilyName;
@@ -50,8 +49,7 @@ public class AddStudentActivity extends BaseActivity {
         mNiu = (AutoCompleteTextView) findViewById(R.id.niu_student);
         mAlbumNo = (AutoCompleteTextView) findViewById(R.id.album_number_student);
         mPassword = (AutoCompleteTextView) findViewById(R.id.password_student);
-        mTypeAcc = (AutoCompleteTextView) findViewById(R.id.typeAcc_student);
-        mPasel = (AutoCompleteTextView) findViewById(R.id.pesel_student);
+        mPesel = (AutoCompleteTextView) findViewById(R.id.pesel_student);
         mFirstName = (AutoCompleteTextView) findViewById(R.id.first_name_student);
         mLastName = (AutoCompleteTextView) findViewById(R.id.last_name_student);
         mFamilyName = (AutoCompleteTextView) findViewById(R.id.family_name_student);
@@ -89,8 +87,7 @@ public class AddStudentActivity extends BaseActivity {
                         Integer.parseInt(mNiu.getText().toString()),
                         Integer.parseInt(mAlbumNo.getText().toString()),
                         mPassword.getText().toString(),
-                        Integer.parseInt(mTypeAcc.getText().toString()),
-                        mPasel.getText().toString(),
+                        mPesel.getText().toString(),
                         mFirstName.getText().toString(),
                         mLastName.getText().toString(),
                         mFamilyName.getText().toString(),

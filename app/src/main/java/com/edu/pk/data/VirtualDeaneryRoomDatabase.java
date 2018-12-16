@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class}, version = 3, exportSchema = false)
+@Database(entities = {Student.class, Employee.class, Lecturer.class}, version = 4, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -77,7 +77,6 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                     3,
                     101010,
                     "3",
-                    0,
                     "97020110200",
                     "Jan",
                     "Kowalski",
