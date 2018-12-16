@@ -32,10 +32,7 @@ public class VirtualDeaneryRepository {
         return mStudentDao.getStudentPassword(NIU);
     }
 
-    public String getEmployeePassword(Integer NIU) {
-        return mEmployeeDao.getEmployeePassword(NIU);
-    }
-
+    public String getEmployeePassword(String NIU) { return mEmployeeDao.getEmployeePassword(NIU); }
 
 
     public void insert(Student student) {

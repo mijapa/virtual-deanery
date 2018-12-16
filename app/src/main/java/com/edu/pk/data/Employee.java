@@ -9,7 +9,7 @@ public class Employee {
 
     @PrimaryKey
     @NonNull
-    private Integer NIU;
+    private String niu;
     @NonNull
     private String password;
     @NonNull
@@ -25,8 +25,8 @@ public class Employee {
     @NonNull
     private String email;
 
-    public Employee(@NonNull Integer NIU, @NonNull String password, @NonNull String firstName, @NonNull String lastName, @NonNull String address, @NonNull String cityOrVillage, @NonNull String pesel, @NonNull String email) {
-        this.NIU = NIU;
+    public Employee(@NonNull String niu, @NonNull String password, @NonNull String firstName, @NonNull String lastName, @NonNull String address, @NonNull String cityOrVillage, @NonNull String pesel, @NonNull String email) {
+        this.niu = niu;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -37,9 +37,7 @@ public class Employee {
     }
 
     @NonNull
-    public Integer getNIU() {
-        return NIU;
-    }
+    public String getNiu() { return niu; }
 
     @NonNull
     public String getPassword() { return password; }
