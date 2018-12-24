@@ -10,6 +10,7 @@ public class VirtualDeaneryRepository {
     private StudentDao mStudentDao;
     private EmployeeDao mEmployeeDao;
     private LecturerDao mLecturerDao;
+    private CourseDao mCourseDao;
     private String DEBUG_TAG = "DEBUG_TAG";
 
     private Integer NIU;
@@ -19,6 +20,7 @@ public class VirtualDeaneryRepository {
         mStudentDao = db.studentDao();
         mEmployeeDao = db.employeeDao();
         mLecturerDao = db.lecturerDao();
+        mCourseDao = db.courseDao();
     }
 
     public Integer getNIU() {
@@ -52,6 +54,9 @@ public class VirtualDeaneryRepository {
     }
     public void insertLecturer(Lecturer lecturer){
         new insertLecturerAsyncTask(mLecturerDao).execute(lecturer);
+    }
+    public void insertCourse(Course course){
+        new insertCourseAsyncTask(mCourseDao).execute(course);
     }
 
     public void changePasswordStudent(int niu, String password){
@@ -96,6 +101,20 @@ public class VirtualDeaneryRepository {
         @Override
         protected Void doInBackground(final Employee... params) {
             mEmployeeAsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class insertCourseAsyncTask extends AsyncTask<Course, Void, Void> {
+        private CourseDao mCourseAsyncTaskDao;
+
+        insertCourseAsyncTask(CourseDao dao) {
+            mCourseAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final Course... params) {
+            mCourseAsyncTaskDao.insert(params[0]);
             return null;
         }
     }

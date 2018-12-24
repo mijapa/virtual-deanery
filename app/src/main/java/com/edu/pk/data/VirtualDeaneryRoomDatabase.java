@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class}, version = 4, exportSchema = false)
+@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class}, version = 5, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -47,6 +47,8 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     public abstract LecturerDao lecturerDao();
 
+    public abstract CourseDao courseDao();
+
     /**
      * Populate the database in the background.
      */
@@ -55,11 +57,13 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
         private final StudentDao sDao;
         private final EmployeeDao eDao;
         private final LecturerDao lDao;
+        private final CourseDao cDao;
 
         PopulateDbAsync(VirtualDeaneryRoomDatabase db) {
             sDao = db.studentDao();
             eDao = db.employeeDao();
             lDao = db.lecturerDao();
+            cDao = db.courseDao();
         }
 
         @Override
@@ -71,6 +75,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             sDao.deleteAll();
             eDao.deleteAll();
             lDao.deleteAll();
+            cDao.deleteAll();
 
             Student student;
             student = new Student(
@@ -128,6 +133,48 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             );
 
             lDao.insert(lecturer);
+
+            Course course;
+            course = new Course(
+                1,
+                "Angielski",
+                "2",
+                "1",
+                "Inżynierii Elektrycznej i Komputerowej",
+                "30"
+            );
+            cDao.insert(course);
+
+            course = new Course(
+                    2,
+                    "Angielski",
+                    "2",
+                    "2",
+                    "Inżynierii Elektrycznej i Komputerowej",
+                    "30"
+            );
+            cDao.insert(course);
+
+            course = new Course(
+                    3,
+                    "Angielski",
+                    "2",
+                    "3",
+                    "Inżynierii Elektrycznej i Komputerowej",
+                    "30"
+            );
+            cDao.insert(course);
+
+            course = new Course(
+                    4,
+                    "Angielski",
+                    "2",
+                    "4",
+                    "Inżynierii Elektrycznej i Komputerowej",
+                    "30"
+            );
+            cDao.insert(course);
+
             return null;
         }
     }
