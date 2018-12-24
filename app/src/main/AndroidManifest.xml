@@ -95,6 +95,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.edu.pk.employee.EmployeeMenuActivity" />
         </activity>
+        <activity
+            android:name=".lecturer.EnterTheGradeActivity"
+            android:label="@string/title_activity_enter_the_grade"
+            android:parentActivityName=".lecturer.LecturerMenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.lecturer.LecturerMenuActivity" />
+        </activity>
     </application>
 
 </manifest>

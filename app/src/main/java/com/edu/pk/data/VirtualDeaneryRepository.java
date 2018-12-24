@@ -60,6 +60,9 @@ public class VirtualDeaneryRepository {
     public void changePasswordEmployee(int niu, String password){
         mEmployeeDao.changePasswordEmployee(niu, password);
     }
+    public void changePasswordLecturer(int niu, String password){
+        mLecturerDao.changePasswordLecturer(niu, password);
+    }
 
     public LiveData<Student> getStudent() {
         return mStudentDao.getStudent(NIU);

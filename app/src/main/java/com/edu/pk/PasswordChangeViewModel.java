@@ -21,7 +21,7 @@ public class PasswordChangeViewModel extends AndroidViewModel {
         } else if(yourNiu >= 10 && yourNiu < 20) {
             mRepository.changePasswordEmployee(yourNiu, newPassword);
         }else {
-
+            mRepository.changePasswordLecturer(yourNiu, newPassword);
         }
     }
 

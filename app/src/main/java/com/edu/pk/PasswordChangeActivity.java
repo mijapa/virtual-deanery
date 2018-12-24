@@ -5,19 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import com.edu.pk.BaseActivity;
-import com.edu.pk.R;
 import com.edu.pk.employee.EmployeeMenuActivity;
+import com.edu.pk.lecturer.LecturerMenuActivity;
 import com.edu.pk.student.MenuActivity;
 
 public class PasswordChangeActivity extends BaseActivity {
@@ -140,8 +135,10 @@ public class PasswordChangeActivity extends BaseActivity {
         if(goToIntent.equals("MenuActivity")){
             intent = new Intent(this, MenuActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        }else{
+        }else if(goToIntent.equals("EmployeeMenuActivity")){
             intent = new Intent(this, EmployeeMenuActivity.class);
+        }else{
+            intent = new Intent(this, LecturerMenuActivity.class);
         }
         return intent;
     }
