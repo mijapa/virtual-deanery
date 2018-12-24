@@ -54,6 +54,13 @@ public class VirtualDeaneryRepository {
         new insertLecturerAsyncTask(mLecturerDao).execute(lecturer);
     }
 
+    public void changePasswordStudent(int niu, String password){
+        mStudentDao.changePasswordStudent(niu, password);
+    }
+    public void changePasswordEmployee(int niu, String password){
+        mEmployeeDao.changePasswordEmployee(niu, password);
+    }
+
     public LiveData<Student> getStudent() {
         return mStudentDao.getStudent(NIU);
     }

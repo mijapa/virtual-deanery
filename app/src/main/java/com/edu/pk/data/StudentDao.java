@@ -27,4 +27,7 @@ public interface StudentDao {
 
     @Query("SELECT * FROM student")
     LiveData<List<Student>> getStudents();
+
+    @Query("UPDATE student SET niu = :niu, password = :newPassword WHERE niu = :niu")
+    void changePasswordStudent(Integer niu, String newPassword);
 }
