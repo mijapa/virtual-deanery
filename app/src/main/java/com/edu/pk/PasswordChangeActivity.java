@@ -21,21 +21,19 @@ import com.edu.pk.employee.EmployeeMenuActivity;
 import com.edu.pk.student.MenuActivity;
 
 public class PasswordChangeActivity extends BaseActivity {
-;
+
     private TextView mCurrentPassword;
     private TextView mNewPassword;
     private TextView mRepeatPassword;
     private Button mChange;
     private PasswordChangeViewModel mPasswordChangeViewModel;
 
-    private String mPassword;
     private String mNiu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_change);
-        mPassword = getIntent().getStringExtra("password");
         mNiu = getIntent().getStringExtra("niu");
         mCurrentPassword = (TextView) findViewById(R.id.current_password);
         mNewPassword = (TextView) findViewById(R.id.new_password);
@@ -52,8 +50,12 @@ public class PasswordChangeActivity extends BaseActivity {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == EditorInfo.IME_ACTION_GO) {
-                    mPasswordChangeViewModel.changePassword(mNiu, mPassword, mCurrentPassword.getText().toString(), mNewPassword.getText().toString(), mRepeatPassword.getText().toString());
-                    return true;
+                    if(checkCurrentPassword()) {
+                        if(isTheSame()) {
+                            mPasswordChangeViewModel.changePassword(mNiu, mNewPassword.getText().toString());
+                            return true;
+                        }
+                    }
                 }
                 return false;
             }
@@ -62,9 +64,59 @@ public class PasswordChangeActivity extends BaseActivity {
         mChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               mPasswordChangeViewModel.changePassword(mNiu, mPassword, mCurrentPassword.getText().toString(), mNewPassword.getText().toString(), mRepeatPassword.getText().toString());
+                if(checkCurrentPassword()) {
+                    if(isTheSame()) {
+                        mPasswordChangeViewModel.changePassword(mNiu, mNewPassword.getText().toString());
+                    }
+                }
             }
         });
+    }
+
+    public boolean checkCurrentPassword(){
+        mCurrentPassword.setError(null);
+        mRepeatPassword.setError(null);
+
+        boolean cancel = false;
+        View focusView = null;
+
+        if(!mPasswordChangeViewModel.checkCurrentPassword(mNiu, mCurrentPassword.getText().toString())){
+            mCurrentPassword.setError(getString(R.string.error_current_password));
+            focusView = mCurrentPassword;
+            cancel = true;
+        }
+
+        if (cancel) {
+            mCurrentPassword.setText("");
+            mNewPassword.setText("");
+            mRepeatPassword.setText("");
+            focusView.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isTheSame(){
+        mCurrentPassword.setError(null);
+        mRepeatPassword.setError(null);
+
+        boolean cancel = false;
+        View focusView = null;
+
+        if(!mNewPassword.getText().toString().equals(mRepeatPassword.getText().toString())){
+            mRepeatPassword.setError(getString(R.string.error_is_not_the_same));
+            focusView = mRepeatPassword;
+            cancel = true;
+        }
+
+        if (cancel) {
+            mNewPassword.setText("");
+            mRepeatPassword.setText("");
+            focusView.requestFocus();
+            return false;
+        }
+        return true;
+
     }
 
     public void onBackPressed(){

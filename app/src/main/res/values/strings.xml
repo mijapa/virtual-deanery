@@ -68,5 +68,7 @@
     <string name="prompt_date_of_student_start_student">Data rozpoczęcia studiów</string>
     <string name="title_activity_add_employee">Dodaj pracownika</string>
     <string name="title_activity_add_lecturer">Dodaj prowadzącego</string>
+    <string name="error_current_password">Niepoprawne hasło</string>
+    <string name="error_is_not_the_same">Powtórzone hasło zawiera błędy</string>
 
 </resources>

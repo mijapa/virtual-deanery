@@ -50,19 +50,16 @@ public class LoginActivity extends AppCompatActivity {
                     if (checkLog()) {
                         if (currentUser.equals("s")) {
                             Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                            intent.putExtra("password", mPasswordView.getText().toString());
                             intent.putExtra("niu", mNIUView.getText().toString());
                             startActivity(intent);
                         }
                         if (currentUser.equals("l")) {
                             Intent intent = new Intent(LoginActivity.this, LecturerMenuActivity.class);
-                            intent.putExtra("password", mPasswordView.getText().toString());
                             intent.putExtra("niu", mNIUView.getText().toString());
                             startActivity(intent);
                         }
                         if (currentUser.equals("p")) {
                             Intent intent = new Intent(LoginActivity.this, EmployeeMenuActivity.class);
-                            intent.putExtra("password", mPasswordView.getText().toString());
                             intent.putExtra("niu", mNIUView.getText().toString());
                             startActivity(intent);
                         }
