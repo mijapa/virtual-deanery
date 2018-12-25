@@ -3,12 +3,15 @@ package com.edu.pk;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.edu.pk.employee.EmployeeMenuActivity;
@@ -41,6 +44,14 @@ public class PasswordChangeActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
+        final Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), R.string.password_changed, Snackbar.LENGTH_LONG);
+        snackbar.setActionTextColor(getResources().getColor(R.color.colorPrimary));
+        View snackbarView = snackbar.getView();
+        int snackbarTextId = android.support.design.R.id.snackbar_text;
+        TextView textView = (TextView)snackbarView.findViewById(snackbarTextId);
+        textView.setTextColor(getResources().getColor(R.color.colorPrimary));
+        snackbarView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+
         mRepeatPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -48,6 +59,7 @@ public class PasswordChangeActivity extends BaseActivity {
                     if(checkCurrentPassword()) {
                         if(isTheSame()) {
                             mPasswordChangeViewModel.changePassword(mNiu, mNewPassword.getText().toString());
+                            snackbar.show();
                             return true;
                         }
                     }
@@ -62,6 +74,7 @@ public class PasswordChangeActivity extends BaseActivity {
                 if(checkCurrentPassword()) {
                     if(isTheSame()) {
                         mPasswordChangeViewModel.changePassword(mNiu, mNewPassword.getText().toString());
+                        snackbar.show();
                     }
                 }
             }
