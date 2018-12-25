@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class}, version = 6, exportSchema = false)
+@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class}, version = 7, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -178,6 +178,16 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                     "30"
             );
             cDao.insert(course);
+
+            StudentApplication studentApplication;
+            studentApplication = new StudentApplication(
+                    1,
+                    "Wniosek o akademik",
+                    "3",
+                    "330",
+                    "oczekujący"
+            );
+            aDao.insert(studentApplication);
 
             return null;
         }

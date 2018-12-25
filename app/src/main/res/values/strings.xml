@@ -95,5 +95,6 @@
     <string name="submit_an_application">Złóż wniosek</string>
     <string name="information">Informacje:</string>
     <string name="lack">brak</string>
+    <string name="title_activity_waiting_room">WaitingRoomActivity</string>
 
 </resources>

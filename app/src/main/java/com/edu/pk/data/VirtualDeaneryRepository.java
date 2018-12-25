@@ -83,6 +83,12 @@ public class VirtualDeaneryRepository {
         return mStudentDao.getStudents();
     }
 
+    public LiveData<List<StudentApplication>> getStudentApplications() {
+        return mStudentApplicationDao.getStudentApplications();
+    }
+
+
+
     private static class insertLecturerAsyncTask extends AsyncTask<Lecturer, Void, Void> {
         private LecturerDao mLecturerAsyncTaskDao;
 
