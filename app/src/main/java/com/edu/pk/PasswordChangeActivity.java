@@ -59,6 +59,7 @@ public class PasswordChangeActivity extends BaseActivity {
                     if(checkCurrentPassword()) {
                         if(isTheSame()) {
                             mPasswordChangeViewModel.changePassword(mNiu, mNewPassword.getText().toString());
+                            clearFields();
                             toast.show();
                             return true;
                         }
@@ -74,11 +75,18 @@ public class PasswordChangeActivity extends BaseActivity {
                 if(checkCurrentPassword()) {
                     if(isTheSame()) {
                         mPasswordChangeViewModel.changePassword(mNiu, mNewPassword.getText().toString());
+                        clearFields();
                         toast.show();
                     }
                 }
             }
         });
+    }
+
+    public void clearFields(){
+        mCurrentPassword.setText("");
+        mNewPassword.setText("");
+        mRepeatPassword.setText("");
     }
 
     public boolean checkCurrentPassword(){
@@ -95,9 +103,7 @@ public class PasswordChangeActivity extends BaseActivity {
         }
 
         if (cancel) {
-            mCurrentPassword.setText("");
-            mNewPassword.setText("");
-            mRepeatPassword.setText("");
+            clearFields();
             focusView.requestFocus();
             return false;
         }

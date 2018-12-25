@@ -65,6 +65,12 @@ public class AddCourseActivity extends BaseActivity {
 
                 );
                 mAddCourseViewModel.insertCourse(course);
+                mCourseNo.setText("");
+                mName.setText("");
+                mEcts.setText("");
+                mTerm.setText("");
+                mDepartment.setText("");
+                mHourAmount.setText("");
                 toast.show();
             }
         });

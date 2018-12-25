@@ -122,6 +122,31 @@ public class AddStudentActivity extends BaseActivity {
                 );
 
                 mAddStudentViewModel.insertStudent(student);
+                mNiu.setText("");
+                mAlbumNo.setText("");
+                mPassword.setText("");
+                mPesel.setText("");
+                mFirstName.setText("");
+                mLastName.setText("");
+                mFamilyName.setText("");
+                mSex.setText("");
+                mAddress.setText("");
+                mCityOrVillage.setText("");
+                mVoivodeship.setText("");
+                mCountry.setText("");
+                mDistanceFromTheCheck_InPlace.setText("");
+                mDateOfBirth.setText("");
+                mPlaceOfBirth.setText("");
+                mFatherName.setText("");
+                mMotherName.setText("");
+                mMotherFamilyName.setText("");
+                mMaritalStatus.setText("");
+                mForeigner.setText("");
+                mPhoneNumber.setText("");
+                mOtherNumber.setText("");
+                mBankAccount.setText("");
+                mEmail.setText("");
+                mDateOfStudyStart.setText("");
                 toast.show();
             }
         });

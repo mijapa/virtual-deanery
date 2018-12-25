@@ -72,6 +72,14 @@ public class AddEmployeeActivity extends BaseActivity {
                 );
 
                 mAddEmployeeViewModel.insertEmployee(employee);
+                mNiu.setText("");
+                mPassword.setText("");
+                mFirstName.setText("");
+                mLastName.setText("");
+                mAddress.setText("");
+                mCityOrVillage.setText("");
+                mPesel.setText("");
+                mEmail.setText("");
                 toast.show();
             }
         });

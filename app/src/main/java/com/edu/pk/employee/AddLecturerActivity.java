@@ -67,6 +67,12 @@ public class AddLecturerActivity extends BaseActivity {
                 );
 
                 mAddLecturerViewModel.insertLecturer(lecturer);
+                mNiu.setText("");
+                mPassword.setText("");
+                mFirstName.setText("");
+                mLastName.setText("");
+                mAddress.setText("");
+                mPhoneNumber.setText("");
                 toast.show();
             }
         });
