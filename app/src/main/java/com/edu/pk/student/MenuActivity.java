@@ -8,6 +8,7 @@ import android.view.View;
 import com.edu.pk.BaseActivity;
 import com.edu.pk.PasswordChangeActivity;
 import com.edu.pk.R;
+import com.edu.pk.student.dormitory.MenuDormitoryActivity;
 import com.edu.pk.student.mydata.MyDataActivity;
 
 public class MenuActivity extends BaseActivity {
@@ -38,6 +39,8 @@ public class MenuActivity extends BaseActivity {
             case R.id.button4:
                 break;
             case R.id.button5:
+                intent = new Intent(MenuActivity.this, MenuDormitoryActivity.class);
+                startActivity(intent);
                 break;
             case R.id.button6:
                 Bundle bundle = new Bundle();

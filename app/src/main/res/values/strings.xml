@@ -86,5 +86,10 @@
     <string name="add_employee_toast">Dodano pracownika</string>
     <string name="add_lecturer_toast">Dodano prowadzącego</string>
     <string name="add_student_toast">Dodano studenta</string>
+    <string name="title_activity_menu_dormitory">MenuDormitoryActivity</string>
+    <string name="application_for_a_dormitory">Wniosek o akademik</string>
+    <string name="reservations">Rezerwacje</string>
+    <string name="accommodation">Zakwaterowanie</string>
+    <string name="history_about_dorms">Historia o akademikach</string>
 
 </resources>
