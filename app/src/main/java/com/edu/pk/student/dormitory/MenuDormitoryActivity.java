@@ -26,6 +26,8 @@ public class MenuDormitoryActivity extends BaseActivity {
         Intent intent;
         switch(view.getId()){
             case R.id.application_for_a_dormitory:
+                intent = new Intent(this, ApplicationForADormitory.class);
+                startActivity(intent);
                 break;
             case R.id.reservations:
                 break;

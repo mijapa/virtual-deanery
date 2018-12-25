@@ -91,5 +91,9 @@
     <string name="reservations">Rezerwacje</string>
     <string name="accommodation">Zakwaterowanie</string>
     <string name="history_about_dorms">Historia o akademikach</string>
+    <string name="title_activity_application_for_adormitory">ApplicationForADormitory</string>
+    <string name="submit_an_application">Złóż wniosek</string>
+    <string name="information">Informacje:</string>
+    <string name="lack">brak</string>
 
 </resources>
