@@ -82,5 +82,9 @@
     <string name="prompt_course_term">Semestr</string>
     <string name="prompt_course_department">Wydział</string>
     <string name="prompt_course_hour_amount">Liczba godzin</string>
+    <string name="add_course_toast">Dodano przedmiot</string>
+    <string name="add_employee_toast">Dodano pracownika</string>
+    <string name="add_lecturer_toast">Dodano prowadzącego</string>
+    <string name="add_student_toast">Dodano studenta</string>
 
 </resources>

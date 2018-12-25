@@ -1,12 +1,15 @@
 package com.edu.pk.employee;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AutoCompleteTextView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.edu.pk.BaseActivity;
 import com.edu.pk.R;
@@ -78,6 +81,12 @@ public class AddStudentActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
+        final Toast toast = Toast.makeText(getBaseContext(), R.string.add_student_toast, Toast.LENGTH_LONG);
+        View view = toast.getView();
+        view.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
+        TextView text = view.findViewById(android.R.id.message);
+        text.setTextColor(getResources().getColor(R.color.colorPrimary));
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +122,7 @@ public class AddStudentActivity extends BaseActivity {
                 );
 
                 mAddStudentViewModel.insertStudent(student);
-
+                toast.show();
             }
         });
     }
