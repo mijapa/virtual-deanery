@@ -73,5 +73,14 @@
     <string name="enter_the_grade">Wpisz ocenę</string>
     <string name="title_activity_enter_the_grade">EnterTheGradeActivity</string>
     <string name="password_changed">Hasło zostało zmienione</string>
+    <string name="add_course">Dodaj przedmiot</string>
+    <string name="waiting_room">Poczekalnia</string>
+    <string name="title_activity_add_course">AddCourseActivity</string>
+    <string name="prompt_course_no">Numer przedmiotu</string>
+    <string name="prompt_course_name">Nazwa przedmiotu</string>
+    <string name="prompt_course_ects">Liczba punktów ECTS</string>
+    <string name="prompt_course_term">Semestr</string>
+    <string name="prompt_course_department">Wydział</string>
+    <string name="prompt_course_hour_amount">Liczba godzin</string>
 
 </resources>

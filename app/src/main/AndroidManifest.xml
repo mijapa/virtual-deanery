@@ -104,6 +104,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.edu.pk.lecturer.LecturerMenuActivity" />
         </activity>
+        <activity
+            android:name=".employee.AddCourseActivity"
+            android:label="@string/title_activity_add_course"
+            android:parentActivityName=".employee.EmployeeMenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.employee.EmployeeMenuActivity" />
+        </activity>
     </application>
 
 </manifest>
