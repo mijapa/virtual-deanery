@@ -16,4 +16,7 @@ public interface StudentApplicationDao {
 
     @Query("SELECT * FROM student_application")
     LiveData<List<StudentApplication>> getStudentApplications();
+
+    @Query("DELETE FROM student_application WHERE appliactionNo = :applicationNo")
+    void deleteRow(Integer applicationNo);
 }

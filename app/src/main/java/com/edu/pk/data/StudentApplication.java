@@ -7,8 +7,7 @@ import android.support.annotation.NonNull;
 @Entity(tableName = "student_application")
 public class StudentApplication {
 
-    @PrimaryKey
-    @NonNull
+    @PrimaryKey(autoGenerate = true)
     private Integer appliactionNo;
     @NonNull
     private String description;
@@ -19,15 +18,13 @@ public class StudentApplication {
     @NonNull
     private String status;
 
-    public StudentApplication(@NonNull Integer appliactionNo, @NonNull String description, @NonNull String studentAlbumNo, @NonNull String distanceFromTheCheck_InPlace, @NonNull String status) {
-        this.appliactionNo = appliactionNo;
+    public StudentApplication(@NonNull String description, @NonNull String studentAlbumNo, @NonNull String distanceFromTheCheck_InPlace, @NonNull String status) {
         this.description = description;
         this.studentAlbumNo = studentAlbumNo;
         this.distanceFromTheCheck_InPlace = distanceFromTheCheck_InPlace;
         this.status = status;
     }
 
-    @NonNull
     public Integer getAppliactionNo() { return appliactionNo; }
 
     @NonNull
@@ -41,4 +38,13 @@ public class StudentApplication {
 
     @NonNull
     public String getStatus() { return status; }
+
+    public void setAppliactionNo(Integer appliactionNo) {
+        this.appliactionNo = appliactionNo;
+    }
+
+    public void setStatus(@NonNull String status) {
+        this.status = status;
+    }
+
 }

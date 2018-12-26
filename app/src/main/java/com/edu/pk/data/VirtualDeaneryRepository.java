@@ -74,6 +74,9 @@ public class VirtualDeaneryRepository {
     public void changePasswordLecturer(int niu, String password){
         mLecturerDao.changePasswordLecturer(niu, password);
     }
+    public void deleteRowStudentApplication(int applicationNo){
+        mStudentApplicationDao.deleteRow(applicationNo);
+    }
 
     public LiveData<Student> getStudent() {
         return mStudentDao.getStudent(NIU);

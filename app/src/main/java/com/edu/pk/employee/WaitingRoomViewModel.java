@@ -4,7 +4,6 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 
-import com.edu.pk.data.Student;
 import com.edu.pk.data.StudentApplication;
 import com.edu.pk.data.VirtualDeaneryRepository;
 
@@ -22,5 +21,8 @@ public class WaitingRoomViewModel extends AndroidViewModel {
 
     public LiveData<List<StudentApplication>> getStudentApplications() {
         return mStudentApplications;
+    }
+    public void deleteRow(Integer applicationNo){
+        mRepository.deleteRowStudentApplication(applicationNo);
     }
 }

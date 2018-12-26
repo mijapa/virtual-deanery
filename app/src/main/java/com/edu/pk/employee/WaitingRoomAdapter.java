@@ -15,7 +15,7 @@ import java.util.List;
 public class WaitingRoomAdapter extends RecyclerView.Adapter<WaitingRoomAdapter.WaitingRoomViewHolder> {
 
     private final LayoutInflater mInflater;
-    private List<StudentApplication> mStudentApplications; // Cached copy of students
+    private List<StudentApplication> mStudentApplications;
 
     WaitingRoomAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
@@ -28,14 +28,21 @@ public class WaitingRoomAdapter extends RecyclerView.Adapter<WaitingRoomAdapter.
     }
 
     @Override
-    public void onBindViewHolder(WaitingRoomAdapter.WaitingRoomViewHolder holder, int position) {
+    public void onBindViewHolder(final WaitingRoomAdapter.WaitingRoomViewHolder holder,final int position) {
         StudentApplication current = mStudentApplications.get(position);
-        holder.studentApplicationItemView.setText(current.getDescription() + "\nNumer albumu: " + current.getStudentAlbumNo() + "\nOdległość od miejsca zamieszkania: " + current.getDistanceFromTheCheck_InPlace());
+        holder.studentApplicationItemView.setText(current.getDescription() + "\nNumer albumu: " + current.getStudentAlbumNo() + "\nOdległość od miejsca zamieszkania: " + current.getDistanceFromTheCheck_InPlace() + "\nStatus: " + current.getStatus());
+        holder.studentApplicationItemView.setBackgroundColor(holder.studentApplicationItemView.getResources().getColor(R.color.colorAccent));
+        holder.studentApplicationItemView.setTextSize(15);
     }
 
     void setWords(List<StudentApplication> studentApplications) {
         mStudentApplications = studentApplications;
         notifyDataSetChanged();
+    }
+
+    public int getApplicationNumber(int position){
+        StudentApplication current = mStudentApplications.get(position);
+        return current.getAppliactionNo();
     }
 
     @Override
