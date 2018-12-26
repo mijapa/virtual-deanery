@@ -30,7 +30,7 @@ public class WaitingRoomAdapter extends RecyclerView.Adapter<WaitingRoomAdapter.
     @Override
     public void onBindViewHolder(final WaitingRoomAdapter.WaitingRoomViewHolder holder,final int position) {
         StudentApplication current = mStudentApplications.get(position);
-        holder.studentApplicationItemView.setText(current.getDescription() + "\nNumer albumu: " + current.getStudentAlbumNo() + "\nOdległość od miejsca zamieszkania: " + current.getDistanceFromTheCheck_InPlace() + "\nStatus: " + current.getStatus());
+        holder.studentApplicationItemView.setText(current.getDescription() + "\nNumer albumu: " + current.getStudentAlbumNo() + "\nOdległość od miejsca zamieszkania: " + current.getDistanceFromTheCheck_InPlace());
         holder.studentApplicationItemView.setBackgroundColor(holder.studentApplicationItemView.getResources().getColor(R.color.colorAccent));
         holder.studentApplicationItemView.setTextSize(15);
     }
@@ -42,7 +42,7 @@ public class WaitingRoomAdapter extends RecyclerView.Adapter<WaitingRoomAdapter.
 
     public int getApplicationNumber(int position){
         StudentApplication current = mStudentApplications.get(position);
-        return current.getAppliactionNo();
+        return current.getApplicationNo();
     }
 
     @Override

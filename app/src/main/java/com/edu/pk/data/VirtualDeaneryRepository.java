@@ -12,6 +12,7 @@ public class VirtualDeaneryRepository {
     private LecturerDao mLecturerDao;
     private CourseDao mCourseDao;
     private StudentApplicationDao mStudentApplicationDao;
+    private DecisionDao mDecisionDao;
     private String DEBUG_TAG = "DEBUG_TAG";
 
     private Integer NIU;
@@ -22,6 +23,7 @@ public class VirtualDeaneryRepository {
         mEmployeeDao = db.employeeDao();
         mLecturerDao = db.lecturerDao();
         mCourseDao = db.courseDao();
+        mDecisionDao = db.decisionDao();
         mStudentApplicationDao = db.studentApplicationDao();
     }
 
@@ -46,8 +48,15 @@ public class VirtualDeaneryRepository {
         return mLecturerDao.getLecturerPassword(NIU);
     }
 
-
-
+    public Integer getAlbumNo(Integer niu){
+        return mStudentDao.getAlbumNo(niu);
+    }
+    public Integer getDistanceFromTheCheck_InPlace(Integer niu){
+        return mStudentDao.getDistanceFromTheCheck_InPlace(niu);
+    }
+    public Integer searchIdApplication(Integer albumNo){
+        return mStudentApplicationDao.searchIdApplication(albumNo);
+    }
     public void insert(Student student) {
         new insertAsyncTask(mStudentDao).execute(student);
     }
@@ -65,6 +74,10 @@ public class VirtualDeaneryRepository {
         new insertStudentApplicationAsyncTask(mStudentApplicationDao).execute(studentApplication);
     }
 
+    public void insertDecision(Decision decision){
+        new insertDecisionAsyncTask(mDecisionDao).execute(decision);
+    }
+
     public void changePasswordStudent(int niu, String password){
         mStudentDao.changePasswordStudent(niu, password);
     }
@@ -76,6 +89,12 @@ public class VirtualDeaneryRepository {
     }
     public void deleteRowStudentApplication(int applicationNo){
         mStudentApplicationDao.deleteRow(applicationNo);
+    }
+    public void setStatusDecision(int applicationNo, String status){
+        mDecisionDao.setStatusDecision(applicationNo, status);
+    }
+    public String getStatusDecision(Integer albumNo){
+        return mDecisionDao.getStatusDecision(albumNo);
     }
 
     public LiveData<Student> getStudent() {
@@ -144,6 +163,20 @@ public class VirtualDeaneryRepository {
         @Override
         protected Void doInBackground(final StudentApplication... params) {
             mStudentApplicationAsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class insertDecisionAsyncTask extends AsyncTask<Decision, Void, Void> {
+        private DecisionDao mDecisionAsyncTaskDao;
+
+        insertDecisionAsyncTask(DecisionDao dao) {
+            mDecisionAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final Decision... params) {
+            mDecisionAsyncTaskDao.insert(params[0]);
             return null;
         }
     }

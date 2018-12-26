@@ -30,4 +30,10 @@ public interface StudentDao {
 
     @Query("UPDATE student SET niu = :niu, password = :newPassword WHERE niu = :niu")
     void changePasswordStudent(Integer niu, String newPassword);
+
+    @Query("SELECT albumNo FROM student where NIU = :niu")
+    Integer getAlbumNo(Integer niu);
+
+    @Query("SELECT distanceFromTheCheck_InPlace FROM student where NIU = :niu")
+    Integer getDistanceFromTheCheck_InPlace(Integer niu);
 }

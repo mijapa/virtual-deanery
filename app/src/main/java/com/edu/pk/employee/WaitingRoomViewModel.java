@@ -25,4 +25,7 @@ public class WaitingRoomViewModel extends AndroidViewModel {
     public void deleteRow(Integer applicationNo){
         mRepository.deleteRowStudentApplication(applicationNo);
     }
+    public void setStatusDecision(int applicationNo, String status){
+        mRepository.setStatusDecision(applicationNo, status);
+    }
 }

@@ -44,13 +44,18 @@ public class WaitingRoomActivity extends AppCompatActivity {
                 builder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        mWaitingRoomViewModel.setStatusDecision(adapter.getApplicationNumber(position), "zaakceptowany");
                         mWaitingRoomViewModel.deleteRow(adapter.getApplicationNumber(position));
                         adapter.notifyDataSetChanged();
                     }
                 });
                 builder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) { }
+                    public void onClick(DialogInterface dialog, int which) {
+                        mWaitingRoomViewModel.setStatusDecision(adapter.getApplicationNumber(position), "nie zaakceptowany");
+                        mWaitingRoomViewModel.deleteRow(adapter.getApplicationNumber(position));
+                        adapter.notifyDataSetChanged();
+                    }
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();

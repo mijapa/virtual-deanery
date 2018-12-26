@@ -40,6 +40,7 @@ public class MenuActivity extends BaseActivity {
                 break;
             case R.id.button5:
                 intent = new Intent(MenuActivity.this, MenuDormitoryActivity.class);
+                intent.putExtra("niu", mNiu);
                 startActivity(intent);
                 break;
             case R.id.button6:

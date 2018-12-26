@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class}, version = 9, exportSchema = false)
+@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, Decision.class}, version = 11, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -51,6 +51,8 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     public abstract StudentApplicationDao studentApplicationDao();
 
+    public abstract DecisionDao decisionDao();
+
     /**
      * Populate the database in the background.
      */
@@ -61,6 +63,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
         private final LecturerDao lDao;
         private final CourseDao cDao;
         private final StudentApplicationDao aDao;
+        private final DecisionDao dDao;
 
         PopulateDbAsync(VirtualDeaneryRoomDatabase db) {
             sDao = db.studentDao();
@@ -68,6 +71,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             lDao = db.lecturerDao();
             cDao = db.courseDao();
             aDao = db.studentApplicationDao();
+            dDao = db.decisionDao();
         }
 
         @Override
@@ -80,6 +84,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             eDao.deleteAll();
             lDao.deleteAll();
             cDao.deleteAll();
+            dDao.deleteAll();
 
             Student student;
             student = new Student(
@@ -179,35 +184,35 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             );
             cDao.insert(course);
 
-            StudentApplication studentApplication;
-            studentApplication = new StudentApplication(
-                    "Wniosek o akademik",
-                    "1",
-                    "330",
-                    "oczekujący"
-            );
-            aDao.insert(studentApplication);
-            studentApplication = new StudentApplication(
-                    "Wniosek o akademik",
-                    "2",
-                    "330",
-                    "oczekujący"
-            );
-            aDao.insert(studentApplication);
-            studentApplication = new StudentApplication(
-                    "Wniosek o akademik",
-                    "3",
-                    "330",
-                    "oczekujący"
-            );
-            aDao.insert(studentApplication);
-            studentApplication = new StudentApplication(
-                    "Wniosek o akademik",
-                    "44",
-                    "330",
-                    "oczekujący"
-            );
-            aDao.insert(studentApplication);
+//            StudentApplication studentApplication;
+//            studentApplication = new StudentApplication(
+//                    "Wniosek o akademik",
+//                    "1",
+//                    "330",
+//                    "oczekujący"
+//            );
+//            aDao.insert(studentApplication);
+//            studentApplication = new StudentApplication(
+//                    "Wniosek o akademik",
+//                    "2",
+//                    "330",
+//                    "oczekujący"
+//            );
+//            aDao.insert(studentApplication);
+//            studentApplication = new StudentApplication(
+//                    "Wniosek o akademik",
+//                    "3",
+//                    "330",
+//                    "oczekujący"
+//            );
+//            aDao.insert(studentApplication);
+//            studentApplication = new StudentApplication(
+//                    "Wniosek o akademik",
+//                    "44",
+//                    "330",
+//                    "oczekujący"
+//            );
+//            aDao.insert(studentApplication);
 
             return null;
         }

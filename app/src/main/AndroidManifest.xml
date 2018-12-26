@@ -123,7 +123,7 @@
                 android:value="com.edu.pk.student.MenuActivity" />
         </activity>
         <activity
-            android:name=".student.dormitory.ApplicationForADormitory"
+            android:name=".student.dormitory.ApplicationForADormitoryActivity"
             android:label="@string/title_activity_application_for_adormitory"
             android:parentActivityName=".student.dormitory.MenuDormitoryActivity"
             android:theme="@style/AppTheme.NoActionBar">
