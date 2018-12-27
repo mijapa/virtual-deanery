@@ -13,6 +13,7 @@ public class VirtualDeaneryRepository {
     private CourseDao mCourseDao;
     private StudentApplicationDao mStudentApplicationDao;
     private DecisionDao mDecisionDao;
+    private StudentDormitoryDao mStudentDormitoryDao;
     private String DEBUG_TAG = "DEBUG_TAG";
 
     private Integer NIU;
@@ -25,6 +26,7 @@ public class VirtualDeaneryRepository {
         mCourseDao = db.courseDao();
         mDecisionDao = db.decisionDao();
         mStudentApplicationDao = db.studentApplicationDao();
+        mStudentDormitoryDao = db.studentDormitoryDao();
     }
 
     public Integer getNIU() {
@@ -78,6 +80,10 @@ public class VirtualDeaneryRepository {
         new insertDecisionAsyncTask(mDecisionDao).execute(decision);
     }
 
+    public void insertStudentDormitory(StudentDormitory studentDormitory){
+        new insertStudentDormitoryAsyncTask(mStudentDormitoryDao).execute(studentDormitory);
+    }
+
     public void changePasswordStudent(int niu, String password){
         mStudentDao.changePasswordStudent(niu, password);
     }
@@ -95,6 +101,12 @@ public class VirtualDeaneryRepository {
     }
     public String getStatusDecision(Integer albumNo){
         return mDecisionDao.getStatusDecision(albumNo);
+    }
+    public String getDorm(Integer albumNo){
+        return mStudentDormitoryDao.getDorm(albumNo);
+    }
+    public String getRoom(Integer albumNo){
+        return mStudentDormitoryDao.getRoom(albumNo);
     }
 
     public LiveData<Student> getStudent() {
@@ -177,6 +189,20 @@ public class VirtualDeaneryRepository {
         @Override
         protected Void doInBackground(final Decision... params) {
             mDecisionAsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class insertStudentDormitoryAsyncTask extends AsyncTask<StudentDormitory, Void, Void> {
+        private StudentDormitoryDao mStudentDormitoryAsyncTaskDao;
+
+        insertStudentDormitoryAsyncTask(StudentDormitoryDao dao) {
+            mStudentDormitoryAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final StudentDormitory... params) {
+            mStudentDormitoryAsyncTaskDao.insert(params[0]);
             return null;
         }
     }

@@ -33,8 +33,14 @@ public class MenuDormitoryActivity extends BaseActivity {
                 startActivity(intent);
                 break;
             case R.id.reservations:
+                intent = new Intent(this, ReservationsActivity.class);
+                intent.putExtra("niu", mNiu);
+                startActivity(intent);
                 break;
             case R.id.accommodation:
+                intent = new Intent(this, AccomodationActivity.class);
+                intent.putExtra("niu", mNiu);
+                startActivity(intent);
                 break;
             case R.id.history_about_dorms:
                 break;

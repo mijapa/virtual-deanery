@@ -22,4 +22,7 @@ public interface StudentApplicationDao {
 
     @Query("SELECT applicationNo FROM student_application WHERE studentAlbumNo = :albumNo")
     Integer searchIdApplication(Integer albumNo);
+
+    @Query("DELETE FROM student_application")
+    void deleteAll();
 }

@@ -96,5 +96,17 @@
     <string name="information">Informacje:</string>
     <string name="lack">brak</string>
     <string name="title_activity_waiting_room">WaitingRoomActivity</string>
+    <string name="title_activity_reservations">ReservationsActivity</string>
+    <string name="choose_dorm">Wybierz akademik</string>
+    <string name="application_for_a_reservation">Złóż wniosek o rezerwację</string>
+    <string name="application_sent">Wniosek wysłany</string>
+    <string name="title_activity_accomodation">AccomodationActivity</string>
+    <string name="dorm">Akademik:</string>
+    <string name="blank">  -</string>
+    <string name="room">Pokój:</string>
+    <string name="title_activity_assign_adorm">AssignADormActivity</string>
+    <string name="prompt_dorm_name">Nazwa akademika</string>
+    <string name="prompt_room_name">Pokój</string>
+    <string name="assign_a_dorm">Przydzielono akademik</string>
 
 </resources>

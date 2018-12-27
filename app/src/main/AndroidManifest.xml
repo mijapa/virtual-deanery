@@ -140,6 +140,33 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.edu.pk.employee.EmployeeMenuActivity" />
         </activity>
+        <activity
+            android:name=".student.dormitory.ReservationsActivity"
+            android:label="@string/title_activity_reservations"
+            android:parentActivityName=".student.dormitory.MenuDormitoryActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.student.dormitory.MenuDormitoryActivity" />
+        </activity>
+        <activity
+            android:name=".student.dormitory.AccomodationActivity"
+            android:label="@string/title_activity_accomodation"
+            android:parentActivityName=".student.dormitory.MenuDormitoryActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.student.dormitory.MenuDormitoryActivity" />
+        </activity>
+        <activity
+            android:name=".employee.AssignADormActivity"
+            android:label="@string/title_activity_assign_adorm"
+            android:parentActivityName=".employee.WaitingRoomActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.employee.WaitingRoomActivity" />
+        </activity>
     </application>
 
 </manifest>

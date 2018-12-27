@@ -45,6 +45,16 @@ public class WaitingRoomAdapter extends RecyclerView.Adapter<WaitingRoomAdapter.
         return current.getApplicationNo();
     }
 
+    public int getAlbumNo(int position){
+        StudentApplication current = mStudentApplications.get(position);
+        return current.getStudentAlbumNo();
+    }
+
+    public String getDescription(int position){
+        StudentApplication current = mStudentApplications.get(position);
+        return current.getDescription();
+    }
+
     @Override
     public int getItemCount() {
         if (mStudentApplications != null)

@@ -3,6 +3,7 @@ package com.edu.pk.employee;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -38,27 +39,34 @@ public class WaitingRoomActivity extends AppCompatActivity {
                 recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, final int position) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                builder.setTitle("Wniosek");
-                builder.setMessage("Czy chcesz zaakceptować wniosek?");
-                builder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        mWaitingRoomViewModel.setStatusDecision(adapter.getApplicationNumber(position), "zaakceptowany");
-                        mWaitingRoomViewModel.deleteRow(adapter.getApplicationNumber(position));
-                        adapter.notifyDataSetChanged();
-                    }
-                });
-                builder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        mWaitingRoomViewModel.setStatusDecision(adapter.getApplicationNumber(position), "nie zaakceptowany");
-                        mWaitingRoomViewModel.deleteRow(adapter.getApplicationNumber(position));
-                        adapter.notifyDataSetChanged();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                String whichApplication = adapter.getDescription(position);
+                if(whichApplication.contains("Wniosek o rezerwację")){
+                    Intent intent = new Intent(getApplicationContext(), AssignADormActivity.class);
+                    intent.putExtra("albumNo", Integer.toString(adapter.getAlbumNo(position)));
+                    startActivity(intent);
+                }else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                    builder.setTitle("Wniosek");
+                    builder.setMessage("Czy chcesz zaakceptować wniosek?");
+                    builder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            mWaitingRoomViewModel.setStatusDecision(adapter.getApplicationNumber(position), "zaakceptowany");
+                            mWaitingRoomViewModel.deleteRow(adapter.getApplicationNumber(position));
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
+                    builder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            mWaitingRoomViewModel.setStatusDecision(adapter.getApplicationNumber(position), "nie zaakceptowany");
+                            mWaitingRoomViewModel.deleteRow(adapter.getApplicationNumber(position));
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
             }
         }));
 

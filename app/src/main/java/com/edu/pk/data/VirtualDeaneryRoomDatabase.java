@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, Decision.class}, version = 11, exportSchema = false)
+@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, Decision.class, StudentDormitory.class}, version = 13, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -53,6 +53,8 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     public abstract DecisionDao decisionDao();
 
+    public abstract StudentDormitoryDao studentDormitoryDao();
+
     /**
      * Populate the database in the background.
      */
@@ -64,6 +66,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
         private final CourseDao cDao;
         private final StudentApplicationDao aDao;
         private final DecisionDao dDao;
+        private final StudentDormitoryDao sdDao;
 
         PopulateDbAsync(VirtualDeaneryRoomDatabase db) {
             sDao = db.studentDao();
@@ -72,6 +75,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             cDao = db.courseDao();
             aDao = db.studentApplicationDao();
             dDao = db.decisionDao();
+            sdDao = db.studentDormitoryDao();
         }
 
         @Override
@@ -84,7 +88,9 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             eDao.deleteAll();
             lDao.deleteAll();
             cDao.deleteAll();
+            aDao.deleteAll();
             dDao.deleteAll();
+            sdDao.deleteAll();
 
             Student student;
             student = new Student(
