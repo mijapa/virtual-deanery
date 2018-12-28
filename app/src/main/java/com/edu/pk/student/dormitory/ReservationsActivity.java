@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,9 +23,11 @@ public class ReservationsActivity extends BaseActivity {
     private String[] mArrayOfDorms = new String[]{"DS1", "DS2", "DS3", "DS4"};
     private ArrayAdapter<String> mAdapter;
     private Spinner mDorms;
+    private Button mApplicationForAReservation;
     private ReservationsViewModel mReservationsViewModel;
     private String mNiu;
     private Toast toast;
+    private Boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +35,13 @@ public class ReservationsActivity extends BaseActivity {
         setContentView(R.layout.activity_reservations);
 
         mDorms = (Spinner) findViewById(R.id.dorms);
+        mApplicationForAReservation = (Button) findViewById(R.id.application_for_a_reservation);
         mReservationsViewModel = ViewModelProviders.of(this).get(ReservationsViewModel.class);
         mNiu = getIntent().getStringExtra("niu");
+
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mArrayOfDorms);
         mDorms.setAdapter(mAdapter);
+        mApplicationForAReservation.setEnabled(false);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -46,8 +52,15 @@ public class ReservationsActivity extends BaseActivity {
         view.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
         TextView text = view.findViewById(android.R.id.message);
         text.setTextColor(getResources().getColor(R.color.colorPrimary));
+    }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        String status = mReservationsViewModel.getStatusApplication(mReservationsViewModel.getAlbumNo(Integer.parseInt(mNiu)), "Wniosek o akademik");
+        if(status != null && status.contains("zaakceptowany")){
+            mApplicationForAReservation.setEnabled(true);
+        }
     }
 
     public void onClick(View view) {
@@ -56,7 +69,8 @@ public class ReservationsActivity extends BaseActivity {
             studentApplication = new StudentApplication(
                     "Wniosek o rezerwację " + mDorms.getSelectedItem().toString(),
                     mReservationsViewModel.getAlbumNo(Integer.parseInt(mNiu)),
-                    mReservationsViewModel.getDistanceFromTheCheck_InPlace(Integer.parseInt(mNiu))
+                    mReservationsViewModel.getDistanceFromTheCheck_InPlace(Integer.parseInt(mNiu)),
+                    "oczekujący"
             );
             mReservationsViewModel.insertStudentApplication(studentApplication);
             toast.show();

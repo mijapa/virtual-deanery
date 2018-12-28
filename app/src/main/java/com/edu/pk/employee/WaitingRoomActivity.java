@@ -41,8 +41,10 @@ public class WaitingRoomActivity extends AppCompatActivity {
             public void onClick(View view, final int position) {
                 String whichApplication = adapter.getDescription(position);
                 if(whichApplication.contains("Wniosek o rezerwację")){
+                    Integer applicationNumber = adapter.getApplicationNumber(position);
                     Intent intent = new Intent(getApplicationContext(), AssignADormActivity.class);
                     intent.putExtra("albumNo", Integer.toString(adapter.getAlbumNo(position)));
+                    intent.putExtra("applicationNumber", applicationNumber.toString());
                     startActivity(intent);
                 }else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
@@ -51,16 +53,14 @@ public class WaitingRoomActivity extends AppCompatActivity {
                     builder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            mWaitingRoomViewModel.setStatusDecision(adapter.getApplicationNumber(position), "zaakceptowany");
-                            mWaitingRoomViewModel.deleteRow(adapter.getApplicationNumber(position));
+                            mWaitingRoomViewModel.setStatusApplication(adapter.getApplicationNumber(position), "zaakceptowany");
                             adapter.notifyDataSetChanged();
                         }
                     });
                     builder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            mWaitingRoomViewModel.setStatusDecision(adapter.getApplicationNumber(position), "nie zaakceptowany");
-                            mWaitingRoomViewModel.deleteRow(adapter.getApplicationNumber(position));
+                            mWaitingRoomViewModel.setStatusApplication(adapter.getApplicationNumber(position), "nie zaakceptowany");
                             adapter.notifyDataSetChanged();
                         }
                     });

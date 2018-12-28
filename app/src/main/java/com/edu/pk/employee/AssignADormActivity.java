@@ -1,6 +1,7 @@
 package com.edu.pk.employee;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -19,19 +20,23 @@ import com.edu.pk.data.StudentDormitory;
 public class AssignADormActivity extends AppCompatActivity {
 
     private String mAlbumNo;
+    private String mApplicationNumber;
     private AutoCompleteTextView mDorm;
     private AutoCompleteTextView mRoom;
     private AssignADormViewModel mAssignADormViewModel;
+    private WaitingRoomViewModel mWaitingRoomViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assign_adorm);
 
-        mAlbumNo =getIntent().getStringExtra("albumNo");
+        mAlbumNo = getIntent().getStringExtra("albumNo");
+        mApplicationNumber = getIntent().getStringExtra("applicationNumber");
         mDorm = (AutoCompleteTextView) findViewById(R.id.dorm_name);
         mRoom = (AutoCompleteTextView) findViewById(R.id.room_name);
         mAssignADormViewModel = ViewModelProviders.of(this).get(AssignADormViewModel.class);
+        mWaitingRoomViewModel = ViewModelProviders.of(this).get(WaitingRoomViewModel.class);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -56,9 +61,13 @@ public class AssignADormActivity extends AppCompatActivity {
 
                 );
                 mAssignADormViewModel.insertStudentDormitory(studentDormitory);
+                int y = Integer.parseInt(mApplicationNumber);
+                mWaitingRoomViewModel.setStatusApplication(y, "zaakceptowany");
                 mDorm.setText("");
                 mRoom.setText("");
                 toast.show();
+                Intent intent = getParentActivityIntent();
+                startActivity(intent);
             }
         });
     }

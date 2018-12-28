@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, Decision.class, StudentDormitory.class}, version = 13, exportSchema = false)
+@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class}, version = 15, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -51,8 +51,6 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     public abstract StudentApplicationDao studentApplicationDao();
 
-    public abstract DecisionDao decisionDao();
-
     public abstract StudentDormitoryDao studentDormitoryDao();
 
     /**
@@ -65,7 +63,6 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
         private final LecturerDao lDao;
         private final CourseDao cDao;
         private final StudentApplicationDao aDao;
-        private final DecisionDao dDao;
         private final StudentDormitoryDao sdDao;
 
         PopulateDbAsync(VirtualDeaneryRoomDatabase db) {
@@ -74,7 +71,6 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             lDao = db.lecturerDao();
             cDao = db.courseDao();
             aDao = db.studentApplicationDao();
-            dDao = db.decisionDao();
             sdDao = db.studentDormitoryDao();
         }
 
@@ -89,7 +85,6 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             lDao.deleteAll();
             cDao.deleteAll();
             aDao.deleteAll();
-            dDao.deleteAll();
             sdDao.deleteAll();
 
             Student student;
@@ -193,29 +188,29 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 //            StudentApplication studentApplication;
 //            studentApplication = new StudentApplication(
 //                    "Wniosek o akademik",
-//                    "1",
-//                    "330",
+//                    1,
+//                    330,
 //                    "oczekujący"
 //            );
 //            aDao.insert(studentApplication);
 //            studentApplication = new StudentApplication(
 //                    "Wniosek o akademik",
-//                    "2",
-//                    "330",
+//                    2,
+//                    330,
 //                    "oczekujący"
 //            );
 //            aDao.insert(studentApplication);
 //            studentApplication = new StudentApplication(
 //                    "Wniosek o akademik",
-//                    "3",
-//                    "330",
+//                    4,
+//                    330,
 //                    "oczekujący"
 //            );
 //            aDao.insert(studentApplication);
 //            studentApplication = new StudentApplication(
 //                    "Wniosek o akademik",
-//                    "44",
-//                    "330",
+//                    5,
+//                    3,
 //                    "oczekujący"
 //            );
 //            aDao.insert(studentApplication);

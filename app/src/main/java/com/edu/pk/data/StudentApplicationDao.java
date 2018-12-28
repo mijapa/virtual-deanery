@@ -23,6 +23,12 @@ public interface StudentApplicationDao {
     @Query("SELECT applicationNo FROM student_application WHERE studentAlbumNo = :albumNo")
     Integer searchIdApplication(Integer albumNo);
 
+    @Query("SELECT status FROM student_application WHERE studentAlbumNo = :albumNo AND description = :description")
+    String getStatusApplication(Integer albumNo, String description);
+
+    @Query("UPDATE student_application SET status = :status WHERE applicationNo = :applicationNo")
+    void setStatusApplication(int applicationNo, String status);
+
     @Query("DELETE FROM student_application")
     void deleteAll();
 }

@@ -20,6 +20,9 @@ public class ReservationsViewModel extends AndroidViewModel {
     Integer getDistanceFromTheCheck_InPlace(Integer niu){
         return mRepository.getDistanceFromTheCheck_InPlace(niu);
     }
+    String getStatusApplication(Integer albumNo, String description){
+        return mRepository.getStatusApplication(albumNo, description);
+    }
     void insertStudentApplication(StudentApplication studentApplication){
         mRepository.insertStudentApplication(studentApplication);
     }

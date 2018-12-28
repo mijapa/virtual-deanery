@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.edu.pk.BaseActivity;
 import com.edu.pk.R;
-import com.edu.pk.data.Decision;
 import com.edu.pk.data.StudentApplication;
 
 import java.util.Calendar;
@@ -45,7 +44,7 @@ public class ApplicationForADormitoryActivity extends BaseActivity {
     public void onResume() {
         super.onResume();
 
-        String status = mApplicationForADormitoryViewModel.getSatusDecision(mApplicationForADormitoryViewModel.getAlbumNo(Integer.parseInt(mNiu)));
+        String status = mApplicationForADormitoryViewModel.getStatusApplication(mApplicationForADormitoryViewModel.getAlbumNo(Integer.parseInt(mNiu)), "Wniosek o akademik");
         if(status != null && !status.equals("oczekujący")){
             mInformation.setText(status);
         }else
@@ -61,21 +60,10 @@ public class ApplicationForADormitoryActivity extends BaseActivity {
             studentApplication = new StudentApplication(
                     "Wniosek o akademik",
                     mApplicationForADormitoryViewModel.getAlbumNo(Integer.parseInt(mNiu)),
-                    mApplicationForADormitoryViewModel.getDistanceFromTheCheck_InPlace(Integer.parseInt(mNiu))
-            );
-            mApplicationForADormitoryViewModel.insertStudentApplication(studentApplication);
-
-            //remove insert the decision from this place when will be database, then done a trigger
-            Decision decision;
-            decision = new Decision(
-                    mApplicationForADormitoryViewModel.searchIdApplication(mApplicationForADormitoryViewModel.getAlbumNo(Integer.parseInt(mNiu))),
-                    "Wniosek o akademik",
-                    mApplicationForADormitoryViewModel.getAlbumNo(Integer.parseInt(mNiu)),
                     mApplicationForADormitoryViewModel.getDistanceFromTheCheck_InPlace(Integer.parseInt(mNiu)),
                     "oczekujący"
-
             );
-            mApplicationForADormitoryViewModel.insertDecision(decision);
+            mApplicationForADormitoryViewModel.insertStudentApplication(studentApplication);
 
             mSubmitApllication.setEnabled(false);
             flag = true;

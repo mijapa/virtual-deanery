@@ -15,11 +15,14 @@ public class StudentApplication {
     private Integer studentAlbumNo;
     @NonNull
     private Integer distanceFromTheCheck_InPlace;
+    @NonNull
+    private String status;
 
-    public StudentApplication(@NonNull String description, @NonNull Integer studentAlbumNo, @NonNull Integer distanceFromTheCheck_InPlace) {
+    public StudentApplication(@NonNull String description, @NonNull Integer studentAlbumNo, @NonNull Integer distanceFromTheCheck_InPlace, @NonNull String status) {
         this.description = description;
         this.studentAlbumNo = studentAlbumNo;
         this.distanceFromTheCheck_InPlace = distanceFromTheCheck_InPlace;
+        this.status = status;
     }
 
     public Integer getApplicationNo() { return applicationNo; }
@@ -32,6 +35,9 @@ public class StudentApplication {
 
     @NonNull
     public Integer getDistanceFromTheCheck_InPlace() { return distanceFromTheCheck_InPlace; }
+
+    @NonNull
+    public String getStatus() { return status; }
 
     public void setApplicationNo(Integer applicationNo) {
         this.applicationNo = applicationNo;

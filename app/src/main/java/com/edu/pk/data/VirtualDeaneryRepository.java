@@ -12,7 +12,6 @@ public class VirtualDeaneryRepository {
     private LecturerDao mLecturerDao;
     private CourseDao mCourseDao;
     private StudentApplicationDao mStudentApplicationDao;
-    private DecisionDao mDecisionDao;
     private StudentDormitoryDao mStudentDormitoryDao;
     private String DEBUG_TAG = "DEBUG_TAG";
 
@@ -24,7 +23,6 @@ public class VirtualDeaneryRepository {
         mEmployeeDao = db.employeeDao();
         mLecturerDao = db.lecturerDao();
         mCourseDao = db.courseDao();
-        mDecisionDao = db.decisionDao();
         mStudentApplicationDao = db.studentApplicationDao();
         mStudentDormitoryDao = db.studentDormitoryDao();
     }
@@ -76,10 +74,6 @@ public class VirtualDeaneryRepository {
         new insertStudentApplicationAsyncTask(mStudentApplicationDao).execute(studentApplication);
     }
 
-    public void insertDecision(Decision decision){
-        new insertDecisionAsyncTask(mDecisionDao).execute(decision);
-    }
-
     public void insertStudentDormitory(StudentDormitory studentDormitory){
         new insertStudentDormitoryAsyncTask(mStudentDormitoryDao).execute(studentDormitory);
     }
@@ -96,11 +90,11 @@ public class VirtualDeaneryRepository {
     public void deleteRowStudentApplication(int applicationNo){
         mStudentApplicationDao.deleteRow(applicationNo);
     }
-    public void setStatusDecision(int applicationNo, String status){
-        mDecisionDao.setStatusDecision(applicationNo, status);
+    public void setStatusApplication(int applicationNo, String status){
+        mStudentApplicationDao.setStatusApplication(applicationNo, status);
     }
-    public String getStatusDecision(Integer albumNo){
-        return mDecisionDao.getStatusDecision(albumNo);
+    public String getStatusApplication(Integer albumNo, String description){
+        return  mStudentApplicationDao.getStatusApplication(albumNo, description);
     }
     public String getDorm(Integer albumNo){
         return mStudentDormitoryDao.getDorm(albumNo);
@@ -175,20 +169,6 @@ public class VirtualDeaneryRepository {
         @Override
         protected Void doInBackground(final StudentApplication... params) {
             mStudentApplicationAsyncTaskDao.insert(params[0]);
-            return null;
-        }
-    }
-
-    private static class insertDecisionAsyncTask extends AsyncTask<Decision, Void, Void> {
-        private DecisionDao mDecisionAsyncTaskDao;
-
-        insertDecisionAsyncTask(DecisionDao dao) {
-            mDecisionAsyncTaskDao = dao;
-        }
-
-        @Override
-        protected Void doInBackground(final Decision... params) {
-            mDecisionAsyncTaskDao.insert(params[0]);
             return null;
         }
     }
