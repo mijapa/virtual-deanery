@@ -12,7 +12,6 @@ public class AccomodationActivity extends AppCompatActivity {
 
     private TextView mWhichDorm;
     private TextView mWhichRoom;
-    private String mNiu;
     private AccomodationViewModel mAccomodationViewModel;
 
     @Override
@@ -22,7 +21,6 @@ public class AccomodationActivity extends AppCompatActivity {
 
         mWhichDorm = (TextView) findViewById(R.id.which_dorm);
         mWhichRoom = (TextView) findViewById(R.id.which_room);
-        mNiu =  getIntent().getStringExtra("niu");
         mAccomodationViewModel = ViewModelProviders.of(this).get(AccomodationViewModel.class);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -33,7 +31,7 @@ public class AccomodationActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        int albumNo = mAccomodationViewModel.getAlbumNo(Integer.parseInt(mNiu));
+        int albumNo = mAccomodationViewModel.getAlbumNo();
         mWhichDorm.setText(mAccomodationViewModel.getDorm(albumNo));
         mWhichRoom.setText(mAccomodationViewModel.getRoom(albumNo));
     }

@@ -18,7 +18,6 @@ public class ApplicationForADormitoryActivity extends BaseActivity {
 
     private TextView mInformation;
     private Button mSubmitApllication;
-    private String mNiu;
     private ApplicationForADormitoryViewModel mApplicationForADormitoryViewModel;
 
     private static String information = "";
@@ -31,7 +30,6 @@ public class ApplicationForADormitoryActivity extends BaseActivity {
 
         mInformation = (TextView) findViewById(R.id.information2);
         mSubmitApllication = (Button) findViewById(R.id.submit_an_application);
-        mNiu = getIntent().getStringExtra("niu");
         mApplicationForADormitoryViewModel = ViewModelProviders.of(this).get(ApplicationForADormitoryViewModel.class);
 
         mInformation.setText(information);
@@ -44,7 +42,7 @@ public class ApplicationForADormitoryActivity extends BaseActivity {
     public void onResume() {
         super.onResume();
 
-        String status = mApplicationForADormitoryViewModel.getStatusApplication(mApplicationForADormitoryViewModel.getAlbumNo(Integer.parseInt(mNiu)), "Wniosek o akademik");
+        String status = mApplicationForADormitoryViewModel.getStatusApplication(mApplicationForADormitoryViewModel.getAlbumNo(), "Wniosek o akademik");
         if(status != null && !status.equals("oczekujący")){
             mInformation.setText(status);
         }else
@@ -59,8 +57,8 @@ public class ApplicationForADormitoryActivity extends BaseActivity {
             StudentApplication studentApplication;
             studentApplication = new StudentApplication(
                     "Wniosek o akademik",
-                    mApplicationForADormitoryViewModel.getAlbumNo(Integer.parseInt(mNiu)),
-                    mApplicationForADormitoryViewModel.getDistanceFromTheCheck_InPlace(Integer.parseInt(mNiu)),
+                    mApplicationForADormitoryViewModel.getAlbumNo(),
+                    mApplicationForADormitoryViewModel.getDistanceFromTheCheck_InPlace(),
                     "oczekujący"
             );
             mApplicationForADormitoryViewModel.insertStudentApplication(studentApplication);

@@ -43,7 +43,7 @@ public class WaitingRoomActivity extends AppCompatActivity {
                 if(whichApplication.contains("Wniosek o rezerwację")){
                     Integer applicationNumber = adapter.getApplicationNumber(position);
                     Intent intent = new Intent(getApplicationContext(), AssignADormActivity.class);
-                    intent.putExtra("albumNo", Integer.toString(adapter.getAlbumNo(position)));
+                    intent.putExtra("albumNo", Integer.toString(adapter.getAlbumNo(position))); //TODO nie jawne przekazywanie
                     intent.putExtra("applicationNumber", applicationNumber.toString());
                     startActivity(intent);
                 }else {

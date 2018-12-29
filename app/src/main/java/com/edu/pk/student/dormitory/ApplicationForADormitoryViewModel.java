@@ -14,11 +14,11 @@ public class ApplicationForADormitoryViewModel extends AndroidViewModel {
         super(application);
         mRepository = new VirtualDeaneryRepository(application);
     }
-    Integer getAlbumNo(Integer niu) {
-        return mRepository.getAlbumNo(niu);
+    Integer getAlbumNo() {
+        return mRepository.getAlbumNo();
     }
-    Integer getDistanceFromTheCheck_InPlace(Integer niu){
-        return mRepository.getDistanceFromTheCheck_InPlace(niu);
+    Integer getDistanceFromTheCheck_InPlace(){
+        return mRepository.getDistanceFromTheCheck_InPlace();
     }
     void insertStudentApplication(StudentApplication studentApplication){
         mRepository.insertStudentApplication(studentApplication);

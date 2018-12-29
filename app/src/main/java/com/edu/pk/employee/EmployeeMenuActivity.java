@@ -11,13 +11,10 @@ import com.edu.pk.R;
 
 public class EmployeeMenuActivity extends BaseActivity {
 
-    private String mNiu;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_menu);
-        mNiu = getIntent().getStringExtra("niu");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -51,7 +48,6 @@ public class EmployeeMenuActivity extends BaseActivity {
                 bundle.putString("goto", "EmployeeMenuActivity");
                 intent = new Intent(getApplicationContext(), PasswordChangeActivity.class);
                 intent.putExtras(bundle);
-                intent.putExtra("niu", mNiu);
                 startActivity(intent);
         }
     }

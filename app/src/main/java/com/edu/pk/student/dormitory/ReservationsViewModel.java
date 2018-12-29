@@ -14,16 +14,20 @@ public class ReservationsViewModel extends AndroidViewModel {
         super(application);
         mRepository = new VirtualDeaneryRepository(application);
     }
-    Integer getAlbumNo(Integer niu) {
-        return mRepository.getAlbumNo(niu);
+    Integer getAlbumNo() {
+        return mRepository.getAlbumNo();
     }
-    Integer getDistanceFromTheCheck_InPlace(Integer niu){
-        return mRepository.getDistanceFromTheCheck_InPlace(niu);
+    Integer getDistanceFromTheCheck_InPlace(){
+        return mRepository.getDistanceFromTheCheck_InPlace();
     }
     String getStatusApplication(Integer albumNo, String description){
         return mRepository.getStatusApplication(albumNo, description);
     }
     void insertStudentApplication(StudentApplication studentApplication){
         mRepository.insertStudentApplication(studentApplication);
+    }
+
+    public Integer getNiu() {
+        return mRepository.getNiu();
     }
 }

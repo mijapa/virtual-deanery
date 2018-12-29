@@ -28,19 +28,17 @@ public class PasswordChangeActivity extends BaseActivity {
     private Button mChange;
     private PasswordChangeViewModel mPasswordChangeViewModel;
 
-    private String mNiu;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_change);
-        mNiu = getIntent().getStringExtra("niu");
+
         mCurrentPassword = (TextView) findViewById(R.id.current_password);
         mNewPassword = (TextView) findViewById(R.id.new_password);
         mRepeatPassword = (TextView) findViewById(R.id.repeat_password);
         mChange = (Button) findViewById(R.id.Change);
-
         mPasswordChangeViewModel = ViewModelProviders.of(this).get(PasswordChangeViewModel.class);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -58,7 +56,7 @@ public class PasswordChangeActivity extends BaseActivity {
                 if (id == EditorInfo.IME_ACTION_GO) {
                     if(checkCurrentPassword()) {
                         if(isTheSame()) {
-                            mPasswordChangeViewModel.changePassword(mNiu, mNewPassword.getText().toString());
+                            mPasswordChangeViewModel.changePassword(mNewPassword.getText().toString());
                             clearFields();
                             toast.show();
                             return true;
@@ -74,7 +72,7 @@ public class PasswordChangeActivity extends BaseActivity {
             public void onClick(View view) {
                 if(checkCurrentPassword()) {
                     if(isTheSame()) {
-                        mPasswordChangeViewModel.changePassword(mNiu, mNewPassword.getText().toString());
+                        mPasswordChangeViewModel.changePassword(mNewPassword.getText().toString());
                         clearFields();
                         toast.show();
                     }
@@ -96,7 +94,7 @@ public class PasswordChangeActivity extends BaseActivity {
         boolean cancel = false;
         View focusView = null;
 
-        if(!mPasswordChangeViewModel.checkCurrentPassword(mNiu, mCurrentPassword.getText().toString())){
+        if(!mPasswordChangeViewModel.checkCurrentPassword(mCurrentPassword.getText().toString())){
             mCurrentPassword.setError(getString(R.string.error_current_password));
             focusView = mCurrentPassword;
             cancel = true;

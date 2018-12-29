@@ -25,7 +25,6 @@ public class ReservationsActivity extends BaseActivity {
     private Spinner mDorms;
     private Button mApplicationForAReservation;
     private ReservationsViewModel mReservationsViewModel;
-    private String mNiu;
     private Toast toast;
     private Boolean flag = false;
 
@@ -37,7 +36,6 @@ public class ReservationsActivity extends BaseActivity {
         mDorms = (Spinner) findViewById(R.id.dorms);
         mApplicationForAReservation = (Button) findViewById(R.id.application_for_a_reservation);
         mReservationsViewModel = ViewModelProviders.of(this).get(ReservationsViewModel.class);
-        mNiu = getIntent().getStringExtra("niu");
 
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mArrayOfDorms);
         mDorms.setAdapter(mAdapter);
@@ -57,7 +55,7 @@ public class ReservationsActivity extends BaseActivity {
     @Override
     public void onResume() {
         super.onResume();
-        String status = mReservationsViewModel.getStatusApplication(mReservationsViewModel.getAlbumNo(Integer.parseInt(mNiu)), "Wniosek o akademik");
+        String status = mReservationsViewModel.getStatusApplication(mReservationsViewModel.getAlbumNo(), "Wniosek o akademik");
         if(status != null && status.contains("zaakceptowany")){
             mApplicationForAReservation.setEnabled(true);
         }
@@ -68,8 +66,8 @@ public class ReservationsActivity extends BaseActivity {
             StudentApplication studentApplication;
             studentApplication = new StudentApplication(
                     "Wniosek o rezerwację " + mDorms.getSelectedItem().toString(),
-                    mReservationsViewModel.getAlbumNo(Integer.parseInt(mNiu)),
-                    mReservationsViewModel.getDistanceFromTheCheck_InPlace(Integer.parseInt(mNiu)),
+                    mReservationsViewModel.getAlbumNo(),
+                    mReservationsViewModel.getDistanceFromTheCheck_InPlace(),
                     "oczekujący"
             );
             mReservationsViewModel.insertStudentApplication(studentApplication);

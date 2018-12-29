@@ -10,14 +10,10 @@ import com.edu.pk.R;
 
 public class MenuDormitoryActivity extends BaseActivity {
 
-    private String mNiu;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_dormitory);
-
-        mNiu = getIntent().getStringExtra("niu");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -29,17 +25,14 @@ public class MenuDormitoryActivity extends BaseActivity {
         switch(view.getId()){
             case R.id.application_for_a_dormitory:
                 intent = new Intent(this, ApplicationForADormitoryActivity.class);
-                intent.putExtra("niu", mNiu);
                 startActivity(intent);
                 break;
             case R.id.reservations:
                 intent = new Intent(this, ReservationsActivity.class);
-                intent.putExtra("niu", mNiu);
                 startActivity(intent);
                 break;
             case R.id.accommodation:
                 intent = new Intent(this, AccomodationActivity.class);
-                intent.putExtra("niu", mNiu);
                 startActivity(intent);
                 break;
             case R.id.history_about_dorms:

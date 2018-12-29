@@ -20,11 +20,6 @@ public class BaseActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onBackPressed(){
-        Intent intent = getParentActivityIntent();
-        startActivity(intent);
-    }
-
     public void logOut(MenuItem item) {
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);

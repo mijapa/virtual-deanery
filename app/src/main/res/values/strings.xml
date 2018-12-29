@@ -8,7 +8,7 @@
     <string name="name_of_pk">im. Tadeusza Kościuszki</string>
 
     <!-- Hints for text fields -->
-    <string name="prompt_NIU">ID użytkownika(NIU)</string>
+    <string name="prompt_NIU">ID użytkownika(niu)</string>
     <string name="prompt_password">Hasło</string>
     <string name="prompt_current_password">Aktualne hasło</string>
     <string name="prompt_new_password">Nowe hasło</string>
@@ -21,7 +21,7 @@
 
     <!-- Error messages -->
     <string name="error_field_required">To pole jest wymagane</string>
-    <string name="error_invalid_one">Niepoprawny NIU lub hasło</string>
+    <string name="error_invalid_one">Niepoprawny niu lub hasło</string>
 
     <!-- Strings related to MenuActivity -->
     <string name="my_data">Moje\ndane</string>

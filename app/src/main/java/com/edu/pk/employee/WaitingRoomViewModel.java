@@ -22,13 +22,7 @@ public class WaitingRoomViewModel extends AndroidViewModel {
     public LiveData<List<StudentApplication>> getStudentApplications() {
         return mStudentApplications;
     }
-    public void deleteRow(Integer applicationNo){
-        mRepository.deleteRowStudentApplication(applicationNo);
-    }
     public void setStatusApplication(int applicationNo, String status){
         mRepository.setStatusApplication(applicationNo, status);
     }
-//    public void setStatusDecision(int applicationNo, String status){
-//        mRepository.setStatusDecision(applicationNo, status);
-//    }
 }

@@ -14,13 +14,17 @@ public class AccomodationViewModel extends AndroidViewModel {
         mRepository = new VirtualDeaneryRepository(application);
     }
 
-    Integer getAlbumNo(Integer niu){
-        return mRepository.getAlbumNo(niu);
+    Integer getAlbumNo(){
+        return mRepository.getAlbumNo();
     }
     String getDorm(Integer albumNo){
         return mRepository.getDorm(albumNo);
     }
     String getRoom(Integer albumNo){
         return mRepository.getRoom(albumNo);
+    }
+
+    public Integer getNiu() {
+        return mRepository.getNiu();
     }
 }

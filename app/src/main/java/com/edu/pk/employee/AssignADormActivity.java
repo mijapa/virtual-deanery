@@ -66,7 +66,7 @@ public class AssignADormActivity extends AppCompatActivity {
                 mDorm.setText("");
                 mRoom.setText("");
                 toast.show();
-                Intent intent = getParentActivityIntent();
+                Intent intent = getParentActivityIntent(); //TODO finish() ???????
                 startActivity(intent);
             }
         });

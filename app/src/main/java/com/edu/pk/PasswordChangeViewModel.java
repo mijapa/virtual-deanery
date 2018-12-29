@@ -14,8 +14,8 @@ public class PasswordChangeViewModel extends AndroidViewModel {
         mRepository = new VirtualDeaneryRepository(application);
     }
 
-    void changePassword(String niu, String newPassword){
-        int yourNiu = Integer.parseInt(niu);
+    void changePassword(String newPassword){
+        int yourNiu = mRepository.getNiu();
         if (yourNiu < 10) {
             mRepository.changePasswordStudent(yourNiu, newPassword);
         } else if(yourNiu >= 10 && yourNiu < 20) {
@@ -25,31 +25,18 @@ public class PasswordChangeViewModel extends AndroidViewModel {
         }
     }
 
-    public boolean checkCurrentPassword(String niu, String currentPassword){
-        Integer NIU = Integer.valueOf(niu);
+    public boolean checkCurrentPassword(String currentPassword){
         Boolean passOK = false;
-        if (NIU < 10) {
-            String passFromDB = mRepository.getStudentPassword(NIU);
-            try {
-                passOK = passFromDB.equals(currentPassword);
-            } catch (Exception e) {
-                passOK = false;
-            }
-        } else if(NIU >= 10 && NIU < 20) {
-            String passFromDB = mRepository.getEmployeePassword(NIU);
-            try {
-                passOK = passFromDB.equals(currentPassword);
-            } catch (Exception e) {
-                passOK = false;
-            }
-        }else{
-            String passFromDB = mRepository.getLecturerPassword(NIU);
-            try {
-                passOK = passFromDB.equals(currentPassword);
-            } catch (Exception e) {
-                passOK = false;
-            }
+        String passFromDB = mRepository.getPassword();
+        try {
+            passOK = passFromDB.equals(currentPassword);
+        } catch (Exception e) {
+            passOK = false;
         }
         return passOK;
+    }
+
+    public Integer getNiu() {
+        return mRepository.getNiu();
     }
 }

@@ -13,13 +13,10 @@ import com.edu.pk.student.mydata.MyDataActivity;
 
 public class MenuActivity extends BaseActivity {
 
-    private String mNiu;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        mNiu = getIntent().getStringExtra("niu");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -40,7 +37,6 @@ public class MenuActivity extends BaseActivity {
                 break;
             case R.id.button5:
                 intent = new Intent(MenuActivity.this, MenuDormitoryActivity.class);
-                intent.putExtra("niu", mNiu);
                 startActivity(intent);
                 break;
             case R.id.button6:
@@ -48,7 +44,6 @@ public class MenuActivity extends BaseActivity {
                 bundle.putString("goto", "MenuActivity");
                 intent = new Intent(getApplicationContext(), PasswordChangeActivity.class);
                 intent.putExtras(bundle);
-                intent.putExtra("niu", mNiu);
                 startActivity(intent);
         }
     }
