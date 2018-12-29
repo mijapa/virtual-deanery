@@ -1,100 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".student.MenuActivity"
+    tools:context=".MenuActivity"
     tools:showIn="@layout/activity_menu">
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/my_data"
-        android:textSize="20dp"
-        android:onClick="onClick"
-        android:textStyle="bold"
-        app:layout_heightPercent="33.33333333%"
-        app:layout_widthPercent="50%"
-        android:background="@drawable/button4"
-        android:textColor="@color/colorPrimary"/>
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:text="@string/my_studies"
-        android:textSize="20dp"
-        android:onClick="onClick"
-        android:textStyle="bold"
-        app:layout_heightPercent="33.33333333%"
-        app:layout_widthPercent="50%"
-        android:background="@drawable/button4"
-        android:textColor="@color/colorPrimary"/>
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button1"
-        android:text="@string/my_plan"
-        android:textSize="20dp"
-        android:onClick="onClick"
-        android:textStyle="bold"
-        app:layout_heightPercent="33.33333333%"
-        app:layout_widthPercent="50%"
-        android:background="@drawable/button4"
-        android:textColor="@color/colorPrimary"/>
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button2"
-        android:layout_alignStart="@id/button2"
-        android:text="@string/my_finances"
-        android:textSize="20dp"
-        android:onClick="onClick"
-        android:textStyle="bold"
-        app:layout_heightPercent="33.33333333%"
-        app:layout_widthPercent="50%"
-        android:background="@drawable/button4"
-        android:textColor="@color/colorPrimary"/>
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button3"
-        android:text="@string/dorms"
-        android:textSize="20dp"
-        android:onClick="onClick"
-        android:textStyle="bold"
-        app:layout_heightPercent="33.33333333%"
-        app:layout_widthPercent="50%"
-        android:background="@drawable/button4"
-        android:textColor="@color/colorPrimary"/>
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@id/button4"
-        android:layout_below="@+id/button4"
-        android:text="@string/password_change"
-        android:textSize="20dp"
-        android:onClick="onClick"
-        android:textStyle="bold"
-        app:layout_heightPercent="33.33333333%"
-        app:layout_widthPercent="50%"
-        android:background="@drawable/button4"
-        android:textColor="@color/colorPrimary"
-        />
-
-</android.support.percent.PercentRelativeLayout>
+</android.support.constraint.ConstraintLayout>

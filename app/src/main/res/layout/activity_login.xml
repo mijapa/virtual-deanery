@@ -57,18 +57,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:id="@+id/niu"
+                    android:id="@+id/NIU"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_NIU"
                     android:inputType="textEmailAddress"
-                    android:imeOptions="actionNext"
                     android:maxLines="1"
                     android:singleLine="true" />
 
@@ -85,10 +83,11 @@
                     android:hint="@string/prompt_password"
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in"
+                    android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:imeOptions="actionGo"/>
+                    />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -101,8 +100,8 @@
                 android:text="@string/action_sign_in"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                android:background="@drawable/button4"
-                android:textColor="@color/colorPrimary"/>
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/white"/>
 
         </LinearLayout>
     </ScrollView>
