@@ -16,4 +16,7 @@ public interface EmployeeDao {
 
     @Query("SELECT password FROM employee WHERE NIU = :niu")
     String getEmployeePassword(Integer niu);
+
+    @Query("UPDATE employee SET niu = :niu, password = :newPassword WHERE niu = :niu")
+    void changePasswordEmployee(Integer niu, String newPassword);
 }

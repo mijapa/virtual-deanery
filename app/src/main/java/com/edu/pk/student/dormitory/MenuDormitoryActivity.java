@@ -1,4 +1,4 @@
-package com.edu.pk.lecturer;
+package com.edu.pk.student.dormitory;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,33 +6,37 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.edu.pk.BaseActivity;
-import com.edu.pk.PasswordChangeActivity;
 import com.edu.pk.R;
 
-
-public class LecturerMenuActivity extends BaseActivity {
+public class MenuDormitoryActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lecturer_menu);
+        setContentView(R.layout.activity_menu_dormitory);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
     public void onClick(View view) {
         Intent intent;
         switch(view.getId()){
-            case R.id.enter_the_grade:
-                intent = new Intent(this, EnterTheGradeActivity.class);
+            case R.id.application_for_a_dormitory:
+                intent = new Intent(this, ApplicationForADormitoryActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.change_password_lecturer:
-                Bundle bundle = new Bundle();
-                bundle.putString("goto", "LecturerMenuActivity");
-                intent = new Intent(getApplicationContext(), PasswordChangeActivity.class);
-                intent.putExtras(bundle);
+            case R.id.reservations:
+                intent = new Intent(this, ReservationsActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.accommodation:
+                intent = new Intent(this, AccomodationActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.history_about_dorms:
+                break;
         }
     }
 

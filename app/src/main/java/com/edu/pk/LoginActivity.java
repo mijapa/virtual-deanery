@@ -27,8 +27,8 @@ public class LoginActivity extends AppCompatActivity {
     private LoginViewModel mLoginViewModel;
     private String DEBUG_TAG = "DEBUG_TAG";
     // UI references.
-    private AutoCompleteTextView mNIUView;
-    private EditText mPasswordView;
+    private static AutoCompleteTextView mNIUView;
+    private static EditText mPasswordView;
     private Button mNIUSignInButton;
 
     @Override
@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
 
-        mNIUView = (AutoCompleteTextView) findViewById(R.id.NIU);
+        mNIUView = (AutoCompleteTextView) findViewById(R.id.niu);
         mNIUSignInButton = (Button) findViewById(R.id.NIU_sign_in_button);
         mPasswordView = (EditText) findViewById(R.id.password);
 
@@ -50,14 +50,17 @@ public class LoginActivity extends AppCompatActivity {
                     if (checkLog()) {
                         if (currentUser.equals("s")) {
                             Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                            mLoginViewModel.setNIU(Integer.parseInt(mNIUView.getText().toString()));
                             startActivity(intent);
                         }
                         if (currentUser.equals("l")) {
                             Intent intent = new Intent(LoginActivity.this, LecturerMenuActivity.class);
+                            mLoginViewModel.setNIU(Integer.parseInt(mNIUView.getText().toString()));
                             startActivity(intent);
                         }
                         if (currentUser.equals("p")) {
                             Intent intent = new Intent(LoginActivity.this, EmployeeMenuActivity.class);
+                            mLoginViewModel.setNIU(Integer.parseInt(mNIUView.getText().toString()));
                             startActivity(intent);
                         }
                     } else {
@@ -77,14 +80,17 @@ public class LoginActivity extends AppCompatActivity {
                 if (checkLog()) {
                     if (currentUser.equals("s")) {
                         Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                        mLoginViewModel.setNIU(Integer.parseInt(mNIUView.getText().toString()));
                         startActivity(intent);
                     }
                     if (currentUser.equals("l")) {
                         Intent intent = new Intent(LoginActivity.this, LecturerMenuActivity.class);
+                        mLoginViewModel.setNIU(Integer.parseInt(mNIUView.getText().toString()));
                         startActivity(intent);
                     }
                     if (currentUser.equals("p")) {
                         Intent intent = new Intent(LoginActivity.this, EmployeeMenuActivity.class);
+                        mLoginViewModel.setNIU(Integer.parseInt(mNIUView.getText().toString()));
                         startActivity(intent);
                     }
                 } else {

@@ -8,7 +8,7 @@
     <string name="name_of_pk">im. Tadeusza Kościuszki</string>
 
     <!-- Hints for text fields -->
-    <string name="prompt_NIU">ID użytkownika(NIU)</string>
+    <string name="prompt_NIU">ID użytkownika(niu)</string>
     <string name="prompt_password">Hasło</string>
     <string name="prompt_current_password">Aktualne hasło</string>
     <string name="prompt_new_password">Nowe hasło</string>
@@ -21,7 +21,7 @@
 
     <!-- Error messages -->
     <string name="error_field_required">To pole jest wymagane</string>
-    <string name="error_invalid_one">Niepoprawny NIU lub hasło</string>
+    <string name="error_invalid_one">Niepoprawny niu lub hasło</string>
 
     <!-- Strings related to MenuActivity -->
     <string name="my_data">Moje\ndane</string>
@@ -68,5 +68,45 @@
     <string name="prompt_date_of_student_start_student">Data rozpoczęcia studiów</string>
     <string name="title_activity_add_employee">Dodaj pracownika</string>
     <string name="title_activity_add_lecturer">Dodaj prowadzącego</string>
+    <string name="error_current_password">Niepoprawne hasło</string>
+    <string name="error_is_not_the_same">Powtórzone hasło zawiera błędy</string>
+    <string name="enter_the_grade">Wpisz ocenę</string>
+    <string name="title_activity_enter_the_grade">EnterTheGradeActivity</string>
+    <string name="password_changed">Hasło zostało zmienione</string>
+    <string name="add_course">Dodaj przedmiot</string>
+    <string name="waiting_room">Poczekalnia</string>
+    <string name="title_activity_add_course">AddCourseActivity</string>
+    <string name="prompt_course_no">Numer przedmiotu</string>
+    <string name="prompt_course_name">Nazwa przedmiotu</string>
+    <string name="prompt_course_ects">Liczba punktów ECTS</string>
+    <string name="prompt_course_term">Semestr</string>
+    <string name="prompt_course_department">Wydział</string>
+    <string name="prompt_course_hour_amount">Liczba godzin</string>
+    <string name="add_course_toast">Dodano przedmiot</string>
+    <string name="add_employee_toast">Dodano pracownika</string>
+    <string name="add_lecturer_toast">Dodano prowadzącego</string>
+    <string name="add_student_toast">Dodano studenta</string>
+    <string name="title_activity_menu_dormitory">MenuDormitoryActivity</string>
+    <string name="application_for_a_dormitory">Wniosek o akademik</string>
+    <string name="reservations">Rezerwacje</string>
+    <string name="accommodation">Zakwaterowanie</string>
+    <string name="history_about_dorms">Historia o akademikach</string>
+    <string name="title_activity_application_for_adormitory">ApplicationForADormitory</string>
+    <string name="submit_an_application">Złóż wniosek</string>
+    <string name="information">Informacje:</string>
+    <string name="lack">brak</string>
+    <string name="title_activity_waiting_room">WaitingRoomActivity</string>
+    <string name="title_activity_reservations">ReservationsActivity</string>
+    <string name="choose_dorm">Wybierz akademik</string>
+    <string name="application_for_a_reservation">Złóż wniosek o rezerwację</string>
+    <string name="application_sent">Wniosek wysłany</string>
+    <string name="title_activity_accomodation">AccomodationActivity</string>
+    <string name="dorm">Akademik:</string>
+    <string name="blank">  -</string>
+    <string name="room">Pokój:</string>
+    <string name="title_activity_assign_adorm">AssignADormActivity</string>
+    <string name="prompt_dorm_name">Nazwa akademika</string>
+    <string name="prompt_room_name">Pokój</string>
+    <string name="assign_a_dorm">Przydzielono akademik</string>
 
 </resources>
