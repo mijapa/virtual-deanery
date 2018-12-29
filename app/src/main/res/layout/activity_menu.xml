@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuActivity">
+    tools:context=".student.MenuActivity">
 
 
     <android.support.design.widget.AppBarLayout
@@ -22,5 +22,5 @@
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_menu" />
-
+    
 </android.support.design.widget.CoordinatorLayout>

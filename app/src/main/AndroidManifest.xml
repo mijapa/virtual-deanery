@@ -10,13 +10,13 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/title_app"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_name">
+            android:label="@string/title_app">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,13 +24,148 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MenuActivity"
-            android:label="@string/title_activity_menu"
+            android:name=".student.MenuActivity"
+            android:label="@string/title_app"
             android:parentActivityName=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.edu.pk.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".PasswordChangeActivity"
+            android:label="@string/title_activity_password_change"
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".lecturer.LecturerMenuActivity"
+            android:label="@string/title_app"
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".employee.EmployeeMenuActivity"
+            android:label="@string/title_app"
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".student.mydata.MyDataActivity"
+            android:label="Moje Dane"
+            android:parentActivityName=".student.MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.student.MenuActivity" />
+        </activity>
+        <activity
+            android:name=".employee.AddStudentActivity"
+            android:label="@string/title_activity_add_student"
+            android:parentActivityName=".employee.EmployeeMenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.employee.EmployeeMenuActivity" />
+        </activity>
+        <activity
+            android:name=".employee.AddEmployeeActivity"
+            android:label="@string/title_activity_add_employee"
+            android:parentActivityName=".employee.EmployeeMenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.employee.EmployeeMenuActivity" />
+        </activity>
+        <activity
+            android:name=".employee.AddLecturerActivity"
+            android:label="@string/title_activity_add_lecturer"
+            android:parentActivityName=".employee.EmployeeMenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.employee.EmployeeMenuActivity" />
+        </activity>
+        <activity
+            android:name=".lecturer.EnterTheGradeActivity"
+            android:label="@string/title_activity_enter_the_grade"
+            android:parentActivityName=".lecturer.LecturerMenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.lecturer.LecturerMenuActivity" />
+        </activity>
+        <activity
+            android:name=".employee.AddCourseActivity"
+            android:label="@string/title_activity_add_course"
+            android:parentActivityName=".employee.EmployeeMenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.employee.EmployeeMenuActivity" />
+        </activity>
+        <activity
+            android:name=".student.dormitory.MenuDormitoryActivity"
+            android:label="@string/title_activity_menu_dormitory"
+            android:parentActivityName=".student.MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.student.MenuActivity" />
+        </activity>
+        <activity
+            android:name=".student.dormitory.ApplicationForADormitoryActivity"
+            android:label="@string/title_activity_application_for_adormitory"
+            android:parentActivityName=".student.dormitory.MenuDormitoryActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.student.dormitory.MenuDormitoryActivity" />
+        </activity>
+        <activity
+            android:name=".employee.WaitingRoomActivity"
+            android:label="@string/title_activity_waiting_room"
+            android:parentActivityName=".employee.EmployeeMenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.employee.EmployeeMenuActivity" />
+        </activity>
+        <activity
+            android:name=".student.dormitory.ReservationsActivity"
+            android:label="@string/title_activity_reservations"
+            android:parentActivityName=".student.dormitory.MenuDormitoryActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.student.dormitory.MenuDormitoryActivity" />
+        </activity>
+        <activity
+            android:name=".student.dormitory.AccomodationActivity"
+            android:label="@string/title_activity_accomodation"
+            android:parentActivityName=".student.dormitory.MenuDormitoryActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.student.dormitory.MenuDormitoryActivity" />
+        </activity>
+        <activity
+            android:name=".employee.AssignADormActivity"
+            android:label="@string/title_activity_assign_adorm"
+            android:parentActivityName=".employee.WaitingRoomActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.employee.WaitingRoomActivity" />
         </activity>
     </application>
 
