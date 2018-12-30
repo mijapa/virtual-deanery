@@ -18,4 +18,11 @@ public interface CourseDao {
 
     @Query("SELECT * FROM course")
     LiveData<List<Course>> getCourses();
+
+    @Query("SELECT * FROM course")
+    List<Course> getCourseList();
+
+    @Query("SELECT * FROM course NATURAL JOIN lecturer_course WHERE niu =:niu")
+    List<Course> getCourseListById(Integer niu);
+
 }

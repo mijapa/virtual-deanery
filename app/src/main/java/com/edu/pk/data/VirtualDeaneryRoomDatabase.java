@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class}, version = 15, exportSchema = false)
+@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class}, version = 16, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -53,6 +53,8 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     public abstract StudentDormitoryDao studentDormitoryDao();
 
+    public abstract LecturerCourseDao lecturerCourseDao();
+
     /**
      * Populate the database in the background.
      */
@@ -64,6 +66,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
         private final CourseDao cDao;
         private final StudentApplicationDao aDao;
         private final StudentDormitoryDao sdDao;
+        private final LecturerCourseDao lcDao;
 
         PopulateDbAsync(VirtualDeaneryRoomDatabase db) {
             sDao = db.studentDao();
@@ -72,6 +75,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             cDao = db.courseDao();
             aDao = db.studentApplicationDao();
             sdDao = db.studentDormitoryDao();
+            lcDao = db.lecturerCourseDao();
         }
 
         @Override
@@ -86,6 +90,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             cDao.deleteAll();
             aDao.deleteAll();
             sdDao.deleteAll();
+            lcDao.deleteAll();
 
             Student student;
             student = new Student(
@@ -150,7 +155,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                 "Angielski",
                 "2",
                 "1",
-                "Inżynierii Elektrycznej i Komputerowej",
+                "WIEiK",
                 "30"
             );
             cDao.insert(course);
@@ -160,7 +165,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                     "Angielski",
                     "2",
                     "2",
-                    "Inżynierii Elektrycznej i Komputerowej",
+                    "WIEiK",
                     "30"
             );
             cDao.insert(course);
@@ -170,7 +175,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                     "Angielski",
                     "2",
                     "3",
-                    "Inżynierii Elektrycznej i Komputerowej",
+                    "WIEiK",
                     "30"
             );
             cDao.insert(course);
@@ -180,7 +185,47 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                     "Angielski",
                     "2",
                     "4",
-                    "Inżynierii Elektrycznej i Komputerowej",
+                    "WIEiK",
+                    "30"
+            );
+            cDao.insert(course);
+
+            course = new Course(
+                    5,
+                    "SBD",
+                    "6",
+                    "4",
+                    "WIEiK",
+                    "30"
+            );
+            cDao.insert(course);
+
+            course = new Course(
+                    6,
+                    "PWJJ",
+                    "5",
+                    "5",
+                    "WIEiK",
+                    "30"
+            );
+            cDao.insert(course);
+
+            course = new Course(
+                    7,
+                    "Strasznie długa nazwa Strasznie długa nazwa Strasznie długa nazwa",
+                    "2",
+                    "4",
+                    "WIEiK",
+                    "30"
+            );
+            cDao.insert(course);
+
+            course = new Course(
+                    8,
+                    "KWD",
+                    "6",
+                    "5",
+                    "WIEiK",
                     "30"
             );
             cDao.insert(course);

@@ -13,6 +13,7 @@ public class VirtualDeaneryRepository {
     private CourseDao mCourseDao;
     private StudentApplicationDao mStudentApplicationDao;
     private StudentDormitoryDao mStudentDormitoryDao;
+    private LecturerCourseDao mLecturerCourseDao;
     private String DEBUG_TAG = "DEBUG_TAG";
 
     private static Integer niu;
@@ -25,6 +26,7 @@ public class VirtualDeaneryRepository {
         mCourseDao = db.courseDao();
         mStudentApplicationDao = db.studentApplicationDao();
         mStudentDormitoryDao = db.studentDormitoryDao();
+        mLecturerCourseDao = db.lecturerCourseDao();
     }
 
     public Integer getNiu() {
@@ -40,7 +42,7 @@ public class VirtualDeaneryRepository {
         Boolean passOK = false;
         if (niu < 10) {//student
             return mStudentDao.getStudentPassword(niu);
-        } else if (niu >= 10 && niu < 20){//employee
+        } else if (niu >= 10 && niu < 20) {//employee
             return mEmployeeDao.getEmployeePassword(niu);
         } else {
             return mLecturerDao.getLecturerPassword(niu);
@@ -78,6 +80,10 @@ public class VirtualDeaneryRepository {
 
     public void insertStudentDormitory(StudentDormitory studentDormitory) {
         new insertStudentDormitoryAsyncTask(mStudentDormitoryDao).execute(studentDormitory);
+    }
+
+    public void insertLecturerCourse(LecturerCourse lecturerCourse) {
+        new insertLecturerCourseAsyncTask(mLecturerCourseDao).execute(lecturerCourse);
     }
 
     public void changePasswordStudent(int niu, String password) {
@@ -118,6 +124,14 @@ public class VirtualDeaneryRepository {
 
     public LiveData<List<StudentApplication>> getStudentApplications() {
         return mStudentApplicationDao.getStudentApplications();
+    }
+
+    public List<Course> getCourseList() {
+        return mCourseDao.getCourseList();
+    }
+
+    public List<Course> getCourseListById() {
+        return mCourseDao.getCourseListById(niu);
     }
 
 
@@ -187,6 +201,20 @@ public class VirtualDeaneryRepository {
         @Override
         protected Void doInBackground(final StudentDormitory... params) {
             mStudentDormitoryAsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class insertLecturerCourseAsyncTask extends AsyncTask<LecturerCourse, Void, Void> {
+        private LecturerCourseDao mLecturerCourseAsyncTaskDao;
+
+        insertLecturerCourseAsyncTask(LecturerCourseDao dao) {
+            mLecturerCourseAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final LecturerCourse... params) {
+            mLecturerCourseAsyncTaskDao.insert(params[0]);
             return null;
         }
     }

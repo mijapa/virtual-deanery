@@ -48,4 +48,8 @@ public class Course {
     @NonNull
     public String getHourAmount() { return hourAmount; }
 
+    @Override
+    public String toString() {
+        return  getDepartment() + " " + getTerm() + " " + getName();
+    }
 }

@@ -108,5 +108,8 @@
     <string name="prompt_dorm_name">Nazwa akademika</string>
     <string name="prompt_room_name">Pokój</string>
     <string name="assign_a_dorm">Przydzielono akademik</string>
+    <string name="choose_course">Wybierz przedmiot:</string>
+    <string name="text_information_about_courses"><![CDATA[Zacznij wpisywać przedmiot, następnie z listy podpowiedzi wybierz jeden. Wzór -> \"wydział semestr nazwa\"]]></string>
+    <string name="write_course">Zacznij wpisywać przedmiot...</string>
 
 </resources>
