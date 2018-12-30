@@ -16,13 +16,10 @@ public interface StudentDao {
     @Query("DELETE FROM student")
     void deleteAll();
 
-    @Query("SELECT NIU FROM student")
-    List<Integer> getAllNIU();
-
-    @Query("SELECT * FROM student where NIU = :niu")
+    @Query("SELECT * FROM student where niu = :niu")
     LiveData<Student> getStudent(Integer niu);
 
-    @Query("SELECT password FROM student where NIU = :niu")
+    @Query("SELECT password FROM student where niu = :niu")
     String getStudentPassword(Integer niu);
 
     @Query("SELECT * FROM student")
@@ -31,9 +28,9 @@ public interface StudentDao {
     @Query("UPDATE student SET niu = :niu, password = :newPassword WHERE niu = :niu")
     void changePasswordStudent(Integer niu, String newPassword);
 
-    @Query("SELECT albumNo FROM student where NIU = :niu")
+    @Query("SELECT albumNo FROM student where niu = :niu")
     Integer getAlbumNo(Integer niu);
 
-    @Query("SELECT distanceFromTheCheck_InPlace FROM student where NIU = :niu")
+    @Query("SELECT distanceFromTheCheck_InPlace FROM student where niu = :niu")
     Integer getDistanceFromTheCheck_InPlace(Integer niu);
 }

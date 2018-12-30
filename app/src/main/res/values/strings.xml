@@ -118,5 +118,7 @@
     <string name="choose_department">Wybierz wydział:</string>
     <string name="add_field_of_study_toast">Dodano kierunek</string>
     <string name="prompt_course_field_of_study">Kierunek</string>
+    <string name="text_information_about_field_of_study"><![CDATA[Zacznij wpisywać kierunek, następnie z listy podpowiedzi wybierz jeden. Wzór -> \"wydział kierunek\"]]></string>
+    <string name="write_field_of_study">Zacznij wpisywać kierunek..</string>
 
 </resources>

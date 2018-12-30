@@ -20,14 +20,14 @@ public class AddFieldOfStudyViewModel extends AndroidViewModel {
     }
 
     void insertFieldOfStudy(FieldOfStudy fieldOfStudy){
-        mRepository.insertFielfOfStudy(fieldOfStudy);
+        mRepository.insertFieldOfStudy(fieldOfStudy);
     }
 
     void insertFieldOfStudyCourse(FieldOfStudy fieldOfStudy){
         List<Course> courses = mRepository.getCourseList();
         for(Course c: courses){
             if(c.getDepartment().equals(fieldOfStudy.getDepartment()) && c.getFieldOfStudy().equals(fieldOfStudy.getFieldOfStudyName())){
-                mRepository.insertFielfOfStudyCourse(new FieldOfStudyCourse(fieldOfStudy.getFieldOfStudyNo(), c.getCourseNo()));
+                mRepository.insertFieldOfStudyCourse(new FieldOfStudyCourse(fieldOfStudy.getFieldOfStudyNo(), c.getCourseNo()));
             }
         }
     }

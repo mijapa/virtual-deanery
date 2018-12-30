@@ -16,6 +16,7 @@ public class VirtualDeaneryRepository {
     private LecturerCourseDao mLecturerCourseDao;
     private FieldOfStudyDao mFieldOfStudyDao;
     private FieldOfStudyCourseDao mFieldOfStudyCourseDao;
+    private StudentFieldOfStudyDao mStudentFieldOfStudyDao;
     private String DEBUG_TAG = "DEBUG_TAG";
 
     private static Integer niu;
@@ -31,6 +32,7 @@ public class VirtualDeaneryRepository {
         mLecturerCourseDao = db.lecturerCourseDao();
         mFieldOfStudyDao = db.fieldOfStudyDao();
         mFieldOfStudyCourseDao = db.fieldOfStudyCourseDao();
+        mStudentFieldOfStudyDao = db.studentFieldOfStudyDao();
     }
 
     public Integer getNiu() {
@@ -89,11 +91,15 @@ public class VirtualDeaneryRepository {
     public void insertLecturerCourse(LecturerCourse lecturerCourse) {
         new insertLecturerCourseAsyncTask(mLecturerCourseDao).execute(lecturerCourse);
     }
-    public void insertFielfOfStudy(FieldOfStudy fieldOfStudy) {
+    public void insertFieldOfStudy(FieldOfStudy fieldOfStudy) {
         new insertFieldOfStudyAsyncTask(mFieldOfStudyDao).execute(fieldOfStudy);
     }
-    public void insertFielfOfStudyCourse(FieldOfStudyCourse fieldOfStudyCourse) {
+    public void insertFieldOfStudyCourse(FieldOfStudyCourse fieldOfStudyCourse) {
         new insertFieldOfStudyCourseAsyncTask(mFieldOfStudyCourseDao).execute(fieldOfStudyCourse);
+    }
+
+    public void insertStudentFieldOfStudy(StudentFieldOfStudy studentFieldOfStudy) {
+        new insertStudentFieldOfStudyAsyncTask(mStudentFieldOfStudyDao).execute(studentFieldOfStudy);
     }
 
     public void changePasswordStudent(int niu, String password) {
@@ -144,6 +150,9 @@ public class VirtualDeaneryRepository {
         return mCourseDao.getCourseListById(niu);
     }
 
+    public List<FieldOfStudy> getFieldOfStudyList() {
+        return mFieldOfStudyDao.getFieldOfStudyList();
+    }
 
     private static class insertLecturerAsyncTask extends AsyncTask<Lecturer, Void, Void> {
         private LecturerDao mLecturerAsyncTaskDao;
@@ -256,6 +265,21 @@ public class VirtualDeaneryRepository {
             return null;
         }
     }
+
+    private static class insertStudentFieldOfStudyAsyncTask extends AsyncTask<StudentFieldOfStudy, Void, Void> {
+        private StudentFieldOfStudyDao mStudentFieldOfStudyAsyncTaskDao;
+
+        insertStudentFieldOfStudyAsyncTask(StudentFieldOfStudyDao dao) {
+            mStudentFieldOfStudyAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final StudentFieldOfStudy... params) {
+            mStudentFieldOfStudyAsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+
 
     private static class insertAsyncTask extends AsyncTask<Student, Void, Void> {
         private StudentDao mAsyncTaskDao;

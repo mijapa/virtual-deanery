@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class}, version = 18, exportSchema = false)
+@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class}, version = 19, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -59,6 +59,8 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     public abstract FieldOfStudyCourseDao fieldOfStudyCourseDao();
 
+    public abstract StudentFieldOfStudyDao studentFieldOfStudyDao();
+
     /**
      * Populate the database in the background.
      */
@@ -68,22 +70,24 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
         private final EmployeeDao eDao;
         private final LecturerDao lDao;
         private final CourseDao cDao;
-        private final StudentApplicationDao aDao;
+        private final StudentApplicationDao saDao;
         private final StudentDormitoryDao sdDao;
         private final LecturerCourseDao lcDao;
         private final FieldOfStudyDao fosDao;
         private final FieldOfStudyCourseDao foscDao;
+        private final StudentFieldOfStudyDao sfosDao;
 
         PopulateDbAsync(VirtualDeaneryRoomDatabase db) {
             sDao = db.studentDao();
             eDao = db.employeeDao();
             lDao = db.lecturerDao();
             cDao = db.courseDao();
-            aDao = db.studentApplicationDao();
+            saDao = db.studentApplicationDao();
             sdDao = db.studentDormitoryDao();
             lcDao = db.lecturerCourseDao();
             fosDao = db.fieldOfStudyDao();
             foscDao = db.fieldOfStudyCourseDao();
+            sfosDao = db.studentFieldOfStudyDao();
         }
 
         @Override
@@ -96,11 +100,12 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             eDao.deleteAll();
             lDao.deleteAll();
             cDao.deleteAll();
-            aDao.deleteAll();
+            saDao.deleteAll();
             sdDao.deleteAll();
             lcDao.deleteAll();
             fosDao.deleteAll();
             foscDao.deleteAll();
+            sfosDao.deleteAll();
 
             Student student;
             student = new Student(
@@ -248,6 +253,33 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             );
             cDao.insert(course);
 
+            FieldOfStudy fieldOfStudy;
+            fieldOfStudy = new FieldOfStudy(
+                    "Elektrotechnika",
+                    "WIEiK"
+            );
+            fosDao.insert(fieldOfStudy);
+            fieldOfStudy = new FieldOfStudy(
+                    "Elektronika",
+                    "WIEiK"
+            );
+            fosDao.insert(fieldOfStudy);
+            fieldOfStudy = new FieldOfStudy(
+                    "Budownictwo",
+                    "WIL"
+            );
+            fosDao.insert(fieldOfStudy);
+            fieldOfStudy = new FieldOfStudy(
+                    "Architektura",
+                    "WA"
+            );
+            fosDao.insert(fieldOfStudy);
+            fieldOfStudy = new FieldOfStudy(
+                    "Informatyka",
+                    "WM"
+            );
+            fosDao.insert(fieldOfStudy);
+
 
 //            StudentApplication studentApplication;
 //            studentApplication = new StudentApplication(
@@ -256,28 +288,28 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 //                    330,
 //                    "oczekujący"
 //            );
-//            aDao.insert(studentApplication);
+//            saDao.insert(studentApplication);
 //            studentApplication = new StudentApplication(
 //                    "Wniosek o akademik",
 //                    2,
 //                    330,
 //                    "oczekujący"
 //            );
-//            aDao.insert(studentApplication);
+//            saDao.insert(studentApplication);
 //            studentApplication = new StudentApplication(
 //                    "Wniosek o akademik",
 //                    4,
 //                    330,
 //                    "oczekujący"
 //            );
-//            aDao.insert(studentApplication);
+//            saDao.insert(studentApplication);
 //            studentApplication = new StudentApplication(
 //                    "Wniosek o akademik",
 //                    5,
 //                    3,
 //                    "oczekujący"
 //            );
-//            aDao.insert(studentApplication);
+//            saDao.insert(studentApplication);
 
             return null;
         }

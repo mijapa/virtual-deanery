@@ -7,13 +7,18 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edu.pk.BaseActivity;
 import com.edu.pk.R;
+import com.edu.pk.data.Course;
+import com.edu.pk.data.FieldOfStudy;
 import com.edu.pk.data.Student;
+import com.edu.pk.data.StudentFieldOfStudy;
 
 public class AddStudentActivity extends BaseActivity {
 
@@ -43,6 +48,9 @@ public class AddStudentActivity extends BaseActivity {
     private AutoCompleteTextView mEmail;
     private AutoCompleteTextView mDateOfStudyStart;
     private AddStudentViewModel mAddStudentViewModel;
+    private ArrayAdapter<FieldOfStudy> mAdapter;
+    private AutoCompleteTextView mFieldOfStudy1;
+    private int position1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +82,16 @@ public class AddStudentActivity extends BaseActivity {
         mBankAccount = (AutoCompleteTextView) findViewById(R.id.bank_account_student);
         mEmail = (AutoCompleteTextView) findViewById(R.id.email_student);
         mDateOfStudyStart = (AutoCompleteTextView) findViewById(R.id.date_of_study_start_student);
+        mFieldOfStudy1 = (AutoCompleteTextView) findViewById(R.id.field_of_study1);
 
         mAddStudentViewModel = ViewModelProviders.of(this).get(AddStudentViewModel.class);
+        mAdapter = new ArrayAdapter<>(this, R.layout.list_item, R.id.item, mAddStudentViewModel.getFieldOfStudyList());
+        mFieldOfStudy1.setAdapter(mAdapter);
+        mFieldOfStudy1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { position1 = position; }
+        });
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -91,6 +107,7 @@ public class AddStudentActivity extends BaseActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FieldOfStudy fieldOfStudy1 = mAdapter.getItem(position1);
                 Student student;
                 student = new Student(
                         Integer.parseInt(mNiu.getText().toString()),
@@ -118,10 +135,10 @@ public class AddStudentActivity extends BaseActivity {
                         mBankAccount.getText().toString(),
                         mEmail.getText().toString(),
                         mDateOfStudyStart.getText().toString()
-
                 );
 
                 mAddStudentViewModel.insertStudent(student);
+                mAddStudentViewModel.insertStudentFieldOfStudy(new StudentFieldOfStudy(fieldOfStudy1.getFieldOfStudyNo(), Integer.parseInt(mNiu.getText().toString())));
                 mNiu.setText("");
                 mAlbumNo.setText("");
                 mPassword.setText("");
@@ -147,6 +164,7 @@ public class AddStudentActivity extends BaseActivity {
                 mBankAccount.setText("");
                 mEmail.setText("");
                 mDateOfStudyStart.setText("");
+                mFieldOfStudy1.setAdapter(mAdapter);
                 toast.show();
             }
         });

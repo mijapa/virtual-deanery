@@ -30,4 +30,8 @@ public class FieldOfStudy {
     public void setFieldOfStudyNo(Integer fieldOfStudyNo) {
         this.fieldOfStudyNo = fieldOfStudyNo;
     }
+
+    public String toString(){
+        return getDepartment() + " " + getFieldOfStudyName();
+    }
 }
