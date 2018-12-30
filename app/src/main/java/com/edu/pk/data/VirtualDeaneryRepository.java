@@ -14,6 +14,8 @@ public class VirtualDeaneryRepository {
     private StudentApplicationDao mStudentApplicationDao;
     private StudentDormitoryDao mStudentDormitoryDao;
     private LecturerCourseDao mLecturerCourseDao;
+    private FieldOfStudyDao mFieldOfStudyDao;
+    private FieldOfStudyCourseDao mFieldOfStudyCourseDao;
     private String DEBUG_TAG = "DEBUG_TAG";
 
     private static Integer niu;
@@ -27,6 +29,8 @@ public class VirtualDeaneryRepository {
         mStudentApplicationDao = db.studentApplicationDao();
         mStudentDormitoryDao = db.studentDormitoryDao();
         mLecturerCourseDao = db.lecturerCourseDao();
+        mFieldOfStudyDao = db.fieldOfStudyDao();
+        mFieldOfStudyCourseDao = db.fieldOfStudyCourseDao();
     }
 
     public Integer getNiu() {
@@ -84,6 +88,12 @@ public class VirtualDeaneryRepository {
 
     public void insertLecturerCourse(LecturerCourse lecturerCourse) {
         new insertLecturerCourseAsyncTask(mLecturerCourseDao).execute(lecturerCourse);
+    }
+    public void insertFielfOfStudy(FieldOfStudy fieldOfStudy) {
+        new insertFieldOfStudyAsyncTask(mFieldOfStudyDao).execute(fieldOfStudy);
+    }
+    public void insertFielfOfStudyCourse(FieldOfStudyCourse fieldOfStudyCourse) {
+        new insertFieldOfStudyCourseAsyncTask(mFieldOfStudyCourseDao).execute(fieldOfStudyCourse);
     }
 
     public void changePasswordStudent(int niu, String password) {
@@ -215,6 +225,34 @@ public class VirtualDeaneryRepository {
         @Override
         protected Void doInBackground(final LecturerCourse... params) {
             mLecturerCourseAsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class insertFieldOfStudyAsyncTask extends AsyncTask<FieldOfStudy, Void, Void> {
+        private FieldOfStudyDao mFieldOfStudyAsyncTaskDao;
+
+        insertFieldOfStudyAsyncTask(FieldOfStudyDao dao) {
+            mFieldOfStudyAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final FieldOfStudy... params) {
+            mFieldOfStudyAsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class insertFieldOfStudyCourseAsyncTask extends AsyncTask<FieldOfStudyCourse, Void, Void> {
+        private FieldOfStudyCourseDao mFieldOfStudyCourseAsyncTaskDao;
+
+        insertFieldOfStudyCourseAsyncTask(FieldOfStudyCourseDao dao) {
+            mFieldOfStudyCourseAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final FieldOfStudyCourse... params) {
+            mFieldOfStudyCourseAsyncTaskDao.insert(params[0]);
             return null;
         }
     }

@@ -16,7 +16,7 @@
         android:textSize="20dp"
         android:onClick="onClick"
         android:textStyle="bold"
-        app:layout_heightPercent="33.33333333%"
+        app:layout_heightPercent="25%"
         app:layout_widthPercent="50%"
         android:background="@drawable/button4"
         android:textColor="@color/colorPrimary"/>
@@ -33,7 +33,7 @@
         android:textSize="20dp"
         android:onClick="onClick"
         android:textStyle="bold"
-        app:layout_heightPercent="33.33333333%"
+        app:layout_heightPercent="25%"
         app:layout_widthPercent="50%"
         android:background="@drawable/button4"
         android:textColor="@color/colorPrimary"/>
@@ -47,7 +47,7 @@
         android:textSize="20dp"
         android:onClick="onClick"
         android:textStyle="bold"
-        app:layout_heightPercent="33.33333333%"
+        app:layout_heightPercent="25%"
         app:layout_widthPercent="50%"
         android:background="@drawable/button4"
         android:textColor="@color/colorPrimary"/>
@@ -62,7 +62,23 @@
         android:textSize="20dp"
         android:onClick="onClick"
         android:textStyle="bold"
-        app:layout_heightPercent="33.33333333%"
+        app:layout_heightPercent="25%"
+        app:layout_widthPercent="50%"
+        android:background="@drawable/button4"
+        android:textColor="@color/colorPrimary"/>
+
+
+    <Button
+        android:id="@+id/add_field_of_study"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_employee"
+        android:layout_alignStart="@id/add_employee"
+        android:text="@string/add_field_of_study"
+        android:textSize="20dp"
+        android:onClick="onClick"
+        android:textStyle="bold"
+        app:layout_heightPercent="25%"
         app:layout_widthPercent="50%"
         android:background="@drawable/button4"
         android:textColor="@color/colorPrimary"/>
@@ -71,12 +87,13 @@
         android:id="@+id/waiting_room"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/add_employee"
+        android:layout_below="@+id/add_course"
+        android:layout_alignStart="@id/add_course"
         android:text="@string/waiting_room"
         android:textSize="20dp"
         android:onClick="onClick"
         android:textStyle="bold"
-        app:layout_heightPercent="33.33333333%"
+        app:layout_heightPercent="25%"
         app:layout_widthPercent="50%"
         android:background="@drawable/button4"
         android:textColor="@color/colorPrimary"/>
@@ -85,14 +102,14 @@
         android:id="@+id/change_password_employee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@id/add_course"
-        android:layout_below="@+id/add_course"
+        android:layout_alignStart="@id/add_field_of_study"
+        android:layout_below="@+id/add_field_of_study"
         android:text="@string/password_change"
         android:textSize="20dp"
         android:onClick="onClick"
         android:textStyle="bold"
-        app:layout_heightPercent="33.33333333%"
-        app:layout_widthPercent="50%"
+        app:layout_heightPercent="25%"
+        app:layout_widthPercent="100%"
         android:background="@drawable/button4"
         android:textColor="@color/colorPrimary" />
 

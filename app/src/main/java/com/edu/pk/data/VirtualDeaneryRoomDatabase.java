@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class}, version = 16, exportSchema = false)
+@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class}, version = 18, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -55,6 +55,10 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     public abstract LecturerCourseDao lecturerCourseDao();
 
+    public abstract FieldOfStudyDao fieldOfStudyDao();
+
+    public abstract FieldOfStudyCourseDao fieldOfStudyCourseDao();
+
     /**
      * Populate the database in the background.
      */
@@ -67,6 +71,8 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
         private final StudentApplicationDao aDao;
         private final StudentDormitoryDao sdDao;
         private final LecturerCourseDao lcDao;
+        private final FieldOfStudyDao fosDao;
+        private final FieldOfStudyCourseDao foscDao;
 
         PopulateDbAsync(VirtualDeaneryRoomDatabase db) {
             sDao = db.studentDao();
@@ -76,6 +82,8 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             aDao = db.studentApplicationDao();
             sdDao = db.studentDormitoryDao();
             lcDao = db.lecturerCourseDao();
+            fosDao = db.fieldOfStudyDao();
+            foscDao = db.fieldOfStudyCourseDao();
         }
 
         @Override
@@ -91,6 +99,8 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             aDao.deleteAll();
             sdDao.deleteAll();
             lcDao.deleteAll();
+            fosDao.deleteAll();
+            foscDao.deleteAll();
 
             Student student;
             student = new Student(
@@ -156,6 +166,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                 "2",
                 "1",
                 "WIEiK",
+                "Informatyka",
                 "30"
             );
             cDao.insert(course);
@@ -166,6 +177,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                     "2",
                     "2",
                     "WIEiK",
+                    "Informatyka",
                     "30"
             );
             cDao.insert(course);
@@ -176,6 +188,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                     "2",
                     "3",
                     "WIEiK",
+                    "Informatyka",
                     "30"
             );
             cDao.insert(course);
@@ -186,6 +199,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                     "2",
                     "4",
                     "WIEiK",
+                    "Informatyka",
                     "30"
             );
             cDao.insert(course);
@@ -196,6 +210,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                     "6",
                     "4",
                     "WIEiK",
+                    "Informatyka",
                     "30"
             );
             cDao.insert(course);
@@ -206,6 +221,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                     "5",
                     "5",
                     "WIEiK",
+                    "Informatyka",
                     "30"
             );
             cDao.insert(course);
@@ -216,6 +232,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                     "2",
                     "4",
                     "WIEiK",
+                    "Informatyka",
                     "30"
             );
             cDao.insert(course);
@@ -226,9 +243,11 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                     "6",
                     "5",
                     "WIEiK",
+                    "Informatyka",
                     "30"
             );
             cDao.insert(course);
+
 
 //            StudentApplication studentApplication;
 //            studentApplication = new StudentApplication(

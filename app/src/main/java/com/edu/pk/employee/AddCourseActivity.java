@@ -23,6 +23,7 @@ public class AddCourseActivity extends BaseActivity {
     private AutoCompleteTextView mEcts;
     private AutoCompleteTextView mTerm;
     private AutoCompleteTextView mDepartment;
+    private AutoCompleteTextView mFieldOfStudy;
     private AutoCompleteTextView mHourAmount;
     private AddCourseViewModel mAddCourseViewModel;
 
@@ -36,6 +37,7 @@ public class AddCourseActivity extends BaseActivity {
         mEcts = (AutoCompleteTextView) findViewById(R.id.course_ects);
         mTerm = (AutoCompleteTextView) findViewById(R.id.course_term);
         mDepartment = (AutoCompleteTextView) findViewById(R.id.course_department);
+        mFieldOfStudy = (AutoCompleteTextView) findViewById(R.id.course_field_of_study);
         mHourAmount = (AutoCompleteTextView) findViewById(R.id.course_hour_amount);
 
         mAddCourseViewModel = ViewModelProviders.of(this).get(AddCourseViewModel.class);
@@ -61,6 +63,7 @@ public class AddCourseActivity extends BaseActivity {
                         mEcts.getText().toString(),
                         mTerm.getText().toString(),
                         mDepartment.getText().toString(),
+                        mFieldOfStudy.getText().toString(),
                         mHourAmount.getText().toString()
 
                 );

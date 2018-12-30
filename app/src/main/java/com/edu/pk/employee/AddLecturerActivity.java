@@ -117,6 +117,10 @@ public class AddLecturerActivity extends BaseActivity {
                 mLastName.setText("");
                 mAddress.setText("");
                 mPhoneNumber.setText("");
+                mCourse1.setText("");
+                mCourse2.setText("");
+                mCourse3.setText("");
+
                 toast.show();
             }
         });

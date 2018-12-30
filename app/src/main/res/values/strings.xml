@@ -111,5 +111,12 @@
     <string name="choose_course">Wybierz przedmiot:</string>
     <string name="text_information_about_courses"><![CDATA[Zacznij wpisywać przedmiot, następnie z listy podpowiedzi wybierz jeden. Wzór -> \"wydział semestr nazwa\"]]></string>
     <string name="write_course">Zacznij wpisywać przedmiot...</string>
+    <string name="title_activity_add_field_of_study">AddFieldOfStudyActivity</string>
+    <string name="add_field_of_study">Dodaj kierunek</string>
+    <string name="prompt_field_of_study_name">Nazwa kierunku</string>
+    <string name="prompt_department_name">Nazwa wydziału</string>
+    <string name="choose_department">Wybierz wydział:</string>
+    <string name="add_field_of_study_toast">Dodano kierunek</string>
+    <string name="prompt_course_field_of_study">Kierunek</string>
 
 </resources>

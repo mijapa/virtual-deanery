@@ -167,6 +167,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.edu.pk.employee.WaitingRoomActivity" />
         </activity>
+        <activity
+            android:name=".employee.AddFieldOfStudyActivity"
+            android:label="@string/title_activity_add_field_of_study"
+            android:parentActivityName=".employee.EmployeeMenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.employee.EmployeeMenuActivity" />
+        </activity>
     </application>
 
 </manifest>
