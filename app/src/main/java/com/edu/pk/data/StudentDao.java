@@ -33,4 +33,7 @@ public interface StudentDao {
 
     @Query("SELECT distanceFromTheCheck_InPlace FROM student where niu = :niu")
     Integer getDistanceFromTheCheck_InPlace(Integer niu);
+
+    @Query("SELECT * FROM student NATURAL JOIN student_field_of_study NATURAL JOIN field_of_study WHERE fieldOfStudyName = :fieldOfStudy AND department = :department AND term = :term")
+    List<Student> getStudentByFieldOfStudyList(String fieldOfStudy, String department, Integer term);
 }

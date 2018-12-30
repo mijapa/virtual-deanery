@@ -61,7 +61,7 @@ public class AddCourseActivity extends BaseActivity {
                         Integer.parseInt(mCourseNo.getText().toString()),
                         mName.getText().toString(),
                         mEcts.getText().toString(),
-                        mTerm.getText().toString(),
+                        Integer.parseInt(mTerm.getText().toString()),
                         mDepartment.getText().toString(),
                         mFieldOfStudy.getText().toString(),
                         mHourAmount.getText().toString()

@@ -47,6 +47,7 @@ public class AddStudentActivity extends BaseActivity {
     private AutoCompleteTextView mBankAccount;
     private AutoCompleteTextView mEmail;
     private AutoCompleteTextView mDateOfStudyStart;
+    private AutoCompleteTextView mTerm;
     private AddStudentViewModel mAddStudentViewModel;
     private ArrayAdapter<FieldOfStudy> mAdapter;
     private AutoCompleteTextView mFieldOfStudy1;
@@ -82,6 +83,7 @@ public class AddStudentActivity extends BaseActivity {
         mBankAccount = (AutoCompleteTextView) findViewById(R.id.bank_account_student);
         mEmail = (AutoCompleteTextView) findViewById(R.id.email_student);
         mDateOfStudyStart = (AutoCompleteTextView) findViewById(R.id.date_of_study_start_student);
+        mTerm = (AutoCompleteTextView) findViewById(R.id.term_student);
         mFieldOfStudy1 = (AutoCompleteTextView) findViewById(R.id.field_of_study1);
 
         mAddStudentViewModel = ViewModelProviders.of(this).get(AddStudentViewModel.class);
@@ -134,7 +136,8 @@ public class AddStudentActivity extends BaseActivity {
                         Integer.parseInt(mOtherNumber.getText().toString()),
                         mBankAccount.getText().toString(),
                         mEmail.getText().toString(),
-                        mDateOfStudyStart.getText().toString()
+                        mDateOfStudyStart.getText().toString(),
+                        Integer.parseInt(mTerm.getText().toString())
                 );
 
                 mAddStudentViewModel.insertStudent(student);
@@ -164,6 +167,7 @@ public class AddStudentActivity extends BaseActivity {
                 mBankAccount.setText("");
                 mEmail.setText("");
                 mDateOfStudyStart.setText("");
+                mTerm.setText("");
                 mFieldOfStudy1.setAdapter(mAdapter);
                 toast.show();
             }

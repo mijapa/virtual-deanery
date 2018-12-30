@@ -15,7 +15,7 @@ public class Course {
     @NonNull
     private String ects;
     @NonNull
-    private String term;
+    private Integer term;
     @NonNull
     private String department;
     @NonNull
@@ -23,7 +23,7 @@ public class Course {
     @NonNull
     private String hourAmount;
 
-    public Course(@NonNull Integer courseNo, @NonNull String name, @NonNull String ects, @NonNull String term, @NonNull String department, @NonNull String fieldOfStudy, @NonNull String hourAmount) {
+    public Course(@NonNull Integer courseNo, @NonNull String name, @NonNull String ects, @NonNull Integer term, @NonNull String department, @NonNull String fieldOfStudy, @NonNull String hourAmount) {
         this.courseNo = courseNo;
         this.name = name;
         this.ects = ects;
@@ -43,7 +43,7 @@ public class Course {
     public String getEcts() { return ects; }
 
     @NonNull
-    public String getTerm() { return term; }
+    public Integer getTerm() { return term; }
 
     @NonNull
     public String getDepartment() { return department; }

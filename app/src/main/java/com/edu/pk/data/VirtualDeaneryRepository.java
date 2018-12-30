@@ -154,6 +154,10 @@ public class VirtualDeaneryRepository {
         return mFieldOfStudyDao.getFieldOfStudyList();
     }
 
+    public List<Student> getStudentByFieldOfStudyList(String fieldOfStudy, String department, Integer term) {
+        return mStudentDao.getStudentByFieldOfStudyList(fieldOfStudy, department, term);
+    }
+
     private static class insertLecturerAsyncTask extends AsyncTask<Lecturer, Void, Void> {
         private LecturerDao mLecturerAsyncTaskDao;
 

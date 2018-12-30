@@ -108,6 +108,7 @@ public class AddLecturerActivity extends BaseActivity {
                 );
 
                 mAddLecturerViewModel.insertLecturer(lecturer);
+                mAddLecturerViewModel.insertLecturerCourse( new LecturerCourse(1, Integer.parseInt(mNiu.getText().toString())));
                 mAddLecturerViewModel.insertLecturerCourse( new LecturerCourse(c1.getCourseNo(), Integer.parseInt(mNiu.getText().toString())));
                 mAddLecturerViewModel.insertLecturerCourse( new LecturerCourse(c2.getCourseNo(), Integer.parseInt(mNiu.getText().toString())));
                 mAddLecturerViewModel.insertLecturerCourse( new LecturerCourse(c3.getCourseNo(), Integer.parseInt(mNiu.getText().toString())));

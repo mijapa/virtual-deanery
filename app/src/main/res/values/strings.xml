@@ -120,5 +120,9 @@
     <string name="prompt_course_field_of_study">Kierunek</string>
     <string name="text_information_about_field_of_study"><![CDATA[Zacznij wpisywać kierunek, następnie z listy podpowiedzi wybierz jeden. Wzór -> \"wydział kierunek\"]]></string>
     <string name="write_field_of_study">Zacznij wpisywać kierunek..</string>
+    <string name="choose_student">Wybierz studenta:</string>
+    <string name="submit_course">Zatwierdź przedmiot</string>
+    <string name="prompt_term_student">Semestr</string>
+    <string name="prompt_mark_for_student">Ocena</string>
 
 </resources>

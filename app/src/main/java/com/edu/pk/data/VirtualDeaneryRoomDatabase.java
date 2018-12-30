@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class}, version = 19, exportSchema = false)
+@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class}, version = 20, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -96,47 +96,47 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             // Not needed if you only populate the database
             // when it is first created
 
-            sDao.deleteAll();
+//           sDao.deleteAll();
             eDao.deleteAll();
-            lDao.deleteAll();
+//            lDao.deleteAll();
             cDao.deleteAll();
-            saDao.deleteAll();
-            sdDao.deleteAll();
-            lcDao.deleteAll();
+//            saDao.deleteAll();
+//            sdDao.deleteAll();
+//            lcDao.deleteAll();
             fosDao.deleteAll();
-            foscDao.deleteAll();
-            sfosDao.deleteAll();
+//            foscDao.deleteAll();
+//            sfosDao.deleteAll();
 
-            Student student;
-            student = new Student(
-                    3,
-                    101010,
-                    "3",
-                    "97020110200",
-                    "Jan",
-                    "Kowalski",
-                    "",
-                    0,
-                    "ul. Warszawska 2, 10-101 Krakówek",
-                    "Krakówek",
-                    "Małopolska",
-                    "Polska",
-                    300,
-                    "970201",
-                    "Krakówek",
-                    "Józef",
-                    "Halina",
-                    "Nowak",
-                    0,
-                    0,
-                    500500500,
-                    501501501,
-                    "101232135649821689798465",
-                    "kowalski@kowalski.pl",
-                    "20160904"
-            );
-
-            sDao.insert(student);
+//            Student student;
+//            student = new Student(
+//                    3,
+//                    101010,
+//                    "3",
+//                    "97020110200",
+//                    "Jan",
+//                    "Kowalski",
+//                    "",
+//                    0,
+//                    "ul. Warszawska 2, 10-101 Krakówek",
+//                    "Krakówek",
+//                    "Małopolska",
+//                    "Polska",
+//                    300,
+//                    "970201",
+//                    "Krakówek",
+//                    "Józef",
+//                    "Halina",
+//                    "Nowak",
+//                    0,
+//                    0,
+//                    500500500,
+//                    501501501,
+//                    "101232135649821689798465",
+//                    "kowalski@kowalski.pl",
+//                    "20160904"
+//            );
+//
+//            sDao.insert(student);
 
             Employee employee;
             employee = new Employee(
@@ -152,24 +152,35 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
             eDao.insert(employee);
 
-            Lecturer lecturer;
-            lecturer = new Lecturer(
-                    20,
-                    "20",
-                    "Michael",
-                    "Jackson",
-                    "Indiana Gary",
-                    608987889
-            );
-
-            lDao.insert(lecturer);
+//            Lecturer lecturer;
+//            lecturer = new Lecturer(
+//                    20,
+//                    "20",
+//                    "Michael",
+//                    "Jackson",
+//                    "Indiana Gary",
+//                    608987889
+//            );
+//
+//            lDao.insert(lecturer);
 
             Course course;
             course = new Course(
-                1,
+                    1,
+                    "-",
+                    "-",
+                    0,
+                    "-",
+                    "-",
+                    "-"
+            );
+            cDao.insert(course);
+
+            course = new Course(
+                2,
                 "Angielski",
                 "2",
-                "1",
+                1,
                 "WIEiK",
                 "Informatyka",
                 "30"
@@ -177,21 +188,10 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             cDao.insert(course);
 
             course = new Course(
-                    2,
-                    "Angielski",
-                    "2",
-                    "2",
-                    "WIEiK",
-                    "Informatyka",
-                    "30"
-            );
-            cDao.insert(course);
-
-            course = new Course(
                     3,
                     "Angielski",
                     "2",
-                    "3",
+                    2,
                     "WIEiK",
                     "Informatyka",
                     "30"
@@ -202,7 +202,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                     4,
                     "Angielski",
                     "2",
-                    "4",
+                    3,
                     "WIEiK",
                     "Informatyka",
                     "30"
@@ -211,9 +211,9 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
             course = new Course(
                     5,
-                    "SBD",
-                    "6",
-                    "4",
+                    "Angielski",
+                    "2",
+                    4,
                     "WIEiK",
                     "Informatyka",
                     "30"
@@ -222,9 +222,9 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
             course = new Course(
                     6,
-                    "PWJJ",
-                    "5",
-                    "5",
+                    "SBD",
+                    "6",
+                    4,
                     "WIEiK",
                     "Informatyka",
                     "30"
@@ -233,9 +233,9 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
             course = new Course(
                     7,
-                    "Strasznie długa nazwa Strasznie długa nazwa Strasznie długa nazwa",
-                    "2",
-                    "4",
+                    "PWJJ",
+                    "5",
+                    5,
                     "WIEiK",
                     "Informatyka",
                     "30"
@@ -244,9 +244,20 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
             course = new Course(
                     8,
+                    "Strasznie długa nazwa Strasznie długa nazwa Strasznie długa nazwa",
+                    "2",
+                    4,
+                    "WIEiK",
+                    "Informatyka",
+                    "30"
+            );
+            cDao.insert(course);
+
+            course = new Course(
+                    9,
                     "KWD",
                     "6",
-                    "5",
+                    5,
                     "WIEiK",
                     "Informatyka",
                     "30"
@@ -276,7 +287,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             fosDao.insert(fieldOfStudy);
             fieldOfStudy = new FieldOfStudy(
                     "Informatyka",
-                    "WM"
+                    "WIEiK"
             );
             fosDao.insert(fieldOfStudy);
 
