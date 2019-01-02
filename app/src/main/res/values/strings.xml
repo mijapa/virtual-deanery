@@ -106,6 +106,7 @@
     <string name="application_sent">Wniosek wysłany</string>
     <string name="assign_a_dorm">Przydzielono akademik</string>
     <string name="add_field_of_study_toast">Dodano kierunek</string>
+    <string name="application_information">Wniosek został już złożony lub nie zostałeś uprawniony do składania wniosku</string>
 
     <!-- Hints for AssignADormActivity -->
     <string name="prompt_dorm_name">Nazwa akademika</string>
@@ -135,5 +136,6 @@
     <string name="write_field_of_study">Zacznij wpisywać kierunek..</string>
     <string name="prompt_course_field_of_study">Kierunek</string>
     <string name="prompt_mark_for_student">Ocena</string>
+
 
 </resources>

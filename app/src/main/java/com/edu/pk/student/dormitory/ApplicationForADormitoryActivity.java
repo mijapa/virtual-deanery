@@ -1,11 +1,13 @@
 package com.edu.pk.student.dormitory;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.edu.pk.BaseActivity;
 import com.edu.pk.R;
@@ -19,6 +21,8 @@ public class ApplicationForADormitoryActivity extends BaseActivity {
     private TextView mInformation;
     private Button mSubmitApllication;
     private ApplicationForADormitoryViewModel mApplicationForADormitoryViewModel;
+    private Toast toast;
+    private View view;
     private static String information = "";
     private static boolean flag = false;
 
@@ -35,6 +39,12 @@ public class ApplicationForADormitoryActivity extends BaseActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toast = Toast.makeText(getBaseContext(), R.string.application_sent, Toast.LENGTH_LONG);
+        view = toast.getView();
+        view.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
+        TextView text = view.findViewById(android.R.id.message);
+        text.setTextColor(getResources().getColor(R.color.colorPrimary));
     }
 
     @Override
@@ -45,27 +55,32 @@ public class ApplicationForADormitoryActivity extends BaseActivity {
             mInformation.setText(status);
         }else
             mInformation.setText(information);
-
-        if(flag == true)
-            mSubmitApllication.setEnabled(false);
     }
 
     public void onClick(View view) {
         if(view.getId() == R.id.submit_an_application){
-            StudentApplication studentApplication;
-            studentApplication = new StudentApplication(
-                    "Wniosek o akademik",
-                    mApplicationForADormitoryViewModel.getAlbumNo(),
-                    mApplicationForADormitoryViewModel.getDistanceFromTheCheck_InPlace(),
-                    "oczekujący"
-            );
-            mApplicationForADormitoryViewModel.insertStudentApplication(studentApplication);
-
-            mSubmitApllication.setEnabled(false);
-            flag = true;
-            Date currentTime = Calendar.getInstance().getTime();
-            information = "Wniosek został wysłany: " + currentTime;
-            mInformation.setText(information);
+            if(flag == false) {
+                StudentApplication studentApplication;
+                studentApplication = new StudentApplication(
+                        "Wniosek o akademik",
+                        mApplicationForADormitoryViewModel.getAlbumNo(),
+                        mApplicationForADormitoryViewModel.getDistanceFromTheCheck_InPlace(),
+                        "oczekujący"
+                );
+                mApplicationForADormitoryViewModel.insertStudentApplication(studentApplication);
+                flag = true;
+                Date currentTime = Calendar.getInstance().getTime();
+                information = "Wniosek został wysłany: " + currentTime;
+                mInformation.setText(information);
+                toast.show();
+            }else{
+                toast = Toast.makeText(getBaseContext(), R.string.application_information, Toast.LENGTH_LONG);
+                view = toast.getView();
+                view.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
+                TextView text = view.findViewById(android.R.id.message);
+                text.setTextColor(getResources().getColor(R.color.colorPrimary));
+                toast.show();
+            }
         }
     }
 
