@@ -6,9 +6,10 @@ import android.support.annotation.NonNull;
 
 @Entity(tableName = "student")
 public class Student {
+
     @PrimaryKey
     @NonNull
-    private Integer NIU;
+    private Integer niu;
     @NonNull
     private Integer albumNo;
     @NonNull
@@ -35,9 +36,10 @@ public class Student {
     private String bankAccount;
     private String email;
     private String dateOfStudyStart; //date??
+    private Integer term;
 
-    public Student(Integer NIU, Integer albumNo, String password, String pesel, String firstName, String lastName, String familyName, Integer sex, String address, String cityOrVillage, String voivodeship, String country, Integer distanceFromTheCheck_InPlace, String dateOfBirth, String placeOfBirth, String fatherName, String motherName, String motherFamilyName, Integer maritalStatus, Integer foreigner, Integer phoneNumber, Integer otherNumber, String bankAccount, String email, String dateOfStudyStart) {
-        this.NIU = NIU;
+    public Student(Integer niu, Integer albumNo, String password, String pesel, String firstName, String lastName, String familyName, Integer sex, String address, String cityOrVillage, String voivodeship, String country, Integer distanceFromTheCheck_InPlace, String dateOfBirth, String placeOfBirth, String fatherName, String motherName, String motherFamilyName, Integer maritalStatus, Integer foreigner, Integer phoneNumber, Integer otherNumber, String bankAccount, String email, String dateOfStudyStart, Integer term) {
+        this.niu = niu;
         this.albumNo = albumNo;
         this.password = password;
         this.pesel = pesel;
@@ -62,10 +64,11 @@ public class Student {
         this.bankAccount = bankAccount;
         this.email = email;
         this.dateOfStudyStart = dateOfStudyStart;
+        this.term = term;
     }
 
-    public Integer getNIU() {
-        return NIU;
+    public Integer getNiu() {
+        return niu;
     }
 
     public Integer getAlbumNo() {
@@ -163,4 +166,11 @@ public class Student {
     public String getDateOfStudyStart() {
         return dateOfStudyStart;
     }
+
+    public Integer getTerm() { return term; };
+
+    public String toString(){
+        return firstName + " " + lastName + " nr albumu: " + albumNo;
+    }
+
 }

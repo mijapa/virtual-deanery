@@ -10,6 +10,7 @@ import com.edu.pk.data.VirtualDeaneryRepository;
 import java.util.List;
 
 public class MyDataViewModel extends AndroidViewModel {
+
     private LiveData<List<Student>> mStudents;
     private VirtualDeaneryRepository mRepository;
 
@@ -22,4 +23,5 @@ public class MyDataViewModel extends AndroidViewModel {
     public LiveData<List<Student>> getStudents() {
         return mStudents;
     }
+
 }

@@ -47,4 +47,5 @@ public class Lecturer {
 
     @NonNull
     public Integer getPhoneNumber(){ return phoneNumber; }
+
 }

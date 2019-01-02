@@ -8,22 +8,22 @@ import com.edu.pk.data.StudentApplication;
 import com.edu.pk.data.VirtualDeaneryRepository;
 
 public class ApplicationForADormitoryViewModel extends AndroidViewModel {
-    VirtualDeaneryRepository mRepository;
+
+    private VirtualDeaneryRepository mRepository;
 
     public ApplicationForADormitoryViewModel(@NonNull Application application) {
         super(application);
         mRepository = new VirtualDeaneryRepository(application);
     }
-    Integer getAlbumNo() {
+
+    public Integer getAlbumNo() {
         return mRepository.getAlbumNo();
     }
-    Integer getDistanceFromTheCheck_InPlace(){
-        return mRepository.getDistanceFromTheCheck_InPlace();
-    }
-    void insertStudentApplication(StudentApplication studentApplication){
-        mRepository.insertStudentApplication(studentApplication);
-    }
-    String getStatusApplication(Integer albumNo, String description){
-        return mRepository.getStatusApplication(albumNo, description);
-    }
+
+    public Integer getDistanceFromTheCheck_InPlace(){ return mRepository.getDistanceFromTheCheck_InPlace(); }
+
+    public void insertStudentApplication(StudentApplication studentApplication){ mRepository.insertStudentApplication(studentApplication); }
+
+    public String getStatusApplication(Integer albumNo, String description){ return mRepository.getStatusApplication(albumNo, description); }
+
 }

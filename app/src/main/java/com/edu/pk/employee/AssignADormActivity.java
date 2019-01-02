@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
@@ -14,17 +12,17 @@ import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.edu.pk.BaseActivity;
 import com.edu.pk.R;
 import com.edu.pk.data.StudentDormitory;
 
-public class AssignADormActivity extends AppCompatActivity {
+public class AssignADormActivity extends BaseActivity {
 
     private String mAlbumNo;
     private String mApplicationNumber;
     private AutoCompleteTextView mDorm;
     private AutoCompleteTextView mRoom;
     private AssignADormViewModel mAssignADormViewModel;
-    private WaitingRoomViewModel mWaitingRoomViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +34,6 @@ public class AssignADormActivity extends AppCompatActivity {
         mDorm = (AutoCompleteTextView) findViewById(R.id.dorm_name);
         mRoom = (AutoCompleteTextView) findViewById(R.id.room_name);
         mAssignADormViewModel = ViewModelProviders.of(this).get(AssignADormViewModel.class);
-        mWaitingRoomViewModel = ViewModelProviders.of(this).get(WaitingRoomViewModel.class);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -61,8 +58,7 @@ public class AssignADormActivity extends AppCompatActivity {
 
                 );
                 mAssignADormViewModel.insertStudentDormitory(studentDormitory);
-                int y = Integer.parseInt(mApplicationNumber);
-                mWaitingRoomViewModel.setStatusApplication(y, "zaakceptowany");
+                mAssignADormViewModel.setStatusApplication(Integer.parseInt(mApplicationNumber), "zaakceptowany");
                 mDorm.setText("");
                 mRoom.setText("");
                 toast.show();

@@ -8,14 +8,15 @@ import com.edu.pk.data.Course;
 import com.edu.pk.data.VirtualDeaneryRepository;
 
 public class AddCourseViewModel extends AndroidViewModel {
-    VirtualDeaneryRepository mRepository;
+
+    private VirtualDeaneryRepository mRepository;
 
     public AddCourseViewModel(@NonNull Application application) {
         super(application);
         mRepository = new VirtualDeaneryRepository(application);
     }
 
-    void insertCourse(Course course){
+    public void insertCourse(Course course){
         mRepository.insertCourse(course);
     }
 }

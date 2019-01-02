@@ -39,6 +39,10 @@ public class EmployeeMenuActivity extends BaseActivity {
                 intent = new Intent(this, AddCourseActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.add_field_of_study:
+                intent = new Intent(this, AddFieldOfStudyActivity.class);
+                startActivity(intent);
+                break;
             case R.id.waiting_room:
                 intent = new Intent(this, WaitingRoomActivity.class);
                 startActivity(intent);

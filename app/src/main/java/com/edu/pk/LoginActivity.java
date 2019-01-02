@@ -20,29 +20,28 @@ import com.edu.pk.lecturer.LecturerMenuActivity;
 import com.edu.pk.student.MenuActivity;
 
 /**
- * A login screen that offers login via NIU/password.
+ * A login screen that offers login via niu/password.
  */
 public class LoginActivity extends AppCompatActivity {
+
     private static String currentUser = null;
     private LoginViewModel mLoginViewModel;
-    private String DEBUG_TAG = "DEBUG_TAG";
     // UI references.
-    private static AutoCompleteTextView mNIUView;
-    private static EditText mPasswordView;
-    private Button mNIUSignInButton;
+    private static AutoCompleteTextView mNiu;
+    private static EditText mPassword;
+    private Button mNiuSignInButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        mNiu = (AutoCompleteTextView) findViewById(R.id.niu);
+        mNiuSignInButton = (Button) findViewById(R.id.NIU_sign_in_button);
+        mPassword = (EditText) findViewById(R.id.password);
         mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
 
-        mNIUView = (AutoCompleteTextView) findViewById(R.id.niu);
-        mNIUSignInButton = (Button) findViewById(R.id.NIU_sign_in_button);
-        mPasswordView = (EditText) findViewById(R.id.password);
-
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        mPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == EditorInfo.IME_ACTION_GO) {
@@ -50,22 +49,19 @@ public class LoginActivity extends AppCompatActivity {
                     if (checkLog()) {
                         if (currentUser.equals("s")) {
                             Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                            mLoginViewModel.setNIU(Integer.parseInt(mNIUView.getText().toString()));
                             startActivity(intent);
                         }
                         if (currentUser.equals("l")) {
                             Intent intent = new Intent(LoginActivity.this, LecturerMenuActivity.class);
-                            mLoginViewModel.setNIU(Integer.parseInt(mNIUView.getText().toString()));
                             startActivity(intent);
                         }
                         if (currentUser.equals("p")) {
                             Intent intent = new Intent(LoginActivity.this, EmployeeMenuActivity.class);
-                            mLoginViewModel.setNIU(Integer.parseInt(mNIUView.getText().toString()));
                             startActivity(intent);
                         }
                     } else {
-                        mNIUView.setText("");
-                        mPasswordView.setText("");
+                        mNiu.setText("");
+                        mPassword.setText("");
                     }
                     return true;
                 }
@@ -73,29 +69,26 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        mNIUSignInButton.setOnClickListener(new OnClickListener() {
+        mNiuSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
                 if (checkLog()) {
                     if (currentUser.equals("s")) {
                         Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                        mLoginViewModel.setNIU(Integer.parseInt(mNIUView.getText().toString()));
                         startActivity(intent);
                     }
                     if (currentUser.equals("l")) {
                         Intent intent = new Intent(LoginActivity.this, LecturerMenuActivity.class);
-                        mLoginViewModel.setNIU(Integer.parseInt(mNIUView.getText().toString()));
                         startActivity(intent);
                     }
                     if (currentUser.equals("p")) {
                         Intent intent = new Intent(LoginActivity.this, EmployeeMenuActivity.class);
-                        mLoginViewModel.setNIU(Integer.parseInt(mNIUView.getText().toString()));
                         startActivity(intent);
                     }
                 } else {
-                    mNIUView.setText("");
-                    mPasswordView.setText("");
+                    mNiu.setText("");
+                    mPassword.setText("");
                 }
             }
         });
@@ -109,40 +102,40 @@ public class LoginActivity extends AppCompatActivity {
      */
     private void attemptLogin() {
         // Reset errors.
-        mNIUView.setError(null);
-        mPasswordView.setError(null);
+        mNiu.setError(null);
+        mPassword.setError(null);
 
         // Store values at the time of the login attempt.
-        String NIU = mNIUView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        String NIU = mNiu.getText().toString();
+        String password = mPassword.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
         if (!checkLog()) {
-            //mNIUView.setError(getString(R.string.error_invalid_one));
-            mPasswordView.setError(getString(R.string.error_invalid_one));
-            focusView = mNIUView;
+            //mNiu.setError(getString(R.string.error_invalid_one));
+            mPassword.setError(getString(R.string.error_invalid_one));
+            focusView = mNiu;
             cancel = true;
         }
 
         // Check for a valid NIU
         if (TextUtils.isEmpty(NIU)) {
-            mNIUView.setError(getString(R.string.error_field_required));
-            mPasswordView.setError(null);
-            focusView = mNIUView;
+            mNiu.setError(getString(R.string.error_field_required));
+            mPassword.setError(null);
+            focusView = mNiu;
             cancel = true;
-        } else if (!isNIUValid(NIU)) {
-            //mNIUView.setError(getString(R.string.error_invalid_NIU));
-            mPasswordView.setError(getString(R.string.error_invalid_one));
-            focusView = mNIUView;
+        } else if (!isNiuValid(NIU)) {
+            //mNiu.setError(getString(R.string.error_invalid_NIU));
+            mPassword.setError(getString(R.string.error_invalid_one));
+            focusView = mNiu;
             cancel = true;
         }
 
         if (TextUtils.isEmpty(password)) {
-            mPasswordView.setError(getString(R.string.error_field_required));
-            mNIUView.setError(null);
-            focusView = mPasswordView;
+            mPassword.setError(getString(R.string.error_field_required));
+            mNiu.setError(null);
+            focusView = mPassword;
             cancel = true;
         }
 
@@ -153,9 +146,9 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private boolean isNIUValid(String NIU) {
+    private boolean isNiuValid(String niu) {
         try {
-            double d = Double.parseDouble(NIU);
+            double value = Double.parseDouble(niu);
         } catch (NumberFormatException nfe) {
             return false;
         }
@@ -163,19 +156,17 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean checkLog() {
-        String email = mNIUView.getText().toString();
-        String password = mPasswordView.getText().toString();
-        Integer NIU = Integer.valueOf(email);
-        //TODO: different email-NIU transformation needed;
-        mLoginViewModel.setNIU(NIU);
-        if (NIU < 10) {
+        String password = mPassword.getText().toString();
+        Integer niu = Integer.valueOf(mNiu.getText().toString());
+        mLoginViewModel.setNiu(niu);
+        if (niu < 10) {
             currentUser = "s";
-        } else if(NIU >= 10 && NIU < 20) {
+        } else if(niu >= 10 && niu < 20) {
             currentUser = "p";
         }else{
             currentUser = "l";
         }
-        return mLoginViewModel.checkLoginPassword(email, password);
+        return mLoginViewModel.checkLoginPassword(mNiu.getText().toString(), password);
     }
 
     public void onBackPressed() {

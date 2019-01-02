@@ -3,9 +3,6 @@ package com.edu.pk.student.dormitory;
 import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -26,7 +23,8 @@ public class ReservationsActivity extends BaseActivity {
     private Button mApplicationForAReservation;
     private ReservationsViewModel mReservationsViewModel;
     private Toast toast;
-    private Boolean flag = false;
+    private View view;
+    private static Boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,39 +37,40 @@ public class ReservationsActivity extends BaseActivity {
 
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mArrayOfDorms);
         mDorms.setAdapter(mAdapter);
-        mApplicationForAReservation.setEnabled(false);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         toast = Toast.makeText(getBaseContext(), R.string.application_sent, Toast.LENGTH_LONG);
-        View view = toast.getView();
+        view = toast.getView();
         view.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
         TextView text = view.findViewById(android.R.id.message);
         text.setTextColor(getResources().getColor(R.color.colorPrimary));
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        String status = mReservationsViewModel.getStatusApplication(mReservationsViewModel.getAlbumNo(), "Wniosek o akademik");
-        if(status != null && status.contains("zaakceptowany")){
-            mApplicationForAReservation.setEnabled(true);
-        }
-    }
-
     public void onClick(View view) {
         if(view.getId() == R.id.application_for_a_reservation){
-            StudentApplication studentApplication;
-            studentApplication = new StudentApplication(
-                    "Wniosek o rezerwację " + mDorms.getSelectedItem().toString(),
-                    mReservationsViewModel.getAlbumNo(),
-                    mReservationsViewModel.getDistanceFromTheCheck_InPlace(),
-                    "oczekujący"
-            );
-            mReservationsViewModel.insertStudentApplication(studentApplication);
-            toast.show();
+            String status = mReservationsViewModel.getStatusApplication(mReservationsViewModel.getAlbumNo(), "Wniosek o akademik");
+            if(flag == false && status != null && status.contains("zaakceptowany")) {
+                StudentApplication studentApplication;
+                studentApplication = new StudentApplication(
+                        "Wniosek o rezerwację " + mDorms.getSelectedItem().toString(),
+                        mReservationsViewModel.getAlbumNo(),
+                        mReservationsViewModel.getDistanceFromTheCheck_InPlace(),
+                        "oczekujący"
+                );
+                mReservationsViewModel.insertStudentApplication(studentApplication);
+                flag = true;
+                toast.show();
+            }else{
+                toast = Toast.makeText(getBaseContext(), R.string.application_information, Toast.LENGTH_LONG);
+                view = toast.getView();
+                view.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
+                TextView text = view.findViewById(android.R.id.message);
+                text.setTextColor(getResources().getColor(R.color.colorPrimary));
+                toast.show();
+            }
         }
     }
 

@@ -7,18 +7,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.edu.pk.BaseActivity;
 import com.edu.pk.R;
 import com.edu.pk.data.StudentApplication;
 
 import java.util.List;
 
-public class WaitingRoomActivity extends AppCompatActivity {
+public class WaitingRoomActivity extends BaseActivity {
 
     private WaitingRoomViewModel mWaitingRoomViewModel;
 
@@ -74,7 +74,7 @@ public class WaitingRoomActivity extends AppCompatActivity {
         mWaitingRoomViewModel.getStudentApplications().observe(this, new Observer<List<StudentApplication>>() {
             @Override
             public void onChanged(@Nullable final List<StudentApplication> studentApplications) {
-                adapter.setWords(studentApplications);
+                adapter.setStudentApplications(studentApplications);
             }
         });
     }

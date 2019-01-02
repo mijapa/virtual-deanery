@@ -14,7 +14,6 @@ import com.edu.pk.data.Student;
 
 import java.util.List;
 
-
 public class MyDataActivity extends BaseActivity {
 
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;

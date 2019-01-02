@@ -7,20 +7,23 @@ import android.support.annotation.NonNull;
 import com.edu.pk.data.VirtualDeaneryRepository;
 
 public class AccomodationViewModel extends AndroidViewModel {
-    VirtualDeaneryRepository mRepository;
+
+    private VirtualDeaneryRepository mRepository;
 
     public AccomodationViewModel(@NonNull Application application) {
         super(application);
         mRepository = new VirtualDeaneryRepository(application);
     }
 
-    Integer getAlbumNo(){
+    public Integer getAlbumNo(){
         return mRepository.getAlbumNo();
     }
-    String getDorm(Integer albumNo){
+
+    public String getDorm(Integer albumNo){
         return mRepository.getDorm(albumNo);
     }
-    String getRoom(Integer albumNo){
+
+    public String getRoom(Integer albumNo){
         return mRepository.getRoom(albumNo);
     }
 

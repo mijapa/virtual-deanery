@@ -7,6 +7,7 @@ import android.arch.persistence.room.Query;
 
 @Dao
 public interface StudentDormitoryDao {
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(StudentDormitory studentDormitory);
 
@@ -18,4 +19,5 @@ public interface StudentDormitoryDao {
 
     @Query("DELETE FROM student_dormitory")
     void deleteAll();
+
 }

@@ -7,13 +7,16 @@ import android.support.annotation.NonNull;
 import com.edu.pk.data.VirtualDeaneryRepository;
 
 public class LoginViewModel extends AndroidViewModel {
+
     private VirtualDeaneryRepository mRepository;
-    private String DEBUG_TAG = "DEBUG_TAG";
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
         mRepository = new VirtualDeaneryRepository(application);
     }
+
+    //TODO Michał pierwsza linijka w przypadku litery rzuci exception i zamknie aplikację, trzeba to poprawić coś na wzór
+    //TODO tego co robiłam w attemptLogin() skoro przeniosłeś to tutaj, a z tamtąd wyrzucić ?
 
     Boolean checkLoginPassword(String email, String password) {
         Integer NIU = Integer.valueOf(email);
@@ -27,7 +30,8 @@ public class LoginViewModel extends AndroidViewModel {
         return passOK;
     }
 
-    public void setNIU(Integer NIU) {
+    public void setNiu(Integer NIU) {
         mRepository.setNiu(NIU);
     }
+
 }

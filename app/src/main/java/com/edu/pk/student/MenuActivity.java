@@ -22,24 +22,23 @@ public class MenuActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-
     public void onClick(View view) {
         Intent intent;
         switch(view.getId()){
-            case R.id.button1:
+            case R.id.my_data:
                 intent = new Intent(MenuActivity.this, MyDataActivity.class);
                 startActivity(intent);
-            case R.id.button2:
+            case R.id.my_studies:
                 break;
-            case R.id.button3:
+            case R.id.my_plan:
                 break;
-            case R.id.button4:
+            case R.id.my_finances:
                 break;
-            case R.id.button5:
+            case R.id.my_dorms:
                 intent = new Intent(MenuActivity.this, MenuDormitoryActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.button6:
+            case R.id.change_password:
                 Bundle bundle = new Bundle();
                 bundle.putString("goto", "MenuActivity");
                 intent = new Intent(getApplicationContext(), PasswordChangeActivity.class);
@@ -47,4 +46,5 @@ public class MenuActivity extends BaseActivity {
                 startActivity(intent);
         }
     }
+
 }
