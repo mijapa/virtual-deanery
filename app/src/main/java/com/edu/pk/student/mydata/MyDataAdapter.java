@@ -12,7 +12,6 @@ import com.edu.pk.data.Student;
 
 import java.util.List;
 
-
 public class MyDataAdapter extends RecyclerView.Adapter<MyDataAdapter.MyDataViewHolder> {
 
     private final LayoutInflater mInflater;
@@ -49,6 +48,7 @@ public class MyDataAdapter extends RecyclerView.Adapter<MyDataAdapter.MyDataView
     }
 
     class MyDataViewHolder extends RecyclerView.ViewHolder {
+
         private final TextView studentItemView;
 
         private MyDataViewHolder(View itemView) {
@@ -56,4 +56,5 @@ public class MyDataAdapter extends RecyclerView.Adapter<MyDataAdapter.MyDataView
             studentItemView = itemView.findViewById(R.id.textView);
         }
     }
+
 }

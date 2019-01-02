@@ -17,12 +17,6 @@ public interface StudentApplicationDao {
     @Query("SELECT * FROM student_application")
     LiveData<List<StudentApplication>> getStudentApplications();
 
-    @Query("DELETE FROM student_application WHERE applicationNo = :applicationNo")
-    void deleteRow(Integer applicationNo);
-
-    @Query("SELECT applicationNo FROM student_application WHERE studentAlbumNo = :albumNo")
-    Integer searchIdApplication(Integer albumNo);
-
     @Query("SELECT status FROM student_application WHERE studentAlbumNo = :albumNo AND description = :description")
     String getStatusApplication(Integer albumNo, String description);
 
@@ -31,4 +25,5 @@ public interface StudentApplicationDao {
 
     @Query("DELETE FROM student_application")
     void deleteAll();
+
 }

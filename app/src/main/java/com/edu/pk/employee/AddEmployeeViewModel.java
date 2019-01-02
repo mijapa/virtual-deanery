@@ -8,14 +8,15 @@ import com.edu.pk.data.Employee;
 import com.edu.pk.data.VirtualDeaneryRepository;
 
 public class AddEmployeeViewModel extends AndroidViewModel {
-    VirtualDeaneryRepository mRepository;
+
+    private VirtualDeaneryRepository mRepository;
 
     public AddEmployeeViewModel(@NonNull Application application) {
         super(application);
         mRepository = new VirtualDeaneryRepository(application);
     }
 
-    void insertEmployee(Employee employee){
+    public void insertEmployee(Employee employee){
         mRepository.insertEmployee(employee);
     }
 }

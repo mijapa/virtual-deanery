@@ -10,6 +10,7 @@ import java.util.List;
 
 @Dao
 public interface CourseDao {
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Course course);
 

@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 
 @Entity(tableName = "student")
 public class Student {
+
     @PrimaryKey
     @NonNull
     private Integer niu;
@@ -171,4 +172,5 @@ public class Student {
     public String toString(){
         return firstName + " " + lastName + " nr albumu: " + albumNo;
     }
+
 }

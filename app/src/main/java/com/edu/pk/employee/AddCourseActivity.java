@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
@@ -39,8 +38,8 @@ public class AddCourseActivity extends BaseActivity {
         mDepartment = (AutoCompleteTextView) findViewById(R.id.course_department);
         mFieldOfStudy = (AutoCompleteTextView) findViewById(R.id.course_field_of_study);
         mHourAmount = (AutoCompleteTextView) findViewById(R.id.course_hour_amount);
-
         mAddCourseViewModel = ViewModelProviders.of(this).get(AddCourseViewModel.class);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

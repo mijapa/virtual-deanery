@@ -4,15 +4,12 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,8 +53,6 @@ public class AddLecturerActivity extends BaseActivity {
         mCourse3 = (AutoCompleteTextView) findViewById(R.id.course3);
         mAddLecturerViewModel = ViewModelProviders.of(this).get(AddLecturerViewModel.class);
 
-
-
         mAdapter = new ArrayAdapter<>(this, R.layout.list_item, R.id.item, mAddLecturerViewModel.getCourseList());
         mCourse1.setAdapter(mAdapter);
         mCourse2.setAdapter(mAdapter);
@@ -65,18 +60,15 @@ public class AddLecturerActivity extends BaseActivity {
 
         mCourse1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { position1 = position;
-            }
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { position1 = position; }
         });
         mCourse2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { position2 = position;
-            }
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { position2 = position; }
         });
         mCourse3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { position3 = position;
-            }
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { position3 = position; }
         });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -121,10 +113,8 @@ public class AddLecturerActivity extends BaseActivity {
                 mCourse1.setText("");
                 mCourse2.setText("");
                 mCourse3.setText("");
-
                 toast.show();
             }
         });
     }
-
 }

@@ -4,8 +4,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
@@ -15,11 +13,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.edu.pk.BaseActivity;
 import com.edu.pk.R;
 import com.edu.pk.data.FieldOfStudy;
-import com.edu.pk.data.FieldOfStudyCourse;
 
-public class AddFieldOfStudyActivity extends AppCompatActivity {
+public class AddFieldOfStudyActivity extends BaseActivity {
 
     private AutoCompleteTextView mFieldOfStudyName;
     private Spinner mDepartments;
@@ -68,5 +66,4 @@ public class AddFieldOfStudyActivity extends AppCompatActivity {
             }
         });
     }
-
 }

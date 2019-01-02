@@ -34,4 +34,5 @@ public class FieldOfStudy {
     public String toString(){
         return getDepartment() + " " + getFieldOfStudyName();
     }
+
 }

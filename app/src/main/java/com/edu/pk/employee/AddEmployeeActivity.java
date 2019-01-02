@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
@@ -41,8 +40,8 @@ public class AddEmployeeActivity extends BaseActivity {
         mCityOrVillage = (AutoCompleteTextView) findViewById(R.id.city_or_village_employee);
         mPesel = (AutoCompleteTextView) findViewById(R.id.pesel_employee);
         mEmail = (AutoCompleteTextView) findViewById(R.id.email_employee);
-
         mAddEmployeeViewModel = ViewModelProviders.of(this).get(AddEmployeeViewModel.class);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -68,7 +67,6 @@ public class AddEmployeeActivity extends BaseActivity {
                         mCityOrVillage.getText().toString(),
                         mPesel.getText().toString(),
                         mEmail.getText().toString()
-
                 );
 
                 mAddEmployeeViewModel.insertEmployee(employee);
@@ -84,5 +82,4 @@ public class AddEmployeeActivity extends BaseActivity {
             }
         });
     }
-
 }

@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import java.util.List;
 
 public class VirtualDeaneryRepository {
+
     private StudentDao mStudentDao;
     private EmployeeDao mEmployeeDao;
     private LecturerDao mLecturerDao;
@@ -17,7 +18,6 @@ public class VirtualDeaneryRepository {
     private FieldOfStudyDao mFieldOfStudyDao;
     private FieldOfStudyCourseDao mFieldOfStudyCourseDao;
     private StudentFieldOfStudyDao mStudentFieldOfStudyDao;
-    private String DEBUG_TAG = "DEBUG_TAG";
 
     private static Integer niu;
 
@@ -55,72 +55,46 @@ public class VirtualDeaneryRepository {
         }
     }
 
+    //TODO insert dla użytkowników jeden w zależności od niu
+    public void insert(Student student) {
+        new insertStudentAsyncTask(mStudentDao).execute(student);
+    }
+
+    public void insertEmployee(Employee employee) { new insertEmployeeAsyncTask(mEmployeeDao).execute(employee); }
+
+    public void insertLecturer(Lecturer lecturer) { new insertLecturerAsyncTask(mLecturerDao).execute(lecturer); }
+
+    public void insertCourse(Course course) { new insertCourseAsyncTask(mCourseDao).execute(course); }
+
+    public void insertStudentApplication(StudentApplication studentApplication) { new insertStudentApplicationAsyncTask(mStudentApplicationDao).execute(studentApplication); }
+
+    public void insertStudentDormitory(StudentDormitory studentDormitory) { new insertStudentDormitoryAsyncTask(mStudentDormitoryDao).execute(studentDormitory); }
+
+    public void insertLecturerCourse(LecturerCourse lecturerCourse) { new insertLecturerCourseAsyncTask(mLecturerCourseDao).execute(lecturerCourse); }
+
+    public void insertFieldOfStudy(FieldOfStudy fieldOfStudy) { new insertFieldOfStudyAsyncTask(mFieldOfStudyDao).execute(fieldOfStudy); }
+
+    public void insertFieldOfStudyCourse(FieldOfStudyCourse fieldOfStudyCourse) { new insertFieldOfStudyCourseAsyncTask(mFieldOfStudyCourseDao).execute(fieldOfStudyCourse); }
+
+    public void insertStudentFieldOfStudy(StudentFieldOfStudy studentFieldOfStudy) { new insertStudentFieldOfStudyAsyncTask(mStudentFieldOfStudyDao).execute(studentFieldOfStudy); }
+
+
+    public void changePasswordStudent(int niu, String password) { mStudentDao.changePasswordStudent(niu, password); }
+
+    public void changePasswordEmployee(int niu, String password) { mEmployeeDao.changePasswordEmployee(niu, password); }
+
+    public void changePasswordLecturer(int niu, String password) { mLecturerDao.changePasswordLecturer(niu, password); }
+
+
+    public void setStatusApplication(int applicationNo, String status) { mStudentApplicationDao.setStatusApplication(applicationNo, status); }
+
+    public String getStatusApplication(Integer albumNo, String description) { return mStudentApplicationDao.getStatusApplication(albumNo, description); }
 
     public Integer getAlbumNo() {
         return mStudentDao.getAlbumNo(niu);
     }
 
-    public Integer getDistanceFromTheCheck_InPlace() {
-        return mStudentDao.getDistanceFromTheCheck_InPlace(niu);
-    }
-
-    public void insert(Student student) {
-        new insertAsyncTask(mStudentDao).execute(student);
-    }
-
-    public void insertEmployee(Employee employee) {
-        new insertEmployeeAsyncTask(mEmployeeDao).execute(employee);
-    }
-
-    public void insertLecturer(Lecturer lecturer) {
-        new insertLecturerAsyncTask(mLecturerDao).execute(lecturer);
-    }
-
-    public void insertCourse(Course course) {
-        new insertCourseAsyncTask(mCourseDao).execute(course);
-    }
-
-    public void insertStudentApplication(StudentApplication studentApplication) {
-        new insertStudentApplicationAsyncTask(mStudentApplicationDao).execute(studentApplication);
-    }
-
-    public void insertStudentDormitory(StudentDormitory studentDormitory) {
-        new insertStudentDormitoryAsyncTask(mStudentDormitoryDao).execute(studentDormitory);
-    }
-
-    public void insertLecturerCourse(LecturerCourse lecturerCourse) {
-        new insertLecturerCourseAsyncTask(mLecturerCourseDao).execute(lecturerCourse);
-    }
-    public void insertFieldOfStudy(FieldOfStudy fieldOfStudy) {
-        new insertFieldOfStudyAsyncTask(mFieldOfStudyDao).execute(fieldOfStudy);
-    }
-    public void insertFieldOfStudyCourse(FieldOfStudyCourse fieldOfStudyCourse) {
-        new insertFieldOfStudyCourseAsyncTask(mFieldOfStudyCourseDao).execute(fieldOfStudyCourse);
-    }
-
-    public void insertStudentFieldOfStudy(StudentFieldOfStudy studentFieldOfStudy) {
-        new insertStudentFieldOfStudyAsyncTask(mStudentFieldOfStudyDao).execute(studentFieldOfStudy);
-    }
-
-    public void changePasswordStudent(int niu, String password) {
-        mStudentDao.changePasswordStudent(niu, password);
-    }
-
-    public void changePasswordEmployee(int niu, String password) {
-        mEmployeeDao.changePasswordEmployee(niu, password);
-    }
-
-    public void changePasswordLecturer(int niu, String password) {
-        mLecturerDao.changePasswordLecturer(niu, password);
-    }
-
-    public void setStatusApplication(int applicationNo, String status) {
-        mStudentApplicationDao.setStatusApplication(applicationNo, status);
-    }
-
-    public String getStatusApplication(Integer albumNo, String description) {
-        return mStudentApplicationDao.getStatusApplication(albumNo, description);
-    }
+    public Integer getDistanceFromTheCheck_InPlace() { return mStudentDao.getDistanceFromTheCheck_InPlace(niu); }
 
     public String getDorm(Integer albumNo) {
         return mStudentDormitoryDao.getDorm(albumNo);
@@ -138,24 +112,31 @@ public class VirtualDeaneryRepository {
         return mStudentDao.getStudents();
     }
 
-    public LiveData<List<StudentApplication>> getStudentApplications() {
-        return mStudentApplicationDao.getStudentApplications();
-    }
+    public LiveData<List<StudentApplication>> getStudentApplications() { return mStudentApplicationDao.getStudentApplications(); }
 
     public List<Course> getCourseList() {
         return mCourseDao.getCourseList();
     }
 
-    public List<Course> getCourseListById() {
-        return mCourseDao.getCourseListById(niu);
-    }
+    public List<Course> getCourseListById() { return mCourseDao.getCourseListById(niu); }
 
-    public List<FieldOfStudy> getFieldOfStudyList() {
-        return mFieldOfStudyDao.getFieldOfStudyList();
-    }
+    public List<FieldOfStudy> getFieldOfStudyList() { return mFieldOfStudyDao.getFieldOfStudyList(); }
 
-    public List<Student> getStudentByFieldOfStudyList(String fieldOfStudy, String department, Integer term) {
-        return mStudentDao.getStudentByFieldOfStudyList(fieldOfStudy, department, term);
+    public List<Student> getStudentByFieldOfStudyList(String fieldOfStudy, String department, Integer term) { return mStudentDao.getStudentByFieldOfStudyList(fieldOfStudy, department, term); }
+
+
+    private static class insertStudentAsyncTask extends AsyncTask<Student, Void, Void> {
+        private StudentDao mStudentAsyncTaskDao;
+
+        insertStudentAsyncTask(StudentDao dao) {
+            mStudentAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final Student... params) {
+            mStudentAsyncTaskDao.insert(params[0]);
+            return null;
+        }
     }
 
     private static class insertLecturerAsyncTask extends AsyncTask<Lecturer, Void, Void> {
@@ -280,21 +261,6 @@ public class VirtualDeaneryRepository {
         @Override
         protected Void doInBackground(final StudentFieldOfStudy... params) {
             mStudentFieldOfStudyAsyncTaskDao.insert(params[0]);
-            return null;
-        }
-    }
-
-
-    private static class insertAsyncTask extends AsyncTask<Student, Void, Void> {
-        private StudentDao mAsyncTaskDao;
-
-        insertAsyncTask(StudentDao dao) {
-            mAsyncTaskDao = dao;
-        }
-
-        @Override
-        protected Void doInBackground(final Student... params) {
-            mAsyncTaskDao.insert(params[0]);
             return null;
         }
     }

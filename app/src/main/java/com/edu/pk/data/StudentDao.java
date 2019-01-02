@@ -10,6 +10,7 @@ import java.util.List;
 
 @Dao
 public interface StudentDao {
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Student student);
 
@@ -36,4 +37,5 @@ public interface StudentDao {
 
     @Query("SELECT * FROM student NATURAL JOIN student_field_of_study NATURAL JOIN field_of_study WHERE fieldOfStudyName = :fieldOfStudy AND department = :department AND term = :term")
     List<Student> getStudentByFieldOfStudyList(String fieldOfStudy, String department, Integer term);
+
 }

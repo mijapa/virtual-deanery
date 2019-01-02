@@ -9,7 +9,6 @@ import com.edu.pk.BaseActivity;
 import com.edu.pk.PasswordChangeActivity;
 import com.edu.pk.R;
 
-
 public class LecturerMenuActivity extends BaseActivity {
 
     @Override

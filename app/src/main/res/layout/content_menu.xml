@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_menu">
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/my_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/my_data"
@@ -22,7 +22,7 @@
         android:textColor="@color/colorPrimary"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/my_studies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -39,10 +39,11 @@
         android:textColor="@color/colorPrimary"/>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/my_plan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button1"
+        android:layout_below="@+id/my_data"
+        android:layout_alignStart="@id/my_data"
         android:text="@string/my_plan"
         android:textSize="20dp"
         android:onClick="onClick"
@@ -53,11 +54,11 @@
         android:textColor="@color/colorPrimary"/>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/my_finances"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button2"
-        android:layout_alignStart="@id/button2"
+        android:layout_below="@+id/my_studies"
+        android:layout_alignStart="@id/my_studies"
         android:text="@string/my_finances"
         android:textSize="20dp"
         android:onClick="onClick"
@@ -68,10 +69,10 @@
         android:textColor="@color/colorPrimary"/>
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/my_dorms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button3"
+        android:layout_below="@+id/my_plan"
         android:text="@string/dorms"
         android:textSize="20dp"
         android:onClick="onClick"
@@ -82,11 +83,11 @@
         android:textColor="@color/colorPrimary"/>
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/change_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@id/button4"
-        android:layout_below="@+id/button4"
+        android:layout_alignStart="@id/my_finances"
+        android:layout_below="@+id/my_finances"
         android:text="@string/password_change"
         android:textSize="20dp"
         android:onClick="onClick"
@@ -94,7 +95,6 @@
         app:layout_heightPercent="33.33333333%"
         app:layout_widthPercent="50%"
         android:background="@drawable/button4"
-        android:textColor="@color/colorPrimary"
-        />
+        android:textColor="@color/colorPrimary" />
 
 </android.support.percent.PercentRelativeLayout>

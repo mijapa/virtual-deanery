@@ -21,4 +21,5 @@ public class StudentFieldOfStudy {
 
     @NonNull
     public Integer getNiu() { return niu; }
+
 }

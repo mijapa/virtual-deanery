@@ -13,4 +13,5 @@ public interface StudentFieldOfStudyDao {
 
     @Query("DELETE FROM student_field_of_study")
     void deleteAll();
+
 }

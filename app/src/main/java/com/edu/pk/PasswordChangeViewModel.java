@@ -7,7 +7,8 @@ import android.support.annotation.NonNull;
 import com.edu.pk.data.VirtualDeaneryRepository;
 
 public class PasswordChangeViewModel extends AndroidViewModel {
-    VirtualDeaneryRepository mRepository;
+
+    private VirtualDeaneryRepository mRepository;
 
     public PasswordChangeViewModel(@NonNull Application application) {
         super(application);

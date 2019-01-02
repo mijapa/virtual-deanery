@@ -21,4 +21,5 @@ public class FieldOfStudyCourse {
 
     @NonNull
     public Integer getCourseNo() { return courseNo; }
+
 }

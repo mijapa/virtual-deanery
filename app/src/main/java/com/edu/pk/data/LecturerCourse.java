@@ -25,4 +25,5 @@ public class LecturerCourse {
     public Integer getNiu() {
         return niu;
     }
+
 }

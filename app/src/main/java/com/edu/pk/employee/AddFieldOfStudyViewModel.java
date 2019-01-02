@@ -12,18 +12,17 @@ import com.edu.pk.data.VirtualDeaneryRepository;
 import java.util.List;
 
 public class AddFieldOfStudyViewModel extends AndroidViewModel {
-    VirtualDeaneryRepository mRepository;
+
+    private VirtualDeaneryRepository mRepository;
 
     public AddFieldOfStudyViewModel(@NonNull Application application) {
         super(application);
         mRepository = new VirtualDeaneryRepository(application);
     }
 
-    void insertFieldOfStudy(FieldOfStudy fieldOfStudy){
-        mRepository.insertFieldOfStudy(fieldOfStudy);
-    }
+    public void insertFieldOfStudy(FieldOfStudy fieldOfStudy){ mRepository.insertFieldOfStudy(fieldOfStudy); }
 
-    void insertFieldOfStudyCourse(FieldOfStudy fieldOfStudy){
+    public void insertFieldOfStudyCourse(FieldOfStudy fieldOfStudy){
         List<Course> courses = mRepository.getCourseList();
         for(Course c: courses){
             if(c.getDepartment().equals(fieldOfStudy.getDepartment()) && c.getFieldOfStudy().equals(fieldOfStudy.getFieldOfStudyName())){

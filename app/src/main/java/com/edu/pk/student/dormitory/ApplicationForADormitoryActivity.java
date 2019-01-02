@@ -19,7 +19,6 @@ public class ApplicationForADormitoryActivity extends BaseActivity {
     private TextView mInformation;
     private Button mSubmitApllication;
     private ApplicationForADormitoryViewModel mApplicationForADormitoryViewModel;
-
     private static String information = "";
     private static boolean flag = false;
 
@@ -41,7 +40,6 @@ public class ApplicationForADormitoryActivity extends BaseActivity {
     @Override
     public void onResume() {
         super.onResume();
-
         String status = mApplicationForADormitoryViewModel.getStatusApplication(mApplicationForADormitoryViewModel.getAlbumNo(), "Wniosek o akademik");
         if(status != null && !status.equals("oczekujący")){
             mInformation.setText(status);
@@ -70,4 +68,5 @@ public class ApplicationForADormitoryActivity extends BaseActivity {
             mInformation.setText(information);
         }
     }
+
 }

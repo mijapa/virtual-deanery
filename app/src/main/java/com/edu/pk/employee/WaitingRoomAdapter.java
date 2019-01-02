@@ -5,14 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.edu.pk.R;
 import com.edu.pk.data.StudentApplication;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class WaitingRoomAdapter extends RecyclerView.Adapter<WaitingRoomAdapter.WaitingRoomViewHolder> {
@@ -42,13 +40,7 @@ public class WaitingRoomAdapter extends RecyclerView.Adapter<WaitingRoomAdapter.
         }
     }
 
-    public void delete(int position){
-        mStudentApplications.remove(position);
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position, getItemCount());
-    }
-
-    void setWords(List<StudentApplication> studentApplications) {
+    void setStudentApplications(List<StudentApplication> studentApplications) {
         mStudentApplications = studentApplications;
         notifyDataSetChanged();
     }
@@ -76,6 +68,7 @@ public class WaitingRoomAdapter extends RecyclerView.Adapter<WaitingRoomAdapter.
     }
 
     class WaitingRoomViewHolder extends RecyclerView.ViewHolder {
+
         private final TextView studentApplicationItemView;
 
         public void setVisibility(boolean isVisible){

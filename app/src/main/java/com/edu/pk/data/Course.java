@@ -9,7 +9,7 @@ public class Course {
 
     @PrimaryKey
     @NonNull
-    private Integer courseNo;
+    private Integer courseNo; //TODO auto_increment
     @NonNull
     private String name;
     @NonNull
@@ -58,4 +58,5 @@ public class Course {
     public String toString() {
         return  getDepartment() + " " + getTerm() + " " + getName();
     }
+
 }

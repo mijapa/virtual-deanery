@@ -97,7 +97,7 @@
         </activity>
         <activity
             android:name=".lecturer.EnterTheGradeActivity"
-            android:label="@string/title_activity_enter_the_grade"
+            android:label="@string/title_app"
             android:parentActivityName=".lecturer.LecturerMenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -124,7 +124,7 @@
         </activity>
         <activity
             android:name=".student.dormitory.ApplicationForADormitoryActivity"
-            android:label="@string/title_activity_application_for_adormitory"
+            android:label="@string/title_activity_menu_dormitory"
             android:parentActivityName=".student.dormitory.MenuDormitoryActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -142,7 +142,7 @@
         </activity>
         <activity
             android:name=".student.dormitory.ReservationsActivity"
-            android:label="@string/title_activity_reservations"
+            android:label="@string/title_activity_menu_dormitory"
             android:parentActivityName=".student.dormitory.MenuDormitoryActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -151,7 +151,7 @@
         </activity>
         <activity
             android:name=".student.dormitory.AccomodationActivity"
-            android:label="@string/title_activity_accomodation"
+            android:label="@string/title_activity_menu_dormitory"
             android:parentActivityName=".student.dormitory.MenuDormitoryActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -160,7 +160,7 @@
         </activity>
         <activity
             android:name=".employee.AssignADormActivity"
-            android:label="@string/title_activity_assign_adorm"
+            android:label="@string/title_app"
             android:parentActivityName=".employee.WaitingRoomActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

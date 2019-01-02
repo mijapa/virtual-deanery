@@ -2,6 +2,13 @@
     <!-- Titles of activity -->
     <string name="title_app">Wirtualny dziekanat</string>
     <string name="title_activity_password_change">Zmiana hasła</string>
+    <string name="title_activity_add_student">Dodaj studenta</string>
+    <string name="title_activity_add_employee">Dodaj pracownika</string>
+    <string name="title_activity_add_lecturer">Dodaj prowadzącego</string>
+    <string name="title_activity_add_course">Dodaj przedmiot</string>
+    <string name="title_activity_menu_dormitory">Akademiki</string>
+    <string name="title_activity_waiting_room">Poczekalnia</string>
+    <string name="title_activity_add_field_of_study">Dodaj kierunek</string>
 
     <!-- Other strings -->
     <string name="name_pk">Politechnika Krakowska</string>
@@ -14,14 +21,20 @@
     <string name="prompt_new_password">Nowe hasło</string>
     <string name="prompt_repeat_password">Powtórz nowe hasło</string>
 
-    <!-- Strings for actions -->
+    <!-- Strings for actions (buttons)-->
     <string name="action_sign_in">Zaloguj</string>
     <string name="action_log_out">Wyloguj</string>
     <string name="action_change">Zmień</string>
+    <string name="submit_course">Zatwierdź przedmiot</string>
+    <string name="submit_an_application">Złóż wniosek</string>
+    <string name="application_for_a_reservation">Złóż wniosek o rezerwację</string>
+    <string name="enter_the_grade">Wpisz ocenę</string>
 
     <!-- Error messages -->
     <string name="error_field_required">To pole jest wymagane</string>
     <string name="error_invalid_one">Niepoprawny niu lub hasło</string>
+    <string name="error_current_password">Niepoprawne hasło</string>
+    <string name="error_is_not_the_same">Powtórzone hasło zawiera błędy</string>
 
     <!-- Strings related to MenuActivity -->
     <string name="my_data">Moje\ndane</string>
@@ -39,90 +52,88 @@
     <string name="add_student">Dodaj\nstudenta</string>
     <string name="add_lecturer">Dodaj\nprowadzącego</string>
     <string name="add_employee">Dodaj\npracownika</string>
-
-    <string name="title_activity_add_student">Dodaj studenta</string>
-    <string name="prompt_niu_student">Niu</string>
-    <string name="prompt_album_number_student">Numer albumu</string>
-    <string name="prompt_password_student">Hasło</string>
-    <string name="prompt_pesel_student">Pesel</string>
-    <string name="prompt_first_name_student">Imię</string>
-    <string name="prompt_last_name_student">Nazwisko</string>
-    <string name="prompt_family_name_student">Nazwisko rodowe</string>
-    <string name="prompt_sex_student">Płeć</string>
-    <string name="prompt_address_student">Adres</string>
-    <string name="prompt_city_or_village_student">Miasto/wieś</string>
-    <string name="prompt_voivodeship_student">Województwo</string>
-    <string name="prompt_country_student">Kraj</string>
-    <string name="prompt_distance_from_the_check_in_place_student">Odległość od miejsca zameldowania</string>
-    <string name="prompt_date_of_birth_student">Data urodzenia</string>
-    <string name="prompt_place_of_birth_student">Miejsce urodzenia</string>
-    <string name="prompt_father_name_student">Imię ojca</string>
-    <string name="prompt_mother_name_student">Imię matki</string>
-    <string name="prompt_mother_family_name_student">Nazwisko rodowe matki</string>
-    <string name="prompt_marital_status_student">Stan cywilny</string>
-    <string name="prompt_foreigner_student">Obcokrajowiec</string>
-    <string name="prompt_phone_number_student">Telefon</string>
-    <string name="prompt_other_number_student">Inny telefon</string>
-    <string name="prompt_bank_account_student">Konto bankowe studenta</string>
-    <string name="prompt_email_student">Email</string>
-    <string name="prompt_date_of_student_start_student">Data rozpoczęcia studiów</string>
-    <string name="title_activity_add_employee">Dodaj pracownika</string>
-    <string name="title_activity_add_lecturer">Dodaj prowadzącego</string>
-    <string name="error_current_password">Niepoprawne hasło</string>
-    <string name="error_is_not_the_same">Powtórzone hasło zawiera błędy</string>
-    <string name="enter_the_grade">Wpisz ocenę</string>
-    <string name="title_activity_enter_the_grade">EnterTheGradeActivity</string>
-    <string name="password_changed">Hasło zostało zmienione</string>
-    <string name="add_course">Dodaj przedmiot</string>
+    <string name="add_course">Dodaj\nprzedmiot</string>
+    <string name="add_field_of_study">Dodaj\nkierunek</string>
     <string name="waiting_room">Poczekalnia</string>
-    <string name="title_activity_add_course">AddCourseActivity</string>
+
+    <!-- Hints for AddUserActivity -->
+    <string name="prompt_niu">Niu</string>
+    <string name="prompt_album_number">Numer albumu</string>
+    <string name="prompt_pesel">Pesel</string>
+    <string name="prompt_first_name">Imię</string>
+    <string name="prompt_last_name">Nazwisko</string>
+    <string name="prompt_family_name">Nazwisko rodowe</string>
+    <string name="prompt_sex">Płeć</string>
+    <string name="prompt_address">Adres</string>
+    <string name="prompt_city_or_village">Miasto/wieś</string>
+    <string name="prompt_voivodeship">Województwo</string>
+    <string name="prompt_country">Kraj</string>
+    <string name="prompt_distance_from_the_check_in_place">Odległość od miejsca zameldowania</string>
+    <string name="prompt_date_of_birth">Data urodzenia</string>
+    <string name="prompt_place_of_birth">Miejsce urodzenia</string>
+    <string name="prompt_father_name">Imię ojca</string>
+    <string name="prompt_mother_name">Imię matki</string>
+    <string name="prompt_mother_family_name">Nazwisko rodowe matki</string>
+    <string name="prompt_marital_status">Stan cywilny</string>
+    <string name="prompt_foreigner">Obcokrajowiec</string>
+    <string name="prompt_phone_number">Telefon</string>
+    <string name="prompt_other_number">Inny telefon</string>
+    <string name="prompt_bank_account">Konto bankowe studenta</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_date_of_student_start">Data rozpoczęcia studiów</string>
+    <string name="prompt_term">Semestr</string>
+
+    <!-- Hints for AddCourseActivity -->
     <string name="prompt_course_no">Numer przedmiotu</string>
     <string name="prompt_course_name">Nazwa przedmiotu</string>
     <string name="prompt_course_ects">Liczba punktów ECTS</string>
     <string name="prompt_course_term">Semestr</string>
     <string name="prompt_course_department">Wydział</string>
     <string name="prompt_course_hour_amount">Liczba godzin</string>
-    <string name="add_course_toast">Dodano przedmiot</string>
-    <string name="add_employee_toast">Dodano pracownika</string>
-    <string name="add_lecturer_toast">Dodano prowadzącego</string>
-    <string name="add_student_toast">Dodano studenta</string>
-    <string name="title_activity_menu_dormitory">MenuDormitoryActivity</string>
+
+    <!-- Strings related to MenuDormitoryActivity -->
     <string name="application_for_a_dormitory">Wniosek o akademik</string>
     <string name="reservations">Rezerwacje</string>
     <string name="accommodation">Zakwaterowanie</string>
     <string name="history_about_dorms">Historia o akademikach</string>
-    <string name="title_activity_application_for_adormitory">ApplicationForADormitory</string>
-    <string name="submit_an_application">Złóż wniosek</string>
+
+    <!-- Toast notification -->
+    <string name="add_course_toast">Dodano przedmiot</string>
+    <string name="add_employee_toast">Dodano pracownika</string>
+    <string name="add_lecturer_toast">Dodano prowadzącego</string>
+    <string name="add_student_toast">Dodano studenta</string>
+    <string name="password_changed">Hasło zostało zmienione</string>
+    <string name="application_sent">Wniosek wysłany</string>
+    <string name="assign_a_dorm">Przydzielono akademik</string>
+    <string name="add_field_of_study_toast">Dodano kierunek</string>
+
+    <!-- Hints for AssignADormActivity -->
+    <string name="prompt_dorm_name">Nazwa akademika</string>
+    <string name="prompt_room_name">Pokój</string>
+
+    <!-- Hints for AddFieldOfStudyActivity -->
+    <string name="prompt_field_of_study_name">Nazwa kierunku</string>
+    <string name="prompt_department_name">Nazwa wydziału</string>
+
+    <!-- Selection information using a spinner -->
+    <string name="choose_dorm">Wybierz akademik:</string>
+    <string name="choose_course">Wybierz przedmiot:</string>
+    <string name="choose_department">Wybierz wydział:</string>
+    <string name="choose_student">Wybierz studenta:</string>
+
+    <!-- Other Strings TextView -->
     <string name="information">Informacje:</string>
     <string name="lack">brak</string>
-    <string name="title_activity_waiting_room">WaitingRoomActivity</string>
-    <string name="title_activity_reservations">ReservationsActivity</string>
-    <string name="choose_dorm">Wybierz akademik</string>
-    <string name="application_for_a_reservation">Złóż wniosek o rezerwację</string>
-    <string name="application_sent">Wniosek wysłany</string>
-    <string name="title_activity_accomodation">AccomodationActivity</string>
     <string name="dorm">Akademik:</string>
     <string name="blank">  -</string>
     <string name="room">Pokój:</string>
-    <string name="title_activity_assign_adorm">AssignADormActivity</string>
-    <string name="prompt_dorm_name">Nazwa akademika</string>
-    <string name="prompt_room_name">Pokój</string>
-    <string name="assign_a_dorm">Przydzielono akademik</string>
-    <string name="choose_course">Wybierz przedmiot:</string>
     <string name="text_information_about_courses"><![CDATA[Zacznij wpisywać przedmiot, następnie z listy podpowiedzi wybierz jeden. Wzór -> \"wydział semestr nazwa\"]]></string>
-    <string name="write_course">Zacznij wpisywać przedmiot...</string>
-    <string name="title_activity_add_field_of_study">AddFieldOfStudyActivity</string>
-    <string name="add_field_of_study">Dodaj kierunek</string>
-    <string name="prompt_field_of_study_name">Nazwa kierunku</string>
-    <string name="prompt_department_name">Nazwa wydziału</string>
-    <string name="choose_department">Wybierz wydział:</string>
-    <string name="add_field_of_study_toast">Dodano kierunek</string>
-    <string name="prompt_course_field_of_study">Kierunek</string>
     <string name="text_information_about_field_of_study"><![CDATA[Zacznij wpisywać kierunek, następnie z listy podpowiedzi wybierz jeden. Wzór -> \"wydział kierunek\"]]></string>
+
+    <!-- Other Strings AutoCompleteTextView -->
+    <string name="write_course">Zacznij wpisywać przedmiot...</string>
     <string name="write_field_of_study">Zacznij wpisywać kierunek..</string>
-    <string name="choose_student">Wybierz studenta:</string>
-    <string name="submit_course">Zatwierdź przedmiot</string>
-    <string name="prompt_term_student">Semestr</string>
+    <string name="prompt_course_field_of_study">Kierunek</string>
     <string name="prompt_mark_for_student">Ocena</string>
 
 </resources>

@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.edu.pk.BaseActivity;
 import com.edu.pk.R;
-import com.edu.pk.data.Course;
 import com.edu.pk.data.FieldOfStudy;
 import com.edu.pk.data.Student;
 import com.edu.pk.data.StudentFieldOfStudy;
@@ -85,8 +84,8 @@ public class AddStudentActivity extends BaseActivity {
         mDateOfStudyStart = (AutoCompleteTextView) findViewById(R.id.date_of_study_start_student);
         mTerm = (AutoCompleteTextView) findViewById(R.id.term_student);
         mFieldOfStudy1 = (AutoCompleteTextView) findViewById(R.id.field_of_study1);
-
         mAddStudentViewModel = ViewModelProviders.of(this).get(AddStudentViewModel.class);
+
         mAdapter = new ArrayAdapter<>(this, R.layout.list_item, R.id.item, mAddStudentViewModel.getFieldOfStudyList());
         mFieldOfStudy1.setAdapter(mAdapter);
         mFieldOfStudy1.setOnItemClickListener(new AdapterView.OnItemClickListener() {

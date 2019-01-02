@@ -13,22 +13,19 @@ import java.util.List;
 
 public class AddStudentViewModel extends AndroidViewModel {
 
-    VirtualDeaneryRepository mRepository;
+    private VirtualDeaneryRepository mRepository;
 
     public AddStudentViewModel(@NonNull Application application) {
         super(application);
         mRepository = new VirtualDeaneryRepository(application);
     }
 
-    void insertStudent(Student student){
+    public void insertStudent(Student student){
         mRepository.insert(student);
     }
 
-    public List<FieldOfStudy> getFieldOfStudyList() {
-        return mRepository.getFieldOfStudyList();
-    }
+    public List<FieldOfStudy> getFieldOfStudyList() { return mRepository.getFieldOfStudyList(); }
 
-    public void insertStudentFieldOfStudy(StudentFieldOfStudy studentFieldOfStudy) {
-        mRepository.insertStudentFieldOfStudy(studentFieldOfStudy);
-    }
+    public void insertStudentFieldOfStudy(StudentFieldOfStudy studentFieldOfStudy) { mRepository.insertStudentFieldOfStudy(studentFieldOfStudy); }
+
 }

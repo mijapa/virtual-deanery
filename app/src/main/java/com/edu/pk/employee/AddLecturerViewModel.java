@@ -12,22 +12,19 @@ import com.edu.pk.data.VirtualDeaneryRepository;
 import java.util.List;
 
 public class AddLecturerViewModel extends AndroidViewModel {
-    VirtualDeaneryRepository mRepository;
+
+    private VirtualDeaneryRepository mRepository;
 
     public AddLecturerViewModel(@NonNull Application application) {
         super(application);
         mRepository = new VirtualDeaneryRepository(application);
     }
 
-    void insertLecturer(Lecturer lecturer) {
-        mRepository.insertLecturer(lecturer);
-    }
+    public void insertLecturer(Lecturer lecturer) { mRepository.insertLecturer(lecturer); }
 
     public List<Course> getCourseList() {
         return mRepository.getCourseList();
     }
 
-    public void insertLecturerCourse(LecturerCourse lecturerCourse) {
-        mRepository.insertLecturerCourse(lecturerCourse);
-    }
+    public void insertLecturerCourse(LecturerCourse lecturerCourse) { mRepository.insertLecturerCourse(lecturerCourse); }
 }

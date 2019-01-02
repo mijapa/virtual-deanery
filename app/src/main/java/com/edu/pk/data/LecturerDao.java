@@ -19,4 +19,5 @@ public interface LecturerDao {
 
     @Query("UPDATE lecturer SET niu = :niu, password = :newPassword WHERE niu = :niu")
     void changePasswordLecturer(Integer niu, String newPassword);
+
 }

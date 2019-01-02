@@ -10,6 +10,7 @@ import com.edu.pk.data.VirtualDeaneryRepository;
 import java.util.List;
 
 public class WaitingRoomViewModel extends AndroidViewModel {
+
     private LiveData<List<StudentApplication>> mStudentApplications;
     private VirtualDeaneryRepository mRepository;
 
@@ -19,10 +20,8 @@ public class WaitingRoomViewModel extends AndroidViewModel {
         mStudentApplications = mRepository.getStudentApplications();
     }
 
-    public LiveData<List<StudentApplication>> getStudentApplications() {
-        return mStudentApplications;
-    }
-    public void setStatusApplication(int applicationNo, String status){
-        mRepository.setStatusApplication(applicationNo, status);
-    }
+    public LiveData<List<StudentApplication>> getStudentApplications() { return mStudentApplications; }
+
+    public void setStatusApplication(int applicationNo, String status){ mRepository.setStatusApplication(applicationNo, status); }
+
 }
