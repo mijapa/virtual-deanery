@@ -112,7 +112,7 @@ public class VirtualDeaneryRepository {
         return mStudentDao.getStudents();
     }
 
-    public LiveData<List<StudentApplication>> getStudentApplications() { return mStudentApplicationDao.getStudentApplications(); }
+    public LiveData<List<StudentApplication>> getStudentApplicationsByStatusWaiting() { return mStudentApplicationDao.getStudentApplicationsByStatusWaiting(); }
 
     public List<Course> getCourseList() {
         return mCourseDao.getCourseList();
