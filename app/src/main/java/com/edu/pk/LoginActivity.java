@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.edu.pk.employee.AddStudentViewModel;
 import com.edu.pk.employee.EmployeeMenuActivity;
 import com.edu.pk.lecturer.LecturerMenuActivity;
 import com.edu.pk.student.MenuActivity;
@@ -31,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     private static EditText mPassword;
     private Button mNiuSignInButton;
 
+    AddStudentViewModel mAddStudentViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
         mNiuSignInButton = (Button) findViewById(R.id.NIU_sign_in_button);
         mPassword = (EditText) findViewById(R.id.password);
         mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+
+        mAddStudentViewModel = ViewModelProviders.of(this).get(AddStudentViewModel.class);
 
         mPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -60,8 +65,8 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     } else {
-                        mNiu.setText("");
-                        mPassword.setText("");
+                        /*mNiu.setText("");
+                        mPassword.setText("");*/
                     }
                     return true;
                 }
@@ -87,8 +92,8 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 } else {
-                    mNiu.setText("");
-                    mPassword.setText("");
+                    /*mNiu.setText("");
+                    mPassword.setText("");*/
                 }
             }
         });
@@ -159,14 +164,14 @@ public class LoginActivity extends AppCompatActivity {
         String password = mPassword.getText().toString();
         Integer niu = Integer.valueOf(mNiu.getText().toString());
         mLoginViewModel.setNiu(niu);
-        if (niu < 10) {
+        if (niu < 10 || niu == 123060) {
             currentUser = "s";
-        } else if(niu >= 10 && niu < 20) {
+        } else if (niu >= 10 && niu < 20) {
             currentUser = "p";
-        }else{
+        } else {
             currentUser = "l";
         }
-        return mLoginViewModel.checkLoginPassword(mNiu.getText().toString(), password);
+        return mLoginViewModel.checkLoginPassword(niu, password);
     }
 
     public void onBackPressed() {
@@ -176,4 +181,3 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
-
