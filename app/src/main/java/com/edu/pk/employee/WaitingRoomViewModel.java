@@ -17,10 +17,10 @@ public class WaitingRoomViewModel extends AndroidViewModel {
     public WaitingRoomViewModel(Application application) {
         super(application);
         mRepository = new VirtualDeaneryRepository(application);
-        mStudentApplications = mRepository.getStudentApplications();
+        mStudentApplications = mRepository.getStudentApplicationsByStatusWaiting();
     }
 
-    public LiveData<List<StudentApplication>> getStudentApplications() { return mStudentApplications; }
+    public LiveData<List<StudentApplication>> getStudentApplicationsByStatusWaiting() { return mStudentApplications; }
 
     public void setStatusApplication(int applicationNo, String status){ mRepository.setStatusApplication(applicationNo, status); }
 

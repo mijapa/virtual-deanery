@@ -14,8 +14,8 @@ public interface StudentApplicationDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(StudentApplication studentApplication);
 
-    @Query("SELECT * FROM student_application")
-    LiveData<List<StudentApplication>> getStudentApplications();
+    @Query("SELECT * FROM student_application WHERE status LIKE 'oczekujący'")
+    LiveData<List<StudentApplication>> getStudentApplicationsByStatusWaiting();
 
     @Query("SELECT status FROM student_application WHERE studentAlbumNo = :albumNo AND description = :description")
     String getStatusApplication(Integer albumNo, String description);

@@ -71,7 +71,7 @@ public class WaitingRoomActivity extends BaseActivity {
         }));
 
         mWaitingRoomViewModel = ViewModelProviders.of(this).get(WaitingRoomViewModel.class);
-        mWaitingRoomViewModel.getStudentApplications().observe(this, new Observer<List<StudentApplication>>() {
+        mWaitingRoomViewModel.getStudentApplicationsByStatusWaiting().observe(this, new Observer<List<StudentApplication>>() {
             @Override
             public void onChanged(@Nullable final List<StudentApplication> studentApplications) {
                 adapter.setStudentApplications(studentApplications);

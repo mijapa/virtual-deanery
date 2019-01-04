@@ -43,6 +43,54 @@ public class VirtualDeaneryRepository {
         this.niu = niu;
     }
 
+    public void setAlbumNo(Integer niu, Integer albumNo) { mStudentDao.setAlbumNo(niu, albumNo); }
+
+    public void setPesel(Integer niu, String pesel) { mStudentDao.setPesel(niu, pesel); }
+
+    public void setFirstName(Integer niu, String firstName) { mStudentDao.setFirstName(niu, firstName); }
+
+    public void setLastName(Integer niu, String lastName) { mStudentDao.setLastName(niu, lastName); }
+
+    public void setFamilyName(Integer niu, String familyName) { mStudentDao.setFamilyName(niu, familyName); }
+
+    public void setSex(Integer niu, Integer sex) { mStudentDao.setSex(niu, sex); }
+
+    public void setAddress(Integer niu, String address) { mStudentDao.setAddress(niu, address); }
+
+    public void setCityOrVillage(Integer niu, String cityOrVillage) { mStudentDao.setCityOrVillage(niu, cityOrVillage); }
+
+    public void setVoivodeship(Integer niu, String voivodeship) { mStudentDao.setVoivodeship(niu, voivodeship); }
+
+    public void setCountry(Integer niu, String country) { mStudentDao.setCountry(niu, country); }
+
+    public void setDistanceFromTheCheck_InPlace(Integer niu, Integer distanceFromTheCheck_InPlace) { mStudentDao.setDistanceFromTheCheck_InPlace(niu, distanceFromTheCheck_InPlace); }
+
+    public void setDateOfBirth(Integer niu, String dateOfBirth) { mStudentDao.setDateOfBirth(niu, dateOfBirth); }
+
+    public void setPlaceOfBirth(Integer niu, String placeOfBirth) { mStudentDao.setPlaceOfBirth(niu, placeOfBirth); }
+
+    public void setFatherName(Integer niu, String fatherName) { mStudentDao.setFatherName(niu, fatherName); }
+
+    public void setMotherName(Integer niu, String motherName) { mStudentDao.setMotherName(niu, motherName); }
+
+    public void setMotherFamilyName(Integer niu, String motherFamilyName) { mStudentDao.setMotherFamilyName(niu, motherFamilyName); }
+
+    public void setMaritalStatus(Integer niu, Integer maritalStatus) { mStudentDao.setMaritalStatus(niu, maritalStatus); }
+
+    public void setForeigner(Integer niu, Integer foreigner) { mStudentDao.setForeigner(niu, foreigner); }
+
+    public void setPhoneNumber(Integer niu, Integer phoneNumber) { mStudentDao.setPhoneNumber(niu, phoneNumber); }
+
+    public void setOtherNumber(Integer niu, Integer otherNumber) { mStudentDao.setOtherNumber(niu, otherNumber); }
+
+    public void setBankAccount(Integer niu, String bankAccount) { mStudentDao.setBankAccount(niu, bankAccount); }
+
+    public void setEmail(Integer niu, String email) { mStudentDao.setEmail(niu, email); }
+
+    public void setDateOfStudyStart(Integer niu, String dateOfStudyStart) { mStudentDao.setDateOfStudyStart(niu, dateOfStudyStart); }
+
+    public void setTerm(Integer niu, Integer term) { mStudentDao.setTerm(niu, term); }
+
     //TODO: this should not be perormed on main thread
     public String getPassword() {
         Boolean passOK = false;
@@ -112,7 +160,7 @@ public class VirtualDeaneryRepository {
         return mStudentDao.getStudents();
     }
 
-    public LiveData<List<StudentApplication>> getStudentApplications() { return mStudentApplicationDao.getStudentApplications(); }
+    public LiveData<List<StudentApplication>> getStudentApplicationsByStatusWaiting() { return mStudentApplicationDao.getStudentApplicationsByStatusWaiting(); }
 
     public List<Course> getCourseList() {
         return mCourseDao.getCourseList();

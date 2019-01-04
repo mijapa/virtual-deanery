@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.edu.pk.R;
@@ -31,13 +30,9 @@ public class WaitingRoomAdapter extends RecyclerView.Adapter<WaitingRoomAdapter.
     @Override
     public void onBindViewHolder(final WaitingRoomAdapter.WaitingRoomViewHolder holder,final int position) {
         StudentApplication current = mStudentApplications.get(position);
-        if(current.getStatus().contains("oczekujący")) {
-            holder.studentApplicationItemView.setText(current.getDescription() + "\nNumer albumu: " + current.getStudentAlbumNo() + "\nOdległość od miejsca zamieszkania: " + current.getDistanceFromTheCheck_InPlace());
-            holder.studentApplicationItemView.setBackgroundColor(holder.studentApplicationItemView.getResources().getColor(R.color.colorAccent));
-            holder.studentApplicationItemView.setTextSize(15);
-        }else{
-            holder.setVisibility(false);
-        }
+        holder.studentApplicationItemView.setText(current.getDescription() + "\nNumer albumu: " + current.getStudentAlbumNo() + "\nOdległość od miejsca zamieszkania: " + current.getDistanceFromTheCheck_InPlace());
+        holder.studentApplicationItemView.setBackgroundColor(holder.studentApplicationItemView.getResources().getColor(R.color.colorAccent));
+        holder.studentApplicationItemView.setTextSize(15);
     }
 
     void setStudentApplications(List<StudentApplication> studentApplications) {
@@ -70,20 +65,6 @@ public class WaitingRoomAdapter extends RecyclerView.Adapter<WaitingRoomAdapter.
     class WaitingRoomViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView studentApplicationItemView;
-
-        public void setVisibility(boolean isVisible){
-            RecyclerView.LayoutParams param = (RecyclerView.LayoutParams)itemView.getLayoutParams();
-            if (isVisible){
-                param.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-                param.width = LinearLayout.LayoutParams.MATCH_PARENT;
-                itemView.setVisibility(View.VISIBLE);
-            }else{
-                itemView.setVisibility(View.GONE);
-                param.height = 0;
-                param.width = 0;
-            }
-            itemView.setLayoutParams(param);
-        }
 
         private WaitingRoomViewHolder(View itemView) {
             super(itemView);
