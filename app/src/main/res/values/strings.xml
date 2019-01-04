@@ -9,6 +9,7 @@
     <string name="title_activity_menu_dormitory">Akademiki</string>
     <string name="title_activity_waiting_room">Poczekalnia</string>
     <string name="title_activity_add_field_of_study">Dodaj kierunek</string>
+    <string name="title_activity_edit_student_data">Edytuj dane studenta</string>
 
     <!-- Other strings -->
     <string name="name_pk">Politechnika Krakowska</string>
@@ -55,6 +56,7 @@
     <string name="add_course">Dodaj\nprzedmiot</string>
     <string name="add_field_of_study">Dodaj\nkierunek</string>
     <string name="waiting_room">Poczekalnia</string>
+    <string name="edit_student_from_employee">Edytuj dane studenta</string>
 
     <!-- Hints for AddUserActivity -->
     <string name="prompt_niu">Niu</string>
@@ -136,6 +138,7 @@
     <string name="write_field_of_study">Zacznij wpisywać kierunek..</string>
     <string name="prompt_course_field_of_study">Kierunek</string>
     <string name="prompt_mark_for_student">Ocena</string>
+    <string name="edit_student_data">Dane studenta zostały zaktualizowane</string>
 
 
 </resources>
