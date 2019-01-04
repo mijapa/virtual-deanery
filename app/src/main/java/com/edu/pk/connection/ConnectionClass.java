@@ -22,7 +22,7 @@ import java.sql.Statement;
 public class ConnectionClass {
     String classs = "com.mysql.jdbc.Driver";
 
-    String url = "jdbc:mysql://192.168.1.3/vd_db";
+    String url = "jdbc:mysql://192.168.137.14/vd_db";
     String un = "lonsper";
     String password = "lonsper";
 

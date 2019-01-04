@@ -18,7 +18,7 @@ public interface StudentDao {
     void deleteAll();
 
     @Query("SELECT * FROM student where niu = :niu")
-    LiveData<Student> getStudent(Integer niu);
+    Student getStudent(Integer niu);
 
     @Query("SELECT password FROM student where niu = :niu")
     String getStudentPassword(Integer niu);

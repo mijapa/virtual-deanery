@@ -63,8 +63,10 @@ public class VirtualDeaneryRepository {
     public void updateStudentData(int niu, String password) {
         try {
             FetchStudentFromDatabase fetchSingleAccount = new FetchStudentFromDatabase(niu,password);
-            fetchSingleAccount.execute().get(4, TimeUnit.SECONDS);
-            mStudentDao.insert(fetchSingleAccount.getStudent());
+            fetchSingleAccount.execute().get(5000, TimeUnit.MILLISECONDS);
+            if (fetchSingleAccount.isSuccess()) {
+                mStudentDao.insert(fetchSingleAccount.getStudent());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -119,7 +121,7 @@ public class VirtualDeaneryRepository {
         return mStudentDormitoryDao.getRoom(albumNo);
     }
 
-    public LiveData<Student> getStudent() {
+    public Student getStudent() {
         return mStudentDao.getStudent(niu);
     }
 

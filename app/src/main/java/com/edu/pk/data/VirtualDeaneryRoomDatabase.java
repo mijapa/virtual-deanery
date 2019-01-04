@@ -107,36 +107,37 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             foscDao.deleteAll();
             sfosDao.deleteAll();
 
-//            Student student;
-//            student = new Student(
-//                    3,
-//                    101010,
-//                    "3",
-//                    "97020110200",
-//                    "Jan",
-//                    "Kowalski",
-//                    "",
-//                    0,
-//                    "ul. Warszawska 2, 10-101 Krakówek",
-//                    "Krakówek",
-//                    "Małopolska",
-//                    "Polska",
-//                    300,
-//                    "970201",
-//                    "Krakówek",
-//                    "Józef",
-//                    "Halina",
-//                    "Nowak",
-//                    0,
-//                    0,
-//                    500500500,
-//                    501501501,
-//                    "101232135649821689798465",
-//                    "kowalski@kowalski.pl",
-//                    "20160904"
-//            );
-//
-//            sDao.insert(student);
+            Student student;
+            student = new Student(
+                    3,
+                    101010,
+                    "3",
+                    "97020110200",
+                    "Jan",
+                    "Kowalski",
+                    "",
+                    0,
+                    "ul. Warszawska 2, 10-101 Krakówek",
+                    "Krakówek",
+                    "Małopolska",
+                    "Polska",
+                    300,
+                    "970201",
+                    "Krakówek",
+                    "Józef",
+                    "Halina",
+                    "Nowak",
+                    0,
+                    0,
+                    500500500,
+                    501501501,
+                    "101232135649821689798465",
+                    "kowalski@kowalski.pl",
+                    "20160904",
+                    3
+            );
+
+            sDao.insert(student);
 
             Employee employee;
             employee = new Employee(
