@@ -16,15 +16,16 @@ public class FetchStudentFromDatabase extends AsyncTask<String, String, String> 
     ConnectionClass connectionClass;
 
     String z = "";
-    boolean isSuccess = false;
+
+    private boolean isSuccess = false;
     private Student student = null;
 
-    public Student getStudent() throws Exception {
-        if (student != null) {
-            return student;
-        }else{
-            throw new Exception("Student - null");
-        }
+    public Student getStudent(){
+        return student;
+    }
+
+    public boolean isSuccess() {
+        return isSuccess;
     }
 
     public FetchStudentFromDatabase(int niu, String password) {
@@ -51,6 +52,7 @@ public class FetchStudentFromDatabase extends AsyncTask<String, String, String> 
 
                     if (password.equals(passwordFromDataBase) && niu == niuFromDataBase) {
                         student = fetchFromDataBase(rs);
+                        isSuccess = true;
                     } else {
                         isSuccess = false;
                     }
@@ -62,13 +64,6 @@ public class FetchStudentFromDatabase extends AsyncTask<String, String, String> 
             ex.printStackTrace();
         }
         return z;
-    }
-
-    @Override
-    protected void onPostExecute(String s) {
-        if (student != null) {
-            isSuccess = true;
-        }
     }
 
     private Student fetchFromDataBase(ResultSet rs) {
