@@ -3,6 +3,7 @@ package com.edu.pk.student.mydata;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 
+import com.edu.pk.data.Student;
 import com.edu.pk.data.VirtualDeaneryRepository;
 
 import java.util.ArrayList;
@@ -24,26 +25,28 @@ public class MyDataViewModel extends AndroidViewModel {
 
     class DataList {
 
+        private Student mStudent = mRepository.getStudent();
+
         private List<Data> mDataList = new ArrayList<Data>() {
             {
-                add(new Data("Dane podstawowe", "Nazwisko, Imię", "Kowalski, Jan"));
-                add(new Data("Dane podstawowe", "Nazwisko rodowe", ""));
-                add(new Data("Dane podstawowe", "płeć", "Mężczyzna"));
+                add(new Data("Dane podstawowe", "Nazwisko, Imię", mStudent.getLastName() + " " + mStudent.getFirstName()));
+                add(new Data("Dane podstawowe", "Nazwisko rodowe", mStudent.getFamilyName()));
+                add(new Data("Dane podstawowe", "płeć", sextoString(mStudent.getSex())));
 
-                add(new Data("Dane dodatkowe", "Data rozpoczęcia studiów", "04-08-2018"));
-                add(new Data("Dane dodatkowe", "Kraj pochodzenia", "Polska"));
-                add(new Data("Dane dodatkowe", "Obcokrajowiec", "nie"));
+                add(new Data("Dane dodatkowe", "Data rozpoczęcia studiów", mStudent.getDateOfStudyStart()));
+                add(new Data("Dane dodatkowe", "Kraj pochodzenia", mStudent.getCountry()));
+                add(new Data("Dane dodatkowe", "Obcokrajowiec", isForeginer(mStudent.getCountry())));
 
-                add(new Data("Dane teleadresowe", "Telefon", "+48500500500"));
-                add(new Data("Dane teleadresowe", "e-mail", "jak@kowalski.pl"));
+                add(new Data("Dane teleadresowe", "Telefon", mStudent.getPhoneNumber().toString()));
+                add(new Data("Dane teleadresowe", "e-mail", mStudent.getEmail()));
 
-                add(new Data("Informacje o toku studiów", "Zgoda na elektroniczne udostępnianie dokumentów", " Wyrażono zgodę na udostępnianie dokumentów drogą elektroniczn"));
-                add(new Data("Informacje o toku studiów", "Rok/semestr (w roku akad.)", "1 / 2 (2018/2019)"));
-                add(new Data("Informacje o toku studiów", "Semestr", "Zimowy"));
+//                add(new Data("Informacje o toku studiów", "Zgoda na elektroniczne udostępnianie dokumentów", " Wyrażono zgodę na udostępnianie dokumentów drogą elektroniczn"));
+                add(new Data("Informacje o toku studiów", "Semestr", mStudent.getTerm().toString()));
+                add(new Data("Informacje o toku studiów", "Semestr", semestrToSemestr(mStudent.getTerm())));
                 add(new Data("Informacje o toku studiów", "Forma studiów", "Stacjonarne"));
 
                 add(new Data("Ukończona szkoła średnia", "Rodzaj matury", "(nowa matura poziom r)"));
-                add(new Data("Ukończona szkoła średnia", "Wystawiający", "Okręgowa Komisja Egzaminacyjna w Krakowie"));
+//                add(new Data("Ukończona szkoła średnia", "Wystawiający", "Okręgowa Komisja Egzaminacyjna w Krakowie"));
 
                 add(new Data("Ukończona szkoła wyższa", "Nazwa uczelni", ""));
 
@@ -55,6 +58,20 @@ public class MyDataViewModel extends AndroidViewModel {
             }
         };
 
+        private String sextoString(int sex) {
+            if (sex == 0) return "Mężczycna";
+            else return "Kobieta";
+        }
+
+        private String isForeginer(String krajPochodzenia) {
+            if (krajPochodzenia.equals("Polska")) return "nie";
+            else return "tak";
+        }
+
+        private String semestrToSemestr(int semestr) {
+            if (semestr % 2 == 1) return "Zimowy";
+            else return "Letni";
+        }
         private List<String> mCategoryList = new ArrayList<String>() {
             {
                 add("Dane podstawowe");

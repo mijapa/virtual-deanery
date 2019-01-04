@@ -104,7 +104,7 @@ public class VirtualDeaneryRepository {
         return mStudentDormitoryDao.getRoom(albumNo);
     }
 
-    public LiveData<Student> getStudent() {
+    public Student getStudent() {
         return mStudentDao.getStudent(niu);
     }
 
