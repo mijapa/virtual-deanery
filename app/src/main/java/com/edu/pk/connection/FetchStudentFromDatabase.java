@@ -28,10 +28,9 @@ public class FetchStudentFromDatabase extends AsyncTask<String, String, String> 
         return isSuccess;
     }
 
-    public FetchStudentFromDatabase(int niu, String password) {
+    public FetchStudentFromDatabase(int niu) {
         this.connectionClass = new ConnectionClass();
         this.niu = niu;
-        this.password = password;
     }
 
     @Override
@@ -42,28 +41,25 @@ public class FetchStudentFromDatabase extends AsyncTask<String, String, String> 
                 throw new Exception("Internet ERROR");
 
             } else {
-                String query = "select * from student where niu='" + niu + "' and password = '" + password + "'";
-                Statement stmt = con.createStatement();
-                ResultSet rs = stmt.executeQuery(query);
-
-                while (rs.next()) {
-                    niuFromDataBase = rs.getInt("NIU");
-                    passwordFromDataBase = rs.getString("password");
-
-                    if (password.equals(passwordFromDataBase) && niu == niuFromDataBase) {
-                        student = fetchFromDataBase(rs);
-                        isSuccess = true;
-                    } else {
-                        isSuccess = false;
-                    }
-                }
-                stmt.close();
+                getStudent(con);
             }
         } catch (Exception ex) {
             isSuccess = false;
             ex.printStackTrace();
         }
         return z;
+    }
+
+    private void getStudent(Connection con) throws SQLException {
+        String query = "select * from student where niu='" + niu + "'";
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+                student = fetchFromDataBase(rs);
+                isSuccess = true;
+        }
+        stmt.close();
     }
 
     private Student fetchFromDataBase(ResultSet rs) {

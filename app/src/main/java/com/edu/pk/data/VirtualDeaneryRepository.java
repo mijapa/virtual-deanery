@@ -60,9 +60,9 @@ public class VirtualDeaneryRepository {
         }
     }
 
-    public void updateStudentData(int niu, String password) {
+    public void updateStudentData(int niu) {
         try {
-            FetchStudentFromDatabase fetchSingleAccount = new FetchStudentFromDatabase(niu,password);
+            FetchStudentFromDatabase fetchSingleAccount = new FetchStudentFromDatabase(niu);
             fetchSingleAccount.execute().get(5000, TimeUnit.MILLISECONDS);
             if (fetchSingleAccount.isSuccess()) {
                 mStudentDao.insert(fetchSingleAccount.getStudent());
