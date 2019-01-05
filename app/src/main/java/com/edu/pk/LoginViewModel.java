@@ -18,13 +18,20 @@ public class LoginViewModel extends AndroidViewModel {
     //TODO Michał pierwsza linijka w przypadku litery rzuci exception i zamknie aplikację, trzeba to poprawić coś na wzór
     //TODO tego co robiłam w attemptLogin() skoro przeniosłeś to tutaj, a z tamtąd wyrzucić ?
 
-    Boolean checkPassword(String password) {
+
+    Boolean checkLoginPassword(int niu, String password) {
         Boolean isPassOK;
         String passFromDB = mRepository.getPassword();
         try {
             isPassOK = passFromDB.equals(password);
         } catch (Exception e) {
-            isPassOK = false;
+            mRepository.updateStudentData(niu,password);
+            try {
+                passFromDB = mRepository.getPassword();
+                isPassOK = passFromDB.equals(password);
+            } catch (Exception e2) {
+                isPassOK = false;
+            }
         }
         return isPassOK;
     }

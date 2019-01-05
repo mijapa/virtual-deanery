@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.edu.pk.employee.AddStudentViewModel;
 import com.edu.pk.employee.EmployeeMenuActivity;
 import com.edu.pk.lecturer.LecturerMenuActivity;
 import com.edu.pk.student.MenuActivity;
@@ -31,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     private LoginViewModel mLoginViewModel;
     private Button mNiuSignInButton;
 
+    AddStudentViewModel mAddStudentViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
         mNiuSignInButton = (Button) findViewById(R.id.NIU_sign_in_button);
         mPassword = (EditText) findViewById(R.id.password);
         mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+
+        mAddStudentViewModel = ViewModelProviders.of(this).get(AddStudentViewModel.class);
 
         mPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -66,9 +71,8 @@ public class LoginActivity extends AppCompatActivity {
             String password = mPassword.getText().toString();
             Integer niu = Integer.valueOf(mNiu.getText().toString());
             mLoginViewModel.setNiu(niu);
-
-            if (mLoginViewModel.checkPassword(password)) {
-                if (niu < 10) {
+            if (mLoginViewModel.checkLoginPassword(niu, password)) {
+                if (niu < 10 || niu == 123060) {
                     Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                     startActivity(intent);
                 } else if (niu >= 10 && niu < 20) {
@@ -83,6 +87,8 @@ public class LoginActivity extends AppCompatActivity {
                 mNiu.setError(getString(R.string.error_invalid_one));
                 View focusView = mNiu;
                 focusView.requestFocus();
+                mNiu.setText("");
+                mPassword.setText("");
             }
         } else {
             mNiu.setText("");
@@ -146,7 +152,6 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
-
     public void onBackPressed() {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
@@ -154,4 +159,3 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
-
