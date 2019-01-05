@@ -47,6 +47,10 @@ public class EmployeeMenuActivity extends BaseActivity {
                 intent = new Intent(this, WaitingRoomActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.edit_student_from_employee:
+                intent = new Intent(this, EditStudentDataActivity.class);
+                startActivity(intent);
+                break;
             case R.id.change_password_employee:
                 Bundle bundle = new Bundle();
                 bundle.putString("goto", "EmployeeMenuActivity");
