@@ -9,6 +9,7 @@ import com.edu.pk.BaseActivity;
 import com.edu.pk.PasswordChangeActivity;
 import com.edu.pk.R;
 import com.edu.pk.student.dormitory.MenuDormitoryActivity;
+import com.edu.pk.student.finance.MenuFinanceActivity;
 import com.edu.pk.student.mydata.MyDataActivity;
 
 public class MenuActivity extends BaseActivity {
@@ -33,6 +34,8 @@ public class MenuActivity extends BaseActivity {
             case R.id.my_plan:
                 break;
             case R.id.my_finances:
+                intent = new Intent(MenuActivity.this, MenuFinanceActivity.class);
+                startActivity(intent);
                 break;
             case R.id.my_dorms:
                 intent = new Intent(MenuActivity.this, MenuDormitoryActivity.class);

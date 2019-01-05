@@ -7,8 +7,7 @@ import android.support.annotation.NonNull;
 @Entity(tableName = "payment")
 public class Payment {
 
-    @PrimaryKey
-    @NonNull
+    @PrimaryKey(autoGenerate = true)
     private Integer idPayment;
     @NonNull
     private Integer idStudent;
@@ -37,8 +36,7 @@ public class Payment {
     @NonNull
     private String comments;
 
-    public Payment(@NonNull Integer idPayment, @NonNull Integer idStudent, @NonNull String description, @NonNull String year, @NonNull String termNo, @NonNull String term, @NonNull String charge, @NonNull String accruedInterest, @NonNull String estimatedInterest, @NonNull String paymentDeadline, @NonNull String payment, @NonNull String interestPaid, @NonNull String toPay, @NonNull String comments) {
-        this.idPayment = idPayment;
+    public Payment(@NonNull Integer idStudent, @NonNull String description, @NonNull String year, @NonNull String termNo, @NonNull String term, @NonNull String charge, @NonNull String accruedInterest, @NonNull String estimatedInterest, @NonNull String paymentDeadline, @NonNull String payment, @NonNull String interestPaid, @NonNull String toPay, @NonNull String comments) {
         this.idStudent = idStudent;
         this.description = description;
         this.year = year;
@@ -54,7 +52,6 @@ public class Payment {
         this.comments = comments;
     }
 
-    @NonNull
     public Integer getIdPayment() { return idPayment; }
 
     @NonNull
@@ -95,5 +92,8 @@ public class Payment {
 
     @NonNull
     public String getComments() { return comments; }
+
+    public void setIdPayment(Integer idPayment) { this.idPayment = idPayment; }
+
 
 }

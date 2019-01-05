@@ -186,6 +186,42 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.edu.pk.employee.EmployeeMenuActivity" />
         </activity>
+        <activity
+            android:name=".student.finance.MenuFinanceActivity"
+            android:label="@string/title_activity_menu_finance"
+            android:parentActivityName=".student.MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.student.MenuActivity" />
+        </activity>
+        <activity
+            android:name=".student.finance.PaymentActivity"
+            android:label="@string/title_activity_menu_finance"
+            android:parentActivityName=".student.finance.MenuFinanceActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.student.finance.MenuFinanceActivity" />
+        </activity>
+        <activity
+            android:name=".student.finance.BenefitActivity"
+            android:label="@string/title_activity_menu_finance"
+            android:parentActivityName=".student.finance.MenuFinanceActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.student.finance.MenuFinanceActivity" />
+        </activity>
+        <activity
+            android:name=".student.finance.DeclarationOfInstallmentsActivity"
+            android:label="@string/title_activity_menu_finance"
+            android:parentActivityName=".student.finance.MenuFinanceActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.student.finance.MenuFinanceActivity" />
+        </activity>
     </application>
 
 </manifest>
