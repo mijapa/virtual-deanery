@@ -9,9 +9,9 @@ public class Payment {
 
     @PrimaryKey
     @NonNull
-    private Integer id_payment;
+    private Integer idPayment;
     @NonNull
-    private Integer id_student;
+    private Integer idStudent;
     @NonNull
     private String description;
     @NonNull
@@ -37,9 +37,9 @@ public class Payment {
     @NonNull
     private String comments;
 
-    public Payment(@NonNull Integer id_payment, @NonNull Integer id_student, @NonNull String description, @NonNull String year, @NonNull String termNo, @NonNull String term, @NonNull String charge, @NonNull String accruedInterest, @NonNull String estimatedInterest, @NonNull String paymentDeadline, @NonNull String payment, @NonNull String interestPaid, @NonNull String toPay, @NonNull String comments) {
-        this.id_payment = id_payment;
-        this.id_student = id_student;
+    public Payment(@NonNull Integer idPayment, @NonNull Integer idStudent, @NonNull String description, @NonNull String year, @NonNull String termNo, @NonNull String term, @NonNull String charge, @NonNull String accruedInterest, @NonNull String estimatedInterest, @NonNull String paymentDeadline, @NonNull String payment, @NonNull String interestPaid, @NonNull String toPay, @NonNull String comments) {
+        this.idPayment = idPayment;
+        this.idStudent = idStudent;
         this.description = description;
         this.year = year;
         this.termNo = termNo;
@@ -55,10 +55,10 @@ public class Payment {
     }
 
     @NonNull
-    public Integer getId_payment() { return id_payment; }
+    public Integer getIdPayment() { return idPayment; }
 
     @NonNull
-    public Integer getId_student() { return id_student; }
+    public Integer getIdStudent() { return idStudent; }
 
     @NonNull
     public String getDescription() { return description; }
