@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class}, version = 20, exportSchema = false)
+@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class, Payment.class}, version = 21, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -61,6 +61,8 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     public abstract StudentFieldOfStudyDao studentFieldOfStudyDao();
 
+    public abstract PaymentDao paymentDao();
+
     /**
      * Populate the database in the background.
      */
@@ -76,6 +78,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
         private final FieldOfStudyDao fosDao;
         private final FieldOfStudyCourseDao foscDao;
         private final StudentFieldOfStudyDao sfosDao;
+        private final PaymentDao pDao;
 
         PopulateDbAsync(VirtualDeaneryRoomDatabase db) {
             sDao = db.studentDao();
@@ -88,6 +91,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             fosDao = db.fieldOfStudyDao();
             foscDao = db.fieldOfStudyCourseDao();
             sfosDao = db.studentFieldOfStudyDao();
+            pDao = db.paymentDao();
         }
 
         @Override
@@ -106,6 +110,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             fosDao.deleteAll();
             foscDao.deleteAll();
             sfosDao.deleteAll();
+            pDao.deleteAll();
 
             Student student;
             student = new Student(

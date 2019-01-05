@@ -23,6 +23,7 @@ public class VirtualDeaneryRepository {
     private FieldOfStudyDao mFieldOfStudyDao;
     private FieldOfStudyCourseDao mFieldOfStudyCourseDao;
     private StudentFieldOfStudyDao mStudentFieldOfStudyDao;
+    private PaymentDao mPaymentDao;
 
     private static Integer niu;
 
@@ -38,6 +39,7 @@ public class VirtualDeaneryRepository {
         mFieldOfStudyDao = db.fieldOfStudyDao();
         mFieldOfStudyCourseDao = db.fieldOfStudyCourseDao();
         mStudentFieldOfStudyDao = db.studentFieldOfStudyDao();
+        mPaymentDao = db.paymentDao();
     }
 
     public Integer getNiu() {
@@ -142,6 +144,8 @@ public class VirtualDeaneryRepository {
     public void insertFieldOfStudyCourse(FieldOfStudyCourse fieldOfStudyCourse) { new insertFieldOfStudyCourseAsyncTask(mFieldOfStudyCourseDao).execute(fieldOfStudyCourse); }
 
     public void insertStudentFieldOfStudy(StudentFieldOfStudy studentFieldOfStudy) { new insertStudentFieldOfStudyAsyncTask(mStudentFieldOfStudyDao).execute(studentFieldOfStudy); }
+
+    public void insertPayment(Payment payment){ new insertPaymentAsyncTask(mPaymentDao).execute(payment);}
 
 
     public void changePasswordStudent(int niu, String password) { mStudentDao.changePasswordStudent(niu, password); }
@@ -327,6 +331,20 @@ public class VirtualDeaneryRepository {
         @Override
         protected Void doInBackground(final StudentFieldOfStudy... params) {
             mStudentFieldOfStudyAsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class insertPaymentAsyncTask extends AsyncTask<Payment, Void, Void> {
+        private PaymentDao mPaymentAsyncTaskDao;
+
+        insertPaymentAsyncTask(PaymentDao dao) {
+            mPaymentAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final Payment... params) {
+            mPaymentAsyncTaskDao.insert(params[0]);
             return null;
         }
     }
