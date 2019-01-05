@@ -10,6 +10,7 @@
     <string name="title_activity_waiting_room">Poczekalnia</string>
     <string name="title_activity_add_field_of_study">Dodaj kierunek</string>
     <string name="title_activity_edit_student_data">Edytuj dane studenta</string>
+    <string name="title_activity_menu_finance">Moje finanse</string>
 
     <!-- Other strings -->
     <string name="name_pk">Politechnika Krakowska</string>
@@ -99,6 +100,11 @@
     <string name="accommodation">Zakwaterowanie</string>
     <string name="history_about_dorms">Historia o akademikach</string>
 
+    <!-- Strings related to MenuFinanceActivity -->
+    <string name="payments">Płatności</string>
+    <string name="benefits">Świadczenia</string>
+    <string name="declaration_of_installments">Deklaracja rat</string>
+
     <!-- Toast notification -->
     <string name="add_course_toast">Dodano przedmiot</string>
     <string name="add_employee_toast">Dodano pracownika</string>
@@ -109,6 +115,7 @@
     <string name="assign_a_dorm">Przydzielono akademik</string>
     <string name="add_field_of_study_toast">Dodano kierunek</string>
     <string name="application_information">Wniosek został już złożony lub nie zostałeś uprawniony do składania wniosku</string>
+    <string name="edit_student_data">Dane studenta zostały zaktualizowane</string>
 
     <!-- Hints for AssignADormActivity -->
     <string name="prompt_dorm_name">Nazwa akademika</string>
@@ -138,7 +145,6 @@
     <string name="write_field_of_study">Zacznij wpisywać kierunek..</string>
     <string name="prompt_course_field_of_study">Kierunek</string>
     <string name="prompt_mark_for_student">Ocena</string>
-    <string name="edit_student_data">Dane studenta zostały zaktualizowane</string>
 
 
 </resources>

@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class}, version = 20, exportSchema = false)
+@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class, Payment.class, Benefit.class}, version = 23, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -61,6 +61,10 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     public abstract StudentFieldOfStudyDao studentFieldOfStudyDao();
 
+    public abstract PaymentDao paymentDao();
+
+    public abstract BenefitDao benefitDao();
+
     /**
      * Populate the database in the background.
      */
@@ -76,6 +80,8 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
         private final FieldOfStudyDao fosDao;
         private final FieldOfStudyCourseDao foscDao;
         private final StudentFieldOfStudyDao sfosDao;
+        private final PaymentDao pDao;
+        private final BenefitDao bDao;
 
         PopulateDbAsync(VirtualDeaneryRoomDatabase db) {
             sDao = db.studentDao();
@@ -88,6 +94,8 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             fosDao = db.fieldOfStudyDao();
             foscDao = db.fieldOfStudyCourseDao();
             sfosDao = db.studentFieldOfStudyDao();
+            pDao = db.paymentDao();
+            bDao = db.benefitDao();
         }
 
         @Override
@@ -96,7 +104,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             // Not needed if you only populate the database
             // when it is first created
 
-           sDao.deleteAll();
+            sDao.deleteAll();
             eDao.deleteAll();
             lDao.deleteAll();
             cDao.deleteAll();
@@ -106,6 +114,37 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             fosDao.deleteAll();
             foscDao.deleteAll();
             sfosDao.deleteAll();
+            pDao.deleteAll();
+            bDao.deleteAll();
+
+            Payment payment;
+            payment = new Payment(
+                3,
+                    "a",
+                    "a",
+                    "a",
+                    "a",
+                    "a",
+                    "a",
+                    "a",
+                    "a",
+                    "a",
+                    "a",
+                    "a",
+                    "a"
+            );
+            pDao.insert(payment);
+
+            Benefit benefit;
+            benefit = new Benefit(
+                    3,
+                    "a",
+                    "a",
+                    "a",
+                    "a",
+                    "a"
+            );
+            bDao.insert(benefit);
 
             Student student;
             student = new Student(
