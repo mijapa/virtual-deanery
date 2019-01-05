@@ -22,9 +22,9 @@ import java.sql.Statement;
 public class ConnectionClass {
     String classs = "com.mysql.jdbc.Driver";
 
-    String url = "jdbc:mysql://192.168.137.14/vd_db";
-    String un = "lonsper";
-    String password = "lonsper";
+    String url = "jdbc:mysql://sql7.freemysqlhosting.net/sql7272802";
+    String un = "sql7272802";
+    String password = "fkS9GvXWws";
 
     @SuppressLint("NewApi")
     public Connection CONN() {
