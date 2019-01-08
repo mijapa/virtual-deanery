@@ -199,6 +199,8 @@ public class VirtualDeaneryRepository {
 
     public List<Payment> getPayments(){ return mPaymentDao.getPayments(niu); }
 
+    public List<Benefit> getBenefits(){ return mBenefitDao.getBenefits(niu); }
+
     private static class insertStudentAsyncTask extends AsyncTask<Student, Void, Void> {
         private StudentDao mStudentAsyncTaskDao;
 

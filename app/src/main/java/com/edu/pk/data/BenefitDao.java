@@ -5,6 +5,8 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
+import java.util.List;
+
 @Dao
 public interface BenefitDao {
 
@@ -13,5 +15,8 @@ public interface BenefitDao {
 
     @Query("DELETE FROM benefit")
     void deleteAll();
+
+    @Query("SELECT * FROM benefit WHERE idStudent = :niu")
+    List<Benefit> getBenefits(Integer niu);
 
 }

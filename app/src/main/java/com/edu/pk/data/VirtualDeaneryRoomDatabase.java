@@ -154,11 +154,21 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             Benefit benefit;
             benefit = new Benefit(
                     3,
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a"
+                    "stypendium rektora dla najlepszych studentów",
+                    "700,00 PLN",
+                    "aktywne",
+                    "01-10-2018",
+                    "30-06-2019"
+            );
+            bDao.insert(benefit);
+
+            benefit = new Benefit(
+                    3,
+                    "stypendium socjalne w zwiększonej wysokości",
+                    "350,00 PLN ",
+                    "archiwum",
+                    "01-10-2017",
+                    "30-06-2018"
             );
             bDao.insert(benefit);
 
