@@ -120,29 +120,55 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             Payment payment;
             payment = new Payment(
                 3,
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a"
+                    "opłata rekrutacyjna",
+                    "2016/17",
+                    "1",
+                    "Zima",
+                    "85,00",
+                    "0,00",
+                    "0,00",
+                    "2016-07-11",
+                    "85,00",
+                    "0,00",
+                    "0,00",
+                    ""
+            );
+            pDao.insert(payment);
+            payment = new Payment(
+                    3,
+                    "legitymacja",
+                    "2016/17",
+                    "1",
+                    "Zima",
+                    "17,00",
+                    "0,00",
+                    "0,00",
+                    "2016-07-11",
+                    "17,00",
+                    "0,00",
+                    "0,00",
+                    ""
             );
             pDao.insert(payment);
 
             Benefit benefit;
             benefit = new Benefit(
                     3,
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a"
+                    "stypendium rektora dla najlepszych studentów",
+                    "700,00 PLN",
+                    "aktywne",
+                    "01-10-2018",
+                    "30-06-2019"
+            );
+            bDao.insert(benefit);
+
+            benefit = new Benefit(
+                    3,
+                    "stypendium socjalne w zwiększonej wysokości",
+                    "350,00 PLN ",
+                    "archiwum",
+                    "01-10-2017",
+                    "30-06-2018"
             );
             bDao.insert(benefit);
 
