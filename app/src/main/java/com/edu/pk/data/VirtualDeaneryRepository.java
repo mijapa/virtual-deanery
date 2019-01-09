@@ -2,9 +2,14 @@ package com.edu.pk.data;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
+import android.content.Intent;
 import android.os.AsyncTask;
 
-import com.edu.pk.connection.FetchStudentFromDatabase;
+import com.edu.pk.LoginActivity;
+import com.edu.pk.connection.FetchUserDataFromDatabase;
+import com.edu.pk.employee.EmployeeMenuActivity;
+import com.edu.pk.lecturer.LecturerMenuActivity;
+import com.edu.pk.student.MenuActivity;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -23,7 +28,6 @@ public class VirtualDeaneryRepository {
     private StudentFieldOfStudyDao mStudentFieldOfStudyDao;
     private PaymentDao mPaymentDao;
     private BenefitDao mBenefitDao;
-    private GradeDao mGradeDao;
 
     private static Integer niu;
 
@@ -41,7 +45,6 @@ public class VirtualDeaneryRepository {
         mStudentFieldOfStudyDao = db.studentFieldOfStudyDao();
         mPaymentDao = db.paymentDao();
         mBenefitDao = db.benefitDao();
-        mGradeDao = db.gradeDao();
     }
 
     public Integer getNiu() {
@@ -102,22 +105,24 @@ public class VirtualDeaneryRepository {
 
     //TODO: this should not be perormed on main thread
     public String getPassword() {
-        Boolean passOK = false;
-        if (niu < 10 || niu == 123060) {//student
-            return mStudentDao.getStudentPassword(niu);
-        } else if (niu >= 10 && niu < 20) {//employee
-            return mEmployeeDao.getEmployeePassword(niu);
-        } else {
-            return mLecturerDao.getLecturerPassword(niu);
+        switch (TypeAcc.getType(niu)){
+            case STUDENT: return mStudentDao.getStudentPassword(niu);
+            case LECTURER: return mLecturerDao.getLecturerPassword(niu);
+            case EMPLOYEE: return mEmployeeDao.getEmployeePassword(niu);
         }
+        return null;
     }
 
-    public void updateStudentData(int niu) {
+    public void updateData(int niu) {
         try {
-            FetchStudentFromDatabase fetchSingleAccount = new FetchStudentFromDatabase(niu);
+            FetchUserDataFromDatabase fetchSingleAccount = new FetchUserDataFromDatabase(niu);
             fetchSingleAccount.execute().get(5000, TimeUnit.MILLISECONDS);
             if (fetchSingleAccount.isSuccess()) {
-                mStudentDao.insert(fetchSingleAccount.getStudent());
+                switch (TypeAcc.getType(niu)){
+                    case STUDENT: mStudentDao.insert(fetchSingleAccount.getStudent()); break;
+                    case LECTURER: mLecturerDao.insert(fetchSingleAccount.getLecturer()); break;
+                    case EMPLOYEE: mEmployeeDao.insert(fetchSingleAccount.getEmployee()); break;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -150,11 +155,6 @@ public class VirtualDeaneryRepository {
     public void insertPayment(Payment payment){ new insertPaymentAsyncTask(mPaymentDao).execute(payment);}
 
     public void inserBenefit(Benefit benefit){ new insertBenefitAsyncTask(mBenefitDao).execute(benefit);}
-
-    public void inserGrade(Grade grade) {
-        new insertGradeAsyncTask(mGradeDao).execute(grade);
-    }
-
 
 
     public void changePasswordStudent(int niu, String password) { mStudentDao.changePasswordStudent(niu, password); }
@@ -202,13 +202,6 @@ public class VirtualDeaneryRepository {
 
     public List<Student> getStudentByFieldOfStudyList(String fieldOfStudy, String department, Integer term) { return mStudentDao.getStudentByFieldOfStudyList(fieldOfStudy, department, term); }
 
-    public List<Payment> getPayments(){ return mPaymentDao.getPayments(niu); }
-
-    public List<Benefit> getBenefits(){ return mBenefitDao.getBenefits(niu); }
-
-    public LiveData<List<Grade>> getGrades() {
-        return mGradeDao.getGradesListById(niu);
-    }
 
     private static class insertStudentAsyncTask extends AsyncTask<Student, Void, Void> {
         private StudentDao mStudentAsyncTaskDao;
@@ -376,20 +369,6 @@ public class VirtualDeaneryRepository {
         @Override
         protected Void doInBackground(final Benefit... params) {
             mBenefitAsyncTaskDao.insert(params[0]);
-            return null;
-        }
-    }
-
-    private class insertGradeAsyncTask extends AsyncTask<Grade, Void, Void> {
-        private GradeDao mGradeAsyncTaskDao;
-
-        public insertGradeAsyncTask(GradeDao dao) {
-            mGradeAsyncTaskDao = dao;
-        }
-
-        @Override
-        protected Void doInBackground(Grade... params) {
-            mGradeAsyncTaskDao.insert(params[0]);
             return null;
         }
     }

@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.edu.pk.data.TypeAcc;
 import com.edu.pk.employee.AddStudentViewModel;
 import com.edu.pk.employee.EmployeeMenuActivity;
 import com.edu.pk.lecturer.LecturerMenuActivity;
@@ -72,15 +73,19 @@ public class LoginActivity extends AppCompatActivity {
             Integer niu = Integer.valueOf(mNiu.getText().toString());
             mLoginViewModel.setNiu(niu);
             if (mLoginViewModel.checkLoginPassword(niu, password)) {
-                if (niu < 10 || niu == 123060) {
-                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                    startActivity(intent);
-                } else if (niu >= 10 && niu < 20) {
-                    Intent intent = new Intent(LoginActivity.this, EmployeeMenuActivity.class);
-                    startActivity(intent);
-                } else {
-                    Intent intent = new Intent(LoginActivity.this, LecturerMenuActivity.class);
-                    startActivity(intent);
+                switch (TypeAcc.getType(niu)){
+                    case STUDENT: {
+                        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                        startActivity(intent);
+                    }break;
+                    case LECTURER: {
+                        Intent intent = new Intent(LoginActivity.this, LecturerMenuActivity.class);
+                        startActivity(intent);
+                    }break;
+                    case EMPLOYEE: {
+                        Intent intent = new Intent(LoginActivity.this, EmployeeMenuActivity.class);
+                        startActivity(intent);
+                    }break;
                 }
             } else {
                 mPassword.setError(getString(R.string.error_invalid_one));
