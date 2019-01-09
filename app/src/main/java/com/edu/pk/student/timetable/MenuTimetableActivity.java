@@ -7,9 +7,6 @@ import android.view.View;
 
 import com.edu.pk.BaseActivity;
 import com.edu.pk.R;
-import com.edu.pk.student.finance.BenefitActivity;
-import com.edu.pk.student.finance.DeclarationOfInstallmentsActivity;
-import com.edu.pk.student.finance.PaymentActivity;
 
 public class MenuTimetableActivity extends BaseActivity {
     @Override
@@ -25,15 +22,15 @@ public class MenuTimetableActivity extends BaseActivity {
         Intent intent;
         switch (view.getId()) {
             case R.id.grades:
-                intent = new Intent(this, PaymentActivity.class);
+                intent = new Intent(this, GradesActivity.class);
                 startActivity(intent);
                 break;
             case R.id.timetable:
-                intent = new Intent(this, BenefitActivity.class);
+                intent = new Intent(this, TimetableActivity.class);
                 startActivity(intent);
                 break;
             case R.id.syllabus:
-                intent = new Intent(this, DeclarationOfInstallmentsActivity.class);
+                intent = new Intent(this, SyllabusActivity.class);
                 startActivity(intent);
                 break;
         }
