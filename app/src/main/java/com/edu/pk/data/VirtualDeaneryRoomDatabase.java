@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class, Payment.class, Benefit.class}, version = 23, exportSchema = false)
+@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class, Payment.class, Benefit.class, Grade.class}, version = 24, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -65,6 +65,8 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     public abstract BenefitDao benefitDao();
 
+    public abstract GradeDao gradeDao();
+
     /**
      * Populate the database in the background.
      */
@@ -82,6 +84,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
         private final StudentFieldOfStudyDao sfosDao;
         private final PaymentDao pDao;
         private final BenefitDao bDao;
+        private final GradeDao gDao;
 
         PopulateDbAsync(VirtualDeaneryRoomDatabase db) {
             sDao = db.studentDao();
@@ -96,6 +99,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             sfosDao = db.studentFieldOfStudyDao();
             pDao = db.paymentDao();
             bDao = db.benefitDao();
+            gDao = db.gradeDao();
         }
 
         @Override
@@ -116,6 +120,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             sfosDao.deleteAll();
             pDao.deleteAll();
             bDao.deleteAll();
+            gDao.deleteAll();
 
             Payment payment;
             payment = new Payment(
@@ -387,6 +392,9 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 //                    "oczekujący"
 //            );
 //            saDao.insert(studentApplication);
+
+            Grade grade = new Grade(3, 2, 5);
+            gDao.insert(grade);
 
             return null;
         }
