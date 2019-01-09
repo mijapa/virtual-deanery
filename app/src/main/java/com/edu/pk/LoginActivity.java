@@ -76,10 +76,10 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                     startActivity(intent);
                 } else if (niu >= 10 && niu < 20) {
-                    Intent intent = new Intent(LoginActivity.this, LecturerMenuActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, EmployeeMenuActivity.class);
                     startActivity(intent);
                 } else {
-                    Intent intent = new Intent(LoginActivity.this, EmployeeMenuActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, LecturerMenuActivity.class);
                     startActivity(intent);
                 }
             } else {
