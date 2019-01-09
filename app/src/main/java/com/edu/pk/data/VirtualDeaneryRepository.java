@@ -206,8 +206,8 @@ public class VirtualDeaneryRepository {
 
     public List<Benefit> getBenefits(){ return mBenefitDao.getBenefits(niu); }
 
-    public LiveData<List<Grade>> getGradesByNiu(Integer sNiu) {
-        return mGradeDao.getGradesListById(sNiu);
+    public LiveData<List<Grade>> getGrades() {
+        return mGradeDao.getGradesListById(niu);
     }
 
     private static class insertStudentAsyncTask extends AsyncTask<Student, Void, Void> {
