@@ -222,6 +222,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.edu.pk.student.finance.MenuFinanceActivity" />
         </activity>
+        <activity
+            android:name=".student.timetable.MenuTimetableActivity"
+            android:label="@string/my_plan"
+            android:parentActivityName=".student.MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.student.MenuActivity" />
+        </activity>
     </application>
 
 </manifest>
