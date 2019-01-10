@@ -17,13 +17,7 @@ public class PasswordChangeViewModel extends AndroidViewModel {
 
     void changePassword(String newPassword){
         int yourNiu = mRepository.getNiu();
-        if (yourNiu < 10) {
-            mRepository.changePasswordStudent(yourNiu, newPassword);
-        } else if(yourNiu >= 10 && yourNiu < 20) {
-            mRepository.changePasswordEmployee(yourNiu, newPassword);
-        }else {
-            mRepository.changePasswordLecturer(yourNiu, newPassword);
-        }
+        mRepository.updatePasswordForUser(yourNiu, newPassword);
     }
 
     public boolean checkCurrentPassword(String currentPassword){

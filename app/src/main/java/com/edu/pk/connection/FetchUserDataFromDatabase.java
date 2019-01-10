@@ -75,8 +75,8 @@ public class FetchUserDataFromDatabase extends AsyncTask<String, String, String>
 
         while (rs.next()) {
             student = fetchStudentFromDataBase(rs);
-            isSuccess = true;
         }
+        isSuccess = true;
         stmt.close();
     }
 
@@ -165,7 +165,7 @@ public class FetchUserDataFromDatabase extends AsyncTask<String, String, String>
             String bankAccount = rs.getString("bankAccount");
             String email = rs.getString("email");
             String dateOfStudyStart = rs.getString("dateOfStudyStart");
-            int term = 0;
+            int term = rs.getInt("term");
             return new Student(niu, albumNo, password, pesel, firstName, lastName, familyName, sex, address, cityOrVillage, voivodeship, country, distanceFromTheCheck_InPlace, dateOfBirth,
                     placeOfBirth, fatherName, motherName, motherFamilyName, maritalStatus, foreigner, phoneNumber, otherNumber, bankAccount, email, dateOfStudyStart, term);
         } catch (SQLException e) {

@@ -304,34 +304,6 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             );
             cDao.insert(course);
 
-            FieldOfStudy fieldOfStudy;
-            fieldOfStudy = new FieldOfStudy(
-                    "Elektrotechnika",
-                    "WIEiK"
-            );
-            fosDao.insert(fieldOfStudy);
-            fieldOfStudy = new FieldOfStudy(
-                    "Elektronika",
-                    "WIEiK"
-            );
-            fosDao.insert(fieldOfStudy);
-            fieldOfStudy = new FieldOfStudy(
-                    "Budownictwo",
-                    "WIL"
-            );
-            fosDao.insert(fieldOfStudy);
-            fieldOfStudy = new FieldOfStudy(
-                    "Architektura",
-                    "WA"
-            );
-            fosDao.insert(fieldOfStudy);
-            fieldOfStudy = new FieldOfStudy(
-                    "Informatyka",
-                    "WIEiK"
-            );
-            fosDao.insert(fieldOfStudy);
-
-
 //            StudentApplication studentApplication;
 //            studentApplication = new StudentApplication(
 //                    "Wniosek o akademik",
