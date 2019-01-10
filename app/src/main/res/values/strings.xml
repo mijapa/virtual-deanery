@@ -105,6 +105,11 @@
     <string name="benefits">Świadczenia</string>
     <string name="declaration_of_installments">Deklaracja rat</string>
 
+    <!-- Strings related to MenuTimetableActivity -->
+    <string name="grades">Oceny</string>
+    <string name="timetable">Plan Zajęć</string>
+    <string name="syllabus">Sylabus</string>
+
     <!-- Toast notification -->
     <string name="add_course_toast">Dodano przedmiot</string>
     <string name="add_employee_toast">Dodano pracownika</string>

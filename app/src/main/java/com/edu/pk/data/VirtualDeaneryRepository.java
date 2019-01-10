@@ -26,6 +26,7 @@ public class VirtualDeaneryRepository {
     private StudentFieldOfStudyDao mStudentFieldOfStudyDao;
     private PaymentDao mPaymentDao;
     private BenefitDao mBenefitDao;
+    private GradeDao mGradeDao;
 
     private static Integer niu;
 
@@ -43,6 +44,7 @@ public class VirtualDeaneryRepository {
         mStudentFieldOfStudyDao = db.studentFieldOfStudyDao();
         mPaymentDao = db.paymentDao();
         mBenefitDao = db.benefitDao();
+        mGradeDao = db.gradeDao();
     }
 
     public Integer getNiu() {
@@ -211,6 +213,8 @@ public class VirtualDeaneryRepository {
         }
     }
 
+    public void inserGrade(Grade grade) { new insertGradeAsyncTask(mGradeDao).execute(grade); }
+
     public void setStatusApplication(int applicationNo, String status) { mStudentApplicationDao.setStatusApplication(applicationNo, status); }
 
     public String getStatusApplication(Integer albumNo, String description) { return mStudentApplicationDao.getStatusApplication(albumNo, description); }
@@ -251,6 +255,11 @@ public class VirtualDeaneryRepository {
 
     public List<Student> getStudentByFieldOfStudyList(String fieldOfStudy, String department, Integer term) { return mStudentDao.getStudentByFieldOfStudyList(fieldOfStudy, department, term); }
 
+    public List<Payment> getPayments(){ return mPaymentDao.getPayments(niu); }
+
+    public List<Benefit> getBenefits(){ return mBenefitDao.getBenefits(niu); }
+
+    public LiveData<List<Grade>> getGrades() { return mGradeDao.getGradesListById(niu); }
 
     private static class insertStudentAsyncTask extends AsyncTask<Student, Void, Void> {
         private StudentDao mStudentAsyncTaskDao;
@@ -418,6 +427,19 @@ public class VirtualDeaneryRepository {
         @Override
         protected Void doInBackground(final Benefit... params) {
             mBenefitAsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+    private class insertGradeAsyncTask extends AsyncTask<Grade, Void, Void> {
+        private GradeDao mGradeAsyncTaskDao;
+
+        public insertGradeAsyncTask(GradeDao dao) {
+            mGradeAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Grade... params) {
+            mGradeAsyncTaskDao.insert(params[0]);
             return null;
         }
     }

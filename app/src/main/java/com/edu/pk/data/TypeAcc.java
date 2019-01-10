@@ -1,7 +1,7 @@
 package com.edu.pk.data;
 
 public enum TypeAcc {
-    STUDENT(10), LECTURER(20), EMPLOYEE(31);
+    STUDENT(10), EMPLOYEE(20), LECTURER(31);
     private int value;
 
     private int getValue() {
@@ -15,10 +15,10 @@ public enum TypeAcc {
     public static TypeAcc getType(int niu){
         if (niu < TypeAcc.STUDENT.getValue()) {
             return STUDENT;
-        } else if (niu >= TypeAcc.STUDENT.getValue() && niu < TypeAcc.LECTURER.getValue()) {
-            return LECTURER;
-        } else if (niu >= TypeAcc.LECTURER.getValue() && niu < TypeAcc.EMPLOYEE.getValue()){
+        } else if (niu >= TypeAcc.STUDENT.getValue() && niu < TypeAcc.EMPLOYEE.getValue()) {
             return EMPLOYEE;
+        } else if (niu >= TypeAcc.EMPLOYEE.getValue() && niu < TypeAcc.LECTURER.getValue()){
+            return LECTURER;
         }
         return null;
     }

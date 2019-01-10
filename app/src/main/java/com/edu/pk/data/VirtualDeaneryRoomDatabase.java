@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class, Payment.class, Benefit.class}, version = 23, exportSchema = false)
+@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class, Payment.class, Benefit.class, Grade.class}, version = 24, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -65,6 +65,8 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     public abstract BenefitDao benefitDao();
 
+    public abstract GradeDao gradeDao();
+
     /**
      * Populate the database in the background.
      */
@@ -82,6 +84,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
         private final StudentFieldOfStudyDao sfosDao;
         private final PaymentDao pDao;
         private final BenefitDao bDao;
+        private final GradeDao gDao;
 
         PopulateDbAsync(VirtualDeaneryRoomDatabase db) {
             sDao = db.studentDao();
@@ -96,6 +99,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             sfosDao = db.studentFieldOfStudyDao();
             pDao = db.paymentDao();
             bDao = db.benefitDao();
+            gDao = db.gradeDao();
         }
 
         @Override
@@ -116,33 +120,60 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             sfosDao.deleteAll();
             pDao.deleteAll();
             bDao.deleteAll();
+            gDao.deleteAll();
 
             Payment payment;
             payment = new Payment(
                 3,
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a"
+                    "opłata rekrutacyjna",
+                    "2016/17",
+                    "1",
+                    "Zima",
+                    "85,00",
+                    "0,00",
+                    "0,00",
+                    "2016-07-11",
+                    "85,00",
+                    "0,00",
+                    "0,00",
+                    ""
+            );
+            pDao.insert(payment);
+            payment = new Payment(
+                    3,
+                    "legitymacja",
+                    "2016/17",
+                    "1",
+                    "Zima",
+                    "17,00",
+                    "0,00",
+                    "0,00",
+                    "2016-07-11",
+                    "17,00",
+                    "0,00",
+                    "0,00",
+                    ""
             );
             pDao.insert(payment);
 
             Benefit benefit;
             benefit = new Benefit(
                     3,
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "a"
+                    "stypendium rektora dla najlepszych studentów",
+                    "700,00 PLN",
+                    "aktywne",
+                    "01-10-2018",
+                    "30-06-2019"
+            );
+            bDao.insert(benefit);
+
+            benefit = new Benefit(
+                    3,
+                    "stypendium socjalne w zwiększonej wysokości",
+                    "350,00 PLN ",
+                    "archiwum",
+                    "01-10-2017",
+                    "30-06-2018"
             );
             bDao.insert(benefit);
 
@@ -333,6 +364,9 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 //                    "oczekujący"
 //            );
 //            saDao.insert(studentApplication);
+
+            Grade grade = new Grade(3, 2, 5);
+            gDao.insert(grade);
 
             return null;
         }

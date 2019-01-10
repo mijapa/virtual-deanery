@@ -11,6 +11,7 @@ import com.edu.pk.R;
 import com.edu.pk.student.dormitory.MenuDormitoryActivity;
 import com.edu.pk.student.finance.MenuFinanceActivity;
 import com.edu.pk.student.mydata.MyDataActivity;
+import com.edu.pk.student.timetable.MenuTimetableActivity;
 
 public class MenuActivity extends BaseActivity {
 
@@ -32,6 +33,8 @@ public class MenuActivity extends BaseActivity {
             case R.id.my_studies:
                 break;
             case R.id.my_plan:
+                intent = new Intent(MenuActivity.this, MenuTimetableActivity.class);
+                startActivity(intent);
                 break;
             case R.id.my_finances:
                 intent = new Intent(MenuActivity.this, MenuFinanceActivity.class);
