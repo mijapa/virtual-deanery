@@ -212,6 +212,8 @@ public class VirtualDeaneryRepository {
 
     public LiveData<List<Grade>> getGrades() { return mGradeDao.getGradesListById(niu); }
 
+    public void deleteApplication(Integer albumNo, String description) { mStudentApplicationDao.deleteApplication(albumNo, description); }
+
     private static class insertStudentAsyncTask extends AsyncTask<Student, Void, Void> {
         private StudentDao mStudentAsyncTaskDao;
 

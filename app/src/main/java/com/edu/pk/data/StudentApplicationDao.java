@@ -26,4 +26,6 @@ public interface StudentApplicationDao {
     @Query("DELETE FROM student_application")
     void deleteAll();
 
+    @Query("DELETE FROM student_application WHERE studentAlbumNo = :albumNo AND description = :description")
+    void deleteApplication(Integer albumNo, String description);
 }

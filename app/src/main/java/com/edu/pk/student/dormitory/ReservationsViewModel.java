@@ -30,4 +30,6 @@ public class ReservationsViewModel extends AndroidViewModel {
         return mRepository.getNiu();
     }
 
+    public void deleteApplication(String description) { mRepository.deleteApplication(getAlbumNo(), description); }
+
 }
