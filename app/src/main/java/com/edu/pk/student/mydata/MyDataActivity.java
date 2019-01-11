@@ -2,6 +2,7 @@ package com.edu.pk.student.mydata;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.util.ArrayMap;
@@ -80,6 +81,12 @@ public class MyDataActivity extends BaseActivity {
         });
     }
 
+    public void onClick(View view) {
+        if(view.getId() == R.id.edit_data) {
+            Intent intent = new Intent(this, EditActivity.class);
+            startActivity(intent);
+        }
+    }
 
     private class ExpListAdapter extends BaseExpandableListAdapter {
 
