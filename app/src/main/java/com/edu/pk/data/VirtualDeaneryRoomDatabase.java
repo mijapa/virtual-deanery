@@ -8,6 +8,20 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
+import com.edu.pk.data.dao.BenefitDao;
+import com.edu.pk.data.dao.CourseDao;
+import com.edu.pk.data.dao.EmployeeDao;
+import com.edu.pk.data.dao.FieldOfStudyCourseDao;
+import com.edu.pk.data.dao.FieldOfStudyDao;
+import com.edu.pk.data.dao.GradeDao;
+import com.edu.pk.data.dao.LecturerCourseDao;
+import com.edu.pk.data.dao.LecturerDao;
+import com.edu.pk.data.dao.PaymentDao;
+import com.edu.pk.data.dao.StudentApplicationDao;
+import com.edu.pk.data.dao.StudentDao;
+import com.edu.pk.data.dao.StudentDormitoryDao;
+import com.edu.pk.data.dao.StudentFieldOfStudyDao;
+
 @Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class, Payment.class, Benefit.class, Grade.class}, version = 24, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 

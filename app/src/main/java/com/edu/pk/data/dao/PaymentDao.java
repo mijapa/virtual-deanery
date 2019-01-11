@@ -1,22 +1,23 @@
-package com.edu.pk.data;
+package com.edu.pk.data.dao;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
+import com.edu.pk.data.Payment;
+
 import java.util.List;
 
 @Dao
-public interface FieldOfStudyDao {
+public interface PaymentDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(FieldOfStudy fieldOfStudy);
+    void insert(Payment payment);
 
-    @Query("DELETE FROM field_of_study")
+    @Query("DELETE FROM payment")
     void deleteAll();
 
-    @Query("SELECT * FROM field_of_study")
-    List<FieldOfStudy> getFieldOfStudyList();
-
+    @Query("SELECT * FROM payment WHERE idStudent = :niu")
+    List<Payment> getPayments(Integer niu);
 }
