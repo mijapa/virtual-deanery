@@ -150,6 +150,7 @@
     <string name="write_field_of_study">Zacznij wpisywać kierunek..</string>
     <string name="prompt_course_field_of_study">Kierunek</string>
     <string name="prompt_mark_for_student">Ocena</string>
+    <string name="add_grade_toast">Dodano ocenę</string>
 
 
 </resources>

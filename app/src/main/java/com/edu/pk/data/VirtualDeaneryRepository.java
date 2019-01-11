@@ -2,14 +2,9 @@ package com.edu.pk.data;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
-import android.content.Intent;
 import android.os.AsyncTask;
 
-import com.edu.pk.LoginActivity;
 import com.edu.pk.connection.FetchUserDataFromDatabase;
-import com.edu.pk.employee.EmployeeMenuActivity;
-import com.edu.pk.lecturer.LecturerMenuActivity;
-import com.edu.pk.student.MenuActivity;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -156,9 +151,13 @@ public class VirtualDeaneryRepository {
 
     public void insertPayment(Payment payment){ new insertPaymentAsyncTask(mPaymentDao).execute(payment);}
 
-    public void inserBenefit(Benefit benefit){ new insertBenefitAsyncTask(mBenefitDao).execute(benefit);}
+    public void insertBenefit(Benefit benefit) {
+        new insertBenefitAsyncTask(mBenefitDao).execute(benefit);
+    }
 
-    public void inserGrade(Grade grade) { new insertGradeAsyncTask(mGradeDao).execute(grade); }
+    public void insertGrade(Grade grade) {
+        new insertGradeAsyncTask(mGradeDao).execute(grade);
+    }
 
 
     public void changePasswordStudent(int niu, String password) { mStudentDao.changePasswordStudent(niu, password); }
