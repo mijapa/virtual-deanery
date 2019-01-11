@@ -2,14 +2,22 @@ package com.edu.pk.data;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
-import android.content.Intent;
 import android.os.AsyncTask;
 
-import com.edu.pk.LoginActivity;
 import com.edu.pk.connection.FetchUserDataFromDatabase;
-import com.edu.pk.employee.EmployeeMenuActivity;
-import com.edu.pk.lecturer.LecturerMenuActivity;
-import com.edu.pk.student.MenuActivity;
+import com.edu.pk.data.dao.BenefitDao;
+import com.edu.pk.data.dao.CourseDao;
+import com.edu.pk.data.dao.EmployeeDao;
+import com.edu.pk.data.dao.FieldOfStudyCourseDao;
+import com.edu.pk.data.dao.FieldOfStudyDao;
+import com.edu.pk.data.dao.GradeDao;
+import com.edu.pk.data.dao.LecturerCourseDao;
+import com.edu.pk.data.dao.LecturerDao;
+import com.edu.pk.data.dao.PaymentDao;
+import com.edu.pk.data.dao.StudentApplicationDao;
+import com.edu.pk.data.dao.StudentDao;
+import com.edu.pk.data.dao.StudentDormitoryDao;
+import com.edu.pk.data.dao.StudentFieldOfStudyDao;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -104,6 +112,16 @@ public class VirtualDeaneryRepository {
     public void setDateOfStudyStart(Integer niu, String dateOfStudyStart) { mStudentDao.setDateOfStudyStart(niu, dateOfStudyStart); }
 
     public void setTerm(Integer niu, Integer term) { mStudentDao.setTerm(niu, term); }
+
+    public void setAddress(String address) { mStudentDao.setAddress(niu, address); }
+
+    public void setCityOrVillage(String cityOrVillage) { mStudentDao.setCityOrVillage(niu, cityOrVillage); }
+
+    public void setVoivodeship(String voivodeship) { mStudentDao.setVoivodeship(niu, voivodeship); }
+
+    public void setOtherNumber(Integer otherNumber) { mStudentDao.setOtherNumber(niu, otherNumber); }
+
+    public void setEmail(String email) { mStudentDao.setEmail(niu, email); }
 
     //TODO: this should not be perormed on main thread
     public String getPassword() {
@@ -211,6 +229,8 @@ public class VirtualDeaneryRepository {
     public List<Benefit> getBenefits(){ return mBenefitDao.getBenefits(niu); }
 
     public LiveData<List<Grade>> getGrades() { return mGradeDao.getGradesListById(niu); }
+
+    public void deleteApplication(Integer albumNo, String description) { mStudentApplicationDao.deleteApplication(albumNo, description); }
 
     private static class insertStudentAsyncTask extends AsyncTask<Student, Void, Void> {
         private StudentDao mStudentAsyncTaskDao;

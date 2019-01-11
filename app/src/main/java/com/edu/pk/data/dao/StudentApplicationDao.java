@@ -1,10 +1,12 @@
-package com.edu.pk.data;
+package com.edu.pk.data.dao;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
+
+import com.edu.pk.data.StudentApplication;
 
 import java.util.List;
 
@@ -26,4 +28,6 @@ public interface StudentApplicationDao {
     @Query("DELETE FROM student_application")
     void deleteAll();
 
+    @Query("DELETE FROM student_application WHERE studentAlbumNo = :albumNo AND description = :description")
+    void deleteApplication(Integer albumNo, String description);
 }

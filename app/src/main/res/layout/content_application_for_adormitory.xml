@@ -58,4 +58,19 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 
+    <Button
+        android:id="@+id/delete_application"
+        android:layout_width="111dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="232dp"
+        android:layout_marginTop="440dp"
+        android:background="@drawable/button4"
+        android:onClick="onClick"
+        android:text="@string/delete_application"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

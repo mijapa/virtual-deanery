@@ -26,4 +26,6 @@ public class ApplicationForADormitoryViewModel extends AndroidViewModel {
 
     public String getStatusApplication(Integer albumNo, String description){ return mRepository.getStatusApplication(albumNo, description); }
 
+    public void deleteApplication(String description) { mRepository.deleteApplication(getAlbumNo(), description); }
+
 }

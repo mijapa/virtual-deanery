@@ -258,6 +258,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.edu.pk.student.timetable.MenuTimetableActivity" />
         </activity>
+        <activity
+            android:name=".student.mydata.EditActivity"
+            android:label="@string/title_activity_edit"
+            android:parentActivityName=".student.mydata.MyDataActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.pk.student.mydata.MyDataActivity" />
+        </activity>
     </application>
 
 </manifest>

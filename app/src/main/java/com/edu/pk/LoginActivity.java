@@ -125,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
             focusView = mNiu;
             cancel = true;
         } else if (!isNiuValid(NIU)) {
-            //mNiu.setError(getString(R.string.error_invalid_NIU));
+            mNiu.setError(getString(R.string.error_invalid_one));
             mPassword.setError(getString(R.string.error_invalid_one));
             focusView = mNiu;
             cancel = true;
