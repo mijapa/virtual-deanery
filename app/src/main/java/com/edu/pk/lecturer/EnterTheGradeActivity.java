@@ -41,6 +41,7 @@ public class EnterTheGradeActivity extends BaseActivity {
         mStudent = (Spinner) findViewById(R.id.students);
         mEnterTheGradeViewModel = ViewModelProviders.of(this).get(EnterTheGradeViewModel.class);
         mSubmitCourse = findViewById(R.id.submit_course);
+        mGrade = findViewById(R.id.mark_for_student);
 
         final Toast toast = Toast.makeText(getBaseContext(), R.string.add_grade_toast, Toast.LENGTH_LONG);
         View view = toast.getView();
@@ -58,7 +59,7 @@ public class EnterTheGradeActivity extends BaseActivity {
                 grade = new Grade(
                         student.getNiu(),
                         course.getCourseNo(),
-                        Integer.getInteger(mGrade.getText().toString())
+                        Integer.parseInt(mGrade.getText().toString())
                 );
                 mEnterTheGradeViewModel.insertGrade(grade);
                 toast.show();
@@ -106,10 +107,11 @@ public class EnterTheGradeActivity extends BaseActivity {
             }
         });
 
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
     }
 
 }
