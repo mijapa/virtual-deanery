@@ -12,8 +12,8 @@ import java.util.List;
 public class FetchFieldOfStudyTable extends BasicConnection {
     List<FieldOfStudy> fieldOfStudyList;
 
-
     public FetchFieldOfStudyTable(){
+        super();
         fieldOfStudyList = new ArrayList<>();
     }
 

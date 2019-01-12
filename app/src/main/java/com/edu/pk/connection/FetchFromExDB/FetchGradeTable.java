@@ -18,6 +18,7 @@ public class FetchGradeTable extends BasicConnection {
     List<Grade> gradeList;
 
     public FetchGradeTable(){
+        super();
         gradeList = new ArrayList<>();
     }
 

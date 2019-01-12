@@ -13,6 +13,7 @@ public class FetchCourseTable extends BasicConnection {
     List<Course> coursesList;
 
     public FetchCourseTable() {
+        super();
         this.coursesList = new ArrayList<>();
     }
 

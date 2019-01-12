@@ -23,6 +23,7 @@ public class FetchLecturerCourseTable extends BasicConnection {
     List<LecturerCourse> lecturerCourseList;
 
     public FetchLecturerCourseTable(){
+        super();
         lecturerCourseList = new ArrayList<>();
     }
 

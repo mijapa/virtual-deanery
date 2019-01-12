@@ -14,6 +14,7 @@ public class FetchPaymentTable extends BasicConnection {
     List<Payment> paymentList;
 
     public FetchPaymentTable() {
+        super();
         this.paymentList = new ArrayList<>();
     }
 

@@ -15,14 +15,10 @@ import java.sql.Statement;
 
 public class FetchSingleUser extends BasicConnection {
 
-    ConnectionClass connectionClass;
-
     int niu;
     private Student student = null;
     private Employee employee = null;
     private Lecturer lecturer = null;
-
-    private boolean isSuccess = false;
 
     public Student getStudent(){
         return student;
@@ -36,12 +32,8 @@ public class FetchSingleUser extends BasicConnection {
         return lecturer;
     }
 
-    public boolean isSuccess() {
-        return isSuccess;
-    }
-
     public FetchSingleUser(int niu) {
-        this.connectionClass = new ConnectionClass();
+        super();
         this.niu = niu;
     }
 

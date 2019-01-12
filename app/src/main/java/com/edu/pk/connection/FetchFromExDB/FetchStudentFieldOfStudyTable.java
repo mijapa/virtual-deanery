@@ -14,6 +14,7 @@ public class FetchStudentFieldOfStudyTable extends BasicConnection {
 
     List<StudentFieldOfStudy> studentFieldOfStudyList;
     public FetchStudentFieldOfStudyTable() {
+        super();
         studentFieldOfStudyList = new ArrayList<>();
     }
 

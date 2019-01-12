@@ -22,7 +22,7 @@ import com.edu.pk.data.dao.StudentDao;
 import com.edu.pk.data.dao.StudentDormitoryDao;
 import com.edu.pk.data.dao.StudentFieldOfStudyDao;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class, Payment.class, Benefit.class, Grade.class}, version = 27, exportSchema = false)
+@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class, Payment.class, Benefit.class, Grade.class}, version = 29 , exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -122,7 +122,21 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             // Not needed if you only populate the database
             // when it is first created
 
+            sDao.deleteAll();
+            eDao.deleteAll();
+            lDao.deleteAll();
+            cDao.deleteAll();
+            saDao.deleteAll();
+            sdDao.deleteAll();
+            lcDao.deleteAll();
+            fosDao.deleteAll();
+            foscDao.deleteAll();
+            sfosDao.deleteAll();
+            pDao.deleteAll();
+            bDao.deleteAll();
+            gDao.deleteAll();
 
+/*
             Payment payment;
             payment = new Payment(
                 3,
@@ -342,6 +356,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                     "30"
             );
             cDao.insert(course);
+*/
 
 //            StudentApplication studentApplication;
 //            studentApplication = new StudentApplication(

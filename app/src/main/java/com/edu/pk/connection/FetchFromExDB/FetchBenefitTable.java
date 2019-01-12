@@ -13,6 +13,7 @@ public class FetchBenefitTable extends BasicConnection {
     List<Benefit> benefitList;
 
     public FetchBenefitTable() {
+        super();
         this.benefitList = new ArrayList<>();
     }
     @Override

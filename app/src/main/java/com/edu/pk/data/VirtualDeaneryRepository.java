@@ -13,6 +13,7 @@ import com.edu.pk.connection.FetchFromExDB.FetchLecturerTable;
 import com.edu.pk.connection.FetchFromExDB.FetchStudentFieldOfStudyTable;
 import com.edu.pk.connection.FetchFromExDB.FetchStudentTable;
 import com.edu.pk.connection.FetchFromExDB.FetchFieldOfStudyCourseTable;
+import com.edu.pk.connection.InsertIntoExDB.InsertStudentFieldOfStudy;
 import com.edu.pk.connection.InsertIntoExDB.InsertUser;
 import com.edu.pk.connection.FetchFromExDB.FetchFieldOfStudyTable;
 import com.edu.pk.connection.UpdateExDB.UpdatePassword;
@@ -153,16 +154,32 @@ public class VirtualDeaneryRepository {
 
     private void updateAllDataBeingNeededByApp() {
         try {
-            updateStudentFieldOfStudy();
-            updateFieldOfStudyCourse();
-            updateFieldOfStudy();
-            updateGrade();
-            updateLecturerCourse();
-            updateLecturer();
-            updateCourse();
-            updateBenefit();
-            updateStudent();
-
+            FetchSingleUser singleUser = new FetchSingleUser(niu);
+            BasicConnection.updateTable(singleUser);
+            if (singleUser.isSuccess()){
+                switch (TypeAcc.getType(niu)){
+                    case STUDENT:{
+                        insertStudent(singleUser.getStudent());
+                        updateGrade();
+                        updateCourse();
+                    }break;
+                    case EMPLOYEE:{
+                        insertEmployee(singleUser.getEmployee());
+                        updateFieldOfStudy();
+                    }break;
+                    case LECTURER:{
+                        insertLecturer(singleUser.getLecturer());
+                        updateStudentFieldOfStudy();
+                        updateFieldOfStudyCourse();
+                        updateFieldOfStudy();
+                        updateGrade();
+                        updateLecturerCourse();
+                        updateLecturer();
+                        updateCourse();
+                        updateStudent();
+                    }break;
+                }
+            }
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -291,8 +308,9 @@ public class VirtualDeaneryRepository {
 
     public void insertFieldOfStudyCourse(FieldOfStudyCourse fieldOfStudyCourse) { new insertFieldOfStudyCourseAsyncTask(mFieldOfStudyCourseDao).execute(fieldOfStudyCourse); }
 
-    public void insertStudentFieldOfStudy(StudentFieldOfStudy studentFieldOfStudy) {
-        //--
+    public void insertStudentFieldOfStudy(StudentFieldOfStudy studentFieldOfStudy) throws Exception {
+        InsertStudentFieldOfStudy insert = new InsertStudentFieldOfStudy(studentFieldOfStudy);
+        BasicConnection.updateTable(insert);
         new insertStudentFieldOfStudyAsyncTask(mStudentFieldOfStudyDao).execute(studentFieldOfStudy);
     }
 
