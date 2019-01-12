@@ -15,23 +15,26 @@ public abstract class BasicConnection extends AsyncTask<String, String, String> 
     private boolean isSuccess = false;
 
     public BasicConnection() {
-        this.connectionClass = new ConnectionClass();
-        con = connectionClass.CONN();
+
     }
 
     @Override
     protected String doInBackground(String... strings) {
+        this.connectionClass = new ConnectionClass();
+        con = connectionClass.CONN();
         try {
             if (con == null) {
                 throw new Exception("Internet ERROR");
             } else {
                 queryFuction(con.createStatement());
                 isSuccess = true;
+                con.close();
             }
         } catch (Exception ex) {
             ex.printStackTrace();
             isSuccess = false;
         }
+
         return null;
     }
 

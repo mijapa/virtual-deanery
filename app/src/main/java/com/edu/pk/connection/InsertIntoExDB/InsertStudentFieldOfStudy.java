@@ -17,8 +17,7 @@ public class InsertStudentFieldOfStudy extends BasicConnection {
     public void queryFuction(Statement stmt) throws Exception {
         String query = "INSERT INTO `student_fieldOfStudy` (`fieldOfStudyNo`, `NIU`) " +
                 "VALUES " +
-                "('"+ studentFieldOfStudy.getFieldOfStudyNo()+ "', '" +
-                ""+ studentFieldOfStudy.getNiu() +"')";
+                "('"+ studentFieldOfStudy.getFieldOfStudyNo()+ "', '"+ studentFieldOfStudy.getNiu() +"')";
         stmt.executeUpdate(query);
         stmt.close();
     }

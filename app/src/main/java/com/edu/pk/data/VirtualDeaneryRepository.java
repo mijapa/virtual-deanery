@@ -10,9 +10,11 @@ import com.edu.pk.connection.FetchFromExDB.FetchBenefitTable;
 import com.edu.pk.connection.FetchFromExDB.FetchCourseTable;
 import com.edu.pk.connection.FetchFromExDB.FetchLecturerCourseTable;
 import com.edu.pk.connection.FetchFromExDB.FetchLecturerTable;
+import com.edu.pk.connection.FetchFromExDB.FetchPaymentTable;
 import com.edu.pk.connection.FetchFromExDB.FetchStudentFieldOfStudyTable;
 import com.edu.pk.connection.FetchFromExDB.FetchStudentTable;
 import com.edu.pk.connection.FetchFromExDB.FetchFieldOfStudyCourseTable;
+import com.edu.pk.connection.InsertIntoExDB.InsertGrade;
 import com.edu.pk.connection.InsertIntoExDB.InsertStudentFieldOfStudy;
 import com.edu.pk.connection.InsertIntoExDB.InsertUser;
 import com.edu.pk.connection.FetchFromExDB.FetchFieldOfStudyTable;
@@ -162,6 +164,9 @@ public class VirtualDeaneryRepository {
                         insertStudent(singleUser.getStudent());
                         updateGrade();
                         updateCourse();
+                        updateBenefit();
+                        updatePayment();
+
                     }break;
                     case EMPLOYEE:{
                         insertEmployee(singleUser.getEmployee());
@@ -172,9 +177,7 @@ public class VirtualDeaneryRepository {
                         updateStudentFieldOfStudy();
                         updateFieldOfStudyCourse();
                         updateFieldOfStudy();
-                        updateGrade();
                         updateLecturerCourse();
-                        updateLecturer();
                         updateCourse();
                         updateStudent();
                     }break;
@@ -182,6 +185,15 @@ public class VirtualDeaneryRepository {
             }
         }catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private void updatePayment() throws Exception {
+        FetchPaymentTable paymentTable = new FetchPaymentTable();
+        BasicConnection.updateTable(paymentTable);
+        if (paymentTable.isSuccess()){
+            for (Payment payment: paymentTable.getPaymentList())
+                insertPayment(payment);
         }
     }
 
@@ -217,7 +229,7 @@ public class VirtualDeaneryRepository {
         BasicConnection.updateTable(gradeTable);
         if(gradeTable.isSuccess()){
             for (Grade grade: gradeTable.getGradeList())
-                inserGrade(grade);
+                insertGrade(grade);
         }
     }
 
@@ -308,9 +320,13 @@ public class VirtualDeaneryRepository {
 
     public void insertFieldOfStudyCourse(FieldOfStudyCourse fieldOfStudyCourse) { new insertFieldOfStudyCourseAsyncTask(mFieldOfStudyCourseDao).execute(fieldOfStudyCourse); }
 
-    public void insertStudentFieldOfStudy(StudentFieldOfStudy studentFieldOfStudy) throws Exception {
+    public void insertStudentFieldOfStudy(StudentFieldOfStudy studentFieldOfStudy){
         InsertStudentFieldOfStudy insert = new InsertStudentFieldOfStudy(studentFieldOfStudy);
-        BasicConnection.updateTable(insert);
+        try {
+            BasicConnection.updateTable(insert);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         new insertStudentFieldOfStudyAsyncTask(mStudentFieldOfStudyDao).execute(studentFieldOfStudy);
     }
 
@@ -337,10 +353,14 @@ public class VirtualDeaneryRepository {
     }
 
     public void insertGrade(Grade grade) {
+        try {
+            InsertGrade insertGrade = new InsertGrade(grade);
+            BasicConnection.updateTable(insertGrade);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         new insertGradeAsyncTask(mGradeDao).execute(grade);
     }
-
-    public void inserGrade(Grade grade) { new insertGradeAsyncTask(mGradeDao).execute(grade); }
 
     public void setStatusApplication(int applicationNo, String status) { mStudentApplicationDao.setStatusApplication(applicationNo, status); }
 

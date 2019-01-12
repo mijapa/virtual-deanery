@@ -58,7 +58,7 @@ public class EnterTheGradeActivity extends BaseActivity {
                 grade = new Grade(
                         student.getNiu(),
                         course.getCourseNo(),
-                        Integer.getInteger(mGrade.getText().toString())
+                        Integer.parseInt(mGrade.getText().toString())
                 );
                 mEnterTheGradeViewModel.insertGrade(grade);
                 toast.show();
