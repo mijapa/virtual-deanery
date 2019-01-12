@@ -33,7 +33,7 @@ public class GradesActivity extends BaseActivity {
 
         // Get a new or existing ViewModel from the ViewModelProvider.
         mGradesViewModel = ViewModelProviders.of(this).get(GradesViewModel.class);
-
+        adapter.setCourses(mGradesViewModel.getCourseList());
         // Add an observer on the LiveData returned by getAlphabetizedWords.
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
