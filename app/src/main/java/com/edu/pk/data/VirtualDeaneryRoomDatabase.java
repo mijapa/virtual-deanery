@@ -22,7 +22,7 @@ import com.edu.pk.data.dao.StudentDao;
 import com.edu.pk.data.dao.StudentDormitoryDao;
 import com.edu.pk.data.dao.StudentFieldOfStudyDao;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class, Payment.class, Benefit.class, Grade.class}, version = 24, exportSchema = false)
+@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class, Payment.class, Benefit.class, Grade.class}, version = 29 , exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -122,7 +122,21 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             // Not needed if you only populate the database
             // when it is first created
 
+            sDao.deleteAll();
+            eDao.deleteAll();
+            lDao.deleteAll();
+            cDao.deleteAll();
+            saDao.deleteAll();
+            sdDao.deleteAll();
+            lcDao.deleteAll();
+            fosDao.deleteAll();
+            foscDao.deleteAll();
+            sfosDao.deleteAll();
+            pDao.deleteAll();
+            bDao.deleteAll();
+            gDao.deleteAll();
 
+/*
             Payment payment;
             payment = new Payment(
                 3,
@@ -342,34 +356,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
                     "30"
             );
             cDao.insert(course);
-
-            FieldOfStudy fieldOfStudy;
-            fieldOfStudy = new FieldOfStudy(
-                    "Elektrotechnika",
-                    "WIEiK"
-            );
-            fosDao.insert(fieldOfStudy);
-            fieldOfStudy = new FieldOfStudy(
-                    "Elektronika",
-                    "WIEiK"
-            );
-            fosDao.insert(fieldOfStudy);
-            fieldOfStudy = new FieldOfStudy(
-                    "Budownictwo",
-                    "WIL"
-            );
-            fosDao.insert(fieldOfStudy);
-            fieldOfStudy = new FieldOfStudy(
-                    "Architektura",
-                    "WA"
-            );
-            fosDao.insert(fieldOfStudy);
-            fieldOfStudy = new FieldOfStudy(
-                    "Informatyka",
-                    "WIEiK"
-            );
-            fosDao.insert(fieldOfStudy);
-
+*/
 
 //            StudentApplication studentApplication;
 //            studentApplication = new StudentApplication(
