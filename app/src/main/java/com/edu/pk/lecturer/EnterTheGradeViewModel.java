@@ -5,6 +5,7 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
 import com.edu.pk.data.Course;
+import com.edu.pk.data.Grade;
 import com.edu.pk.data.Student;
 import com.edu.pk.data.VirtualDeaneryRepository;
 
@@ -23,4 +24,7 @@ public class EnterTheGradeViewModel extends AndroidViewModel {
 
     public List<Student> getStudentByFieldOfStudyList(String fieldOfStudy, String department, Integer term) { return mRepository.getStudentByFieldOfStudyList(fieldOfStudy, department, term); }
 
+    public void insertGrade(Grade grade) {
+        mRepository.insertGrade(grade);
+    }
 }

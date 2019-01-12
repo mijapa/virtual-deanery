@@ -122,19 +122,6 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             // Not needed if you only populate the database
             // when it is first created
 
-            sDao.deleteAll();
-            eDao.deleteAll();
-            lDao.deleteAll();
-            cDao.deleteAll();
-            saDao.deleteAll();
-            sdDao.deleteAll();
-            lcDao.deleteAll();
-            fosDao.deleteAll();
-            foscDao.deleteAll();
-            sfosDao.deleteAll();
-            pDao.deleteAll();
-            bDao.deleteAll();
-            gDao.deleteAll();
 
             Payment payment;
             payment = new Payment(
@@ -223,6 +210,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
             sDao.insert(student);
 
+
             Employee employee;
             employee = new Employee(
                     10,
@@ -237,17 +225,23 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
             eDao.insert(employee);
 
-//            Lecturer lecturer;
-//            lecturer = new Lecturer(
-//                    20,
-//                    "20",
-//                    "Michael",
-//                    "Jackson",
-//                    "Indiana Gary",
-//                    608987889
-//            );
-//
-//            lDao.insert(lecturer);
+            Lecturer lecturer;
+            lecturer = new Lecturer(
+                    20,
+                    "20",
+                    "Michael",
+                    "Jackson",
+                    "Indiana Gary",
+                    608987889
+            );
+
+            lDao.insert(lecturer);
+
+            LecturerCourse lecturerCourse;
+            lecturerCourse = new LecturerCourse(
+                    2, 20
+            );
+            lcDao.insert(lecturerCourse);
 
             Course course;
             course = new Course(

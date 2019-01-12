@@ -174,9 +174,13 @@ public class VirtualDeaneryRepository {
 
     public void insertPayment(Payment payment){ new insertPaymentAsyncTask(mPaymentDao).execute(payment);}
 
-    public void inserBenefit(Benefit benefit){ new insertBenefitAsyncTask(mBenefitDao).execute(benefit);}
+    public void insertBenefit(Benefit benefit) {
+        new insertBenefitAsyncTask(mBenefitDao).execute(benefit);
+    }
 
-    public void inserGrade(Grade grade) { new insertGradeAsyncTask(mGradeDao).execute(grade); }
+    public void insertGrade(Grade grade) {
+        new insertGradeAsyncTask(mGradeDao).execute(grade);
+    }
 
 
     public void changePasswordStudent(int niu, String password) { mStudentDao.changePasswordStudent(niu, password); }
