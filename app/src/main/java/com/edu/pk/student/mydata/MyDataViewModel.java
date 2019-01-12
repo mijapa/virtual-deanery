@@ -39,6 +39,9 @@ public class MyDataViewModel extends AndroidViewModel {
 
                 add(new Data("Dane teleadresowe", "Telefon", mStudent.getPhoneNumber().toString()));
                 add(new Data("Dane teleadresowe", "e-mail", mStudent.getEmail()));
+                add(new Data("Dane teleadresowe", "Adres", mStudent.getAddress()));
+                add(new Data("Dane teleadresowe", "Miasto", mStudent.getCityOrVillage()));
+                add(new Data("Dane teleadresowe", "Województwo", mStudent.getVoivodeship()));
 
 //                add(new Data("Informacje o toku studiów", "Zgoda na elektroniczne udostępnianie dokumentów", " Wyrażono zgodę na udostępnianie dokumentów drogą elektroniczn"));
                 add(new Data("Informacje o toku studiów", "Semestr", mStudent.getTerm().toString()));
