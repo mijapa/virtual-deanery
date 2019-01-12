@@ -8,7 +8,21 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class, Payment.class, Benefit.class, Grade.class}, version = 24, exportSchema = false)
+import com.edu.pk.data.dao.BenefitDao;
+import com.edu.pk.data.dao.CourseDao;
+import com.edu.pk.data.dao.EmployeeDao;
+import com.edu.pk.data.dao.FieldOfStudyCourseDao;
+import com.edu.pk.data.dao.FieldOfStudyDao;
+import com.edu.pk.data.dao.GradeDao;
+import com.edu.pk.data.dao.LecturerCourseDao;
+import com.edu.pk.data.dao.LecturerDao;
+import com.edu.pk.data.dao.PaymentDao;
+import com.edu.pk.data.dao.StudentApplicationDao;
+import com.edu.pk.data.dao.StudentDao;
+import com.edu.pk.data.dao.StudentDormitoryDao;
+import com.edu.pk.data.dao.StudentFieldOfStudyDao;
+
+@Database(entities = {Student.class, Employee.class, Lecturer.class, Course.class, StudentApplication.class, StudentDormitory.class, LecturerCourse.class, FieldOfStudy.class, FieldOfStudyCourse.class, StudentFieldOfStudy.class, Payment.class, Benefit.class, Grade.class}, version = 27, exportSchema = false)
 public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
     private static VirtualDeaneryRoomDatabase INSTANCE;
@@ -108,19 +122,6 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
             // Not needed if you only populate the database
             // when it is first created
 
-            sDao.deleteAll();
-            eDao.deleteAll();
-            lDao.deleteAll();
-            cDao.deleteAll();
-            saDao.deleteAll();
-            sdDao.deleteAll();
-            lcDao.deleteAll();
-            fosDao.deleteAll();
-            foscDao.deleteAll();
-            sfosDao.deleteAll();
-            pDao.deleteAll();
-            bDao.deleteAll();
-            gDao.deleteAll();
 
             Payment payment;
             payment = new Payment(
@@ -209,6 +210,7 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
             sDao.insert(student);
 
+
             Employee employee;
             employee = new Employee(
                     10,
@@ -223,17 +225,23 @@ public abstract class VirtualDeaneryRoomDatabase extends RoomDatabase {
 
             eDao.insert(employee);
 
-//            Lecturer lecturer;
-//            lecturer = new Lecturer(
-//                    20,
-//                    "20",
-//                    "Michael",
-//                    "Jackson",
-//                    "Indiana Gary",
-//                    608987889
-//            );
-//
-//            lDao.insert(lecturer);
+            Lecturer lecturer;
+            lecturer = new Lecturer(
+                    20,
+                    "20",
+                    "Michael",
+                    "Jackson",
+                    "Indiana Gary",
+                    608987889
+            );
+
+            lDao.insert(lecturer);
+
+            LecturerCourse lecturerCourse;
+            lecturerCourse = new LecturerCourse(
+                    2, 20
+            );
+            lcDao.insert(lecturerCourse);
 
             Course course;
             course = new Course(

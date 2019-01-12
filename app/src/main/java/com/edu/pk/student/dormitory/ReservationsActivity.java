@@ -24,6 +24,7 @@ public class ReservationsActivity extends BaseActivity {
     private ReservationsViewModel mReservationsViewModel;
     private Toast toast;
     private View view;
+    private String ds;
     private static Boolean flag = false;
 
     @Override
@@ -42,11 +43,6 @@ public class ReservationsActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        toast = Toast.makeText(getBaseContext(), R.string.application_sent, Toast.LENGTH_LONG);
-        view = toast.getView();
-        view.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
-        TextView text = view.findViewById(android.R.id.message);
-        text.setTextColor(getResources().getColor(R.color.colorPrimary));
     }
 
     public void onClick(View view) {
@@ -54,14 +50,22 @@ public class ReservationsActivity extends BaseActivity {
             String status = mReservationsViewModel.getStatusApplication(mReservationsViewModel.getAlbumNo(), "Wniosek o akademik");
             if(flag == false && status != null && status.contains("zaakceptowany")) {
                 StudentApplication studentApplication;
+                ds = mDorms.getSelectedItem().toString();
                 studentApplication = new StudentApplication(
-                        "Wniosek o rezerwację " + mDorms.getSelectedItem().toString(),
+                        "Wniosek o rezerwację " + ds,
                         mReservationsViewModel.getAlbumNo(),
                         mReservationsViewModel.getDistanceFromTheCheck_InPlace(),
                         "oczekujący"
                 );
                 mReservationsViewModel.insertStudentApplication(studentApplication);
                 flag = true;
+
+                toast = Toast.makeText(getBaseContext(), R.string.application_sent, Toast.LENGTH_LONG);
+                view = toast.getView();
+                view.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
+                TextView text = view.findViewById(android.R.id.message);
+                text.setTextColor(getResources().getColor(R.color.colorPrimary));
+
                 toast.show();
             }else{
                 toast = Toast.makeText(getBaseContext(), R.string.application_information, Toast.LENGTH_LONG);
@@ -71,6 +75,26 @@ public class ReservationsActivity extends BaseActivity {
                 text.setTextColor(getResources().getColor(R.color.colorPrimary));
                 toast.show();
             }
+        }
+        if(view.getId() == R.id.delete_reservation){
+            if(flag == true) {
+                mReservationsViewModel.deleteApplication("Wniosek o rezerwację " + ds);
+                toast = Toast.makeText(getBaseContext(), R.string.delete_application_information, Toast.LENGTH_LONG);
+                view = toast.getView();
+                view.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
+                TextView text = view.findViewById(android.R.id.message);
+                text.setTextColor(getResources().getColor(R.color.colorPrimary));
+                toast.show();
+                flag = false;
+            }else{
+                toast = Toast.makeText(getBaseContext(), R.string.the_application_has_not_been_submitted, Toast.LENGTH_LONG);
+                view = toast.getView();
+                view.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
+                TextView text = view.findViewById(android.R.id.message);
+                text.setTextColor(getResources().getColor(R.color.colorPrimary));
+                toast.show();
+            }
+
         }
     }
 

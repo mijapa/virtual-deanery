@@ -40,11 +40,6 @@ public class ApplicationForADormitoryActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        toast = Toast.makeText(getBaseContext(), R.string.application_sent, Toast.LENGTH_LONG);
-        view = toast.getView();
-        view.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
-        TextView text = view.findViewById(android.R.id.message);
-        text.setTextColor(getResources().getColor(R.color.colorPrimary));
     }
 
     @Override
@@ -72,9 +67,36 @@ public class ApplicationForADormitoryActivity extends BaseActivity {
                 Date currentTime = Calendar.getInstance().getTime();
                 information = "Wniosek został wysłany: " + currentTime;
                 mInformation.setText(information);
+
+                toast = Toast.makeText(getBaseContext(), R.string.application_sent, Toast.LENGTH_LONG);
+                view = toast.getView();
+                view.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
+                TextView text = view.findViewById(android.R.id.message);
+                text.setTextColor(getResources().getColor(R.color.colorPrimary));
+
                 toast.show();
             }else{
                 toast = Toast.makeText(getBaseContext(), R.string.application_information, Toast.LENGTH_LONG);
+                view = toast.getView();
+                view.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
+                TextView text = view.findViewById(android.R.id.message);
+                text.setTextColor(getResources().getColor(R.color.colorPrimary));
+                toast.show();
+            }
+        }
+        if(view.getId() == R.id.delete_application) {
+            if(flag == true) {
+                mApplicationForADormitoryViewModel.deleteApplication("Wniosek o akademik");
+                toast = Toast.makeText(getBaseContext(), R.string.delete_application_information, Toast.LENGTH_LONG);
+                view = toast.getView();
+                view.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
+                TextView text = view.findViewById(android.R.id.message);
+                text.setTextColor(getResources().getColor(R.color.colorPrimary));
+                mInformation.setText(R.string.lack);
+                toast.show();
+                flag = false;
+            }else{
+                toast = Toast.makeText(getBaseContext(), R.string.the_application_has_not_been_submitted, Toast.LENGTH_LONG);
                 view = toast.getView();
                 view.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
                 TextView text = view.findViewById(android.R.id.message);

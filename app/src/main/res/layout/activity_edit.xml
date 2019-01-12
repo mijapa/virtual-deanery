@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".lecturer.EnterTheGradeActivity">
+    tools:context=".student.mydata.EditActivity">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -28,6 +28,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_enter_the_grade" />
+    <include layout="@layout/content_edit" />
 
 </android.support.design.widget.CoordinatorLayout>
