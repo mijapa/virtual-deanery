@@ -38,20 +38,11 @@ public class TimetableActivity extends BaseActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 view.loadUrl("javascript:(function() { " +
-                        "document.getElementById('skip').style.display='none'; " +
-                        "document.getElementById('header').style.display='none'; " +
-                        "document.getElementById('top').style.display='none'; " +
-                        "document.getElementById('nav').style.display='none'; " +
-                        "document.getElementById('footer').style.display='none'; " +
-                        "document.getElementById('tools').style.display='none'; " +
-                        "document.getElementById('sidebar').style.display='none'; " +
-                        "document.getElementById('vcard_wieik').style.display='none'; " +
-                        "document.getElementById('nav_top').style.display='none'; " +
-                        "document.getElementById('breadcrumb').style.display='none'; " +
+                        "var footer = document.getElementById('footer').style.display='none'; " +
                         "})()");
             }
         });
-        mWebView.loadUrl("http://wieik.pk.edu.pl/studia/studia-stacjonarne/harmonogramy-zaj-dydaktycznych-na-rok-akademicki-201819/");
+        mWebView.loadUrl("https://www.pk.edu.pl/index.php?option=com_content&view=article&id=2348&Itemid=1024&lang=pl");
     }
 
 }
