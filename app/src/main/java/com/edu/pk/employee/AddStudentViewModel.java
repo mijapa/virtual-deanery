@@ -21,7 +21,7 @@ public class AddStudentViewModel extends AndroidViewModel {
     }
 
     public void insertStudent(Student student){
-        mRepository.insert(student);
+        mRepository.insertStudent(student);
     }
 
     public List<FieldOfStudy> getFieldOfStudyList() { return mRepository.getFieldOfStudyList(); }

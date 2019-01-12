@@ -22,7 +22,7 @@ public class LoginViewModel extends AndroidViewModel {
     Boolean checkLoginPassword(int niu, String password) {
         Boolean isPassOK;
         String passFromDB = mRepository.getPassword();
-        mRepository.updateData(niu);
+        mRepository.updateData();
         try {
             isPassOK = passFromDB.equals(password);
         } catch (Exception e) {

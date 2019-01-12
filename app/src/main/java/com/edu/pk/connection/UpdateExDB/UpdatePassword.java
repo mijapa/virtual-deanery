@@ -1,11 +1,11 @@
-package com.edu.pk.connection;
+package com.edu.pk.connection.UpdateExDB;
 
 import android.os.AsyncTask;
 
+import com.edu.pk.connection.ConnectionClass;
 import com.edu.pk.data.TypeAcc;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 

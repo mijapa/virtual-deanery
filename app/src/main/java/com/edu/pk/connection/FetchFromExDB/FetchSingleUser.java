@@ -1,6 +1,8 @@
-package com.edu.pk.connection;
+package com.edu.pk.connection.FetchFromExDB;
 import android.os.AsyncTask;
 
+import com.edu.pk.connection.BasicConnection;
+import com.edu.pk.connection.ConnectionClass;
 import com.edu.pk.data.Employee;
 import com.edu.pk.data.Lecturer;
 import com.edu.pk.data.Student;
@@ -11,14 +13,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class FetchUserDataFromDatabase extends AsyncTask<String, String, String> {
-    int niu;
+public class FetchSingleUser extends BasicConnection {
+
     ConnectionClass connectionClass;
 
-    private boolean isSuccess = false;
+    int niu;
     private Student student = null;
     private Employee employee = null;
     private Lecturer lecturer = null;
+
+    private boolean isSuccess = false;
 
     public Student getStudent(){
         return student;
@@ -36,70 +40,52 @@ public class FetchUserDataFromDatabase extends AsyncTask<String, String, String>
         return isSuccess;
     }
 
-    public FetchUserDataFromDatabase(int niu) {
+    public FetchSingleUser(int niu) {
         this.connectionClass = new ConnectionClass();
         this.niu = niu;
     }
 
     @Override
-    protected String doInBackground(String... params) {
-        try {
-           Connection con = connectionClass.CONN();
-            if (con == null) {
-                throw new Exception("Internet ERROR");
-
-            } else {
-                switch (TypeAcc.getType(niu)) {
-                    case STUDENT:
-                        getStudent(con);
-                        break;
-                    case LECTURER:
-                        getLecturer(con);
-                        break;
-                    case EMPLOYEE:
-                        getEmployee(con);
-                        break;
-                }
-            }
-        } catch (Exception ex) {
-            isSuccess = false;
-            ex.printStackTrace();
+    public void queryFuction(Statement stmt) throws Exception {
+        switch (TypeAcc.getType(niu)) {
+            case STUDENT:
+                getStudent(stmt);
+                break;
+            case LECTURER:
+                getLecturer(stmt);
+                break;
+            case EMPLOYEE:
+                getEmployee(stmt);
+                break;
         }
-        return null;
     }
 
-    private void getStudent(Connection con) throws SQLException {
+    private void getStudent(Statement stmt) throws SQLException {
         String query = "select * from student where niu='" + niu + "'";
-        Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
         while (rs.next()) {
             student = fetchStudentFromDataBase(rs);
         }
-        isSuccess = true;
         stmt.close();
     }
 
-    private void getLecturer(Connection con) throws SQLException {
+    private void getLecturer(Statement stmt) throws SQLException {
         String query = "select * from lecturer where niu='" + niu + "'";
-        Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
         while (rs.next()) {
             lecturer = fetchLecturerFromDataBase(rs);
-            isSuccess = true;
         }
         stmt.close();
     }
 
-    private void getEmployee(Connection con) throws SQLException {
+    private void getEmployee(Statement stmt) throws SQLException {
         String query = "select * from employee where niu='" + niu + "'";
-        Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
         while (rs.next()) {
             employee = fetchEmployeeFromDataBase(rs);
-            isSuccess = true;
         }
         stmt.close();
     }

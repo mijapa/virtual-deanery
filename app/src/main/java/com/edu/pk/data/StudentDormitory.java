@@ -10,7 +10,7 @@ public class StudentDormitory {
     @PrimaryKey(autoGenerate = true)
     private Integer studentDormitoryNo;
     @NonNull
-    private Integer studentAlbumNo; //TODO zmienić na niu
+    private Integer studentAlbumNo;
     @NonNull
     private String dormitory;
     @NonNull

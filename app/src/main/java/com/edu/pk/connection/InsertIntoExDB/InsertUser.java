@@ -1,7 +1,8 @@
-package com.edu.pk.connection;
+package com.edu.pk.connection.InsertIntoExDB;
 
 import android.os.AsyncTask;
 
+import com.edu.pk.connection.ConnectionClass;
 import com.edu.pk.data.Lecturer;
 import com.edu.pk.data.Student;
 import com.edu.pk.data.TypeAcc;

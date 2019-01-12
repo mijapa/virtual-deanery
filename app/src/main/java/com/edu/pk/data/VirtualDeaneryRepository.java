@@ -4,10 +4,19 @@ import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
-import com.edu.pk.connection.InsertUser;
-import com.edu.pk.connection.UpdateFieldOfStudy;
-import com.edu.pk.connection.UpdatePassword;
-import com.edu.pk.connection.FetchUserDataFromDatabase;
+import com.edu.pk.connection.BasicConnection;
+import com.edu.pk.connection.FetchFromExDB.FetchBenefitTable;
+import com.edu.pk.connection.FetchFromExDB.FetchCourseTable;
+import com.edu.pk.connection.FetchFromExDB.FetchLecturerCourseTable;
+import com.edu.pk.connection.FetchFromExDB.FetchLecturerTable;
+import com.edu.pk.connection.FetchFromExDB.FetchStudentFieldOfStudyTable;
+import com.edu.pk.connection.FetchFromExDB.FetchStudentTable;
+import com.edu.pk.connection.FetchFromExDB.FetchFieldOfStudyCourseTable;
+import com.edu.pk.connection.InsertIntoExDB.InsertUser;
+import com.edu.pk.connection.FetchFromExDB.FetchFieldOfStudyTable;
+import com.edu.pk.connection.UpdateExDB.UpdatePassword;
+import com.edu.pk.connection.FetchFromExDB.FetchSingleUser;
+import com.edu.pk.connection.FetchFromExDB.FetchGradeTable;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -113,45 +122,111 @@ public class VirtualDeaneryRepository {
         return null;
     }
 
-    public void updateData(int niu) {
+    public void updateData() {
+        updateAllDataBeingNeededByApp();
+    }
+
+    private void updateAllDataBeingNeededByApp() {
         try {
-            FetchUserDataFromDatabase fetchSingleAccount = new FetchUserDataFromDatabase(niu);
-            fetchSingleAccount.execute().get(5000, TimeUnit.MILLISECONDS);
-            if (fetchSingleAccount.isSuccess()) {
-                switch (TypeAcc.getType(niu)){
-                    case STUDENT: mStudentDao.insert(fetchSingleAccount.getStudent()); break;
-                    case LECTURER: mLecturerDao.insert(fetchSingleAccount.getLecturer()); break;
-                    case EMPLOYEE:{
-                        mEmployeeDao.insert(fetchSingleAccount.getEmployee());
-                        updateEmployeeData();
-                    } break;
-                }
-            }
-        } catch (Exception e) {
+            updateStudentFieldOfStudy();
+            updateFieldOfStudyCourse();
+            updateFieldOfStudy();
+            updateGrade();
+            updateLecturerCourse();
+            updateLecturer();
+            updateCourse();
+            updateBenefit();
+            updateStudent();
+
+        }catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void updateEmployeeData() {
-        updateFieldOfStudy();
-    }
-
-    private void updateFieldOfStudy() {
-        try {
-            UpdateFieldOfStudy updateFieldOfStudy = new UpdateFieldOfStudy();
-            updateFieldOfStudy.execute().get(3000,TimeUnit.MILLISECONDS);
-            if (updateFieldOfStudy.isSuccess()) {
-                for (FieldOfStudy singleFieldOfStudy: updateFieldOfStudy.getFieldOfStudyList()) {
-                    insertFieldOfStudy(singleFieldOfStudy);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    private void updateStudentFieldOfStudy() throws Exception {
+        FetchStudentFieldOfStudyTable studentFieldOfStudyTable = new FetchStudentFieldOfStudyTable();
+        BasicConnection.updateTable(studentFieldOfStudyTable);
+        if(studentFieldOfStudyTable.isSuccess()){
+            for (StudentFieldOfStudy studentFieldOfStudy: studentFieldOfStudyTable.getStudentFieldOfStudyList())
+                insertStudentFieldOfStudy(studentFieldOfStudy);
         }
     }
+
+    private void updateFieldOfStudyCourse() throws Exception {
+        FetchFieldOfStudyCourseTable fieldOfStudyCourseTable = new FetchFieldOfStudyCourseTable();
+        BasicConnection.updateTable(fieldOfStudyCourseTable);
+        if (fieldOfStudyCourseTable.isSuccess()){
+            for (FieldOfStudyCourse fieldOfStudyCourse: fieldOfStudyCourseTable.getFieldOfStudyCourseList())
+                insertFieldOfStudyCourse(fieldOfStudyCourse);
+        }
+    }
+
+    private void updateFieldOfStudy() throws Exception {
+        FetchFieldOfStudyTable fieldOfStudyTable = new FetchFieldOfStudyTable();
+        BasicConnection.updateTable(fieldOfStudyTable);
+        if(fieldOfStudyTable.isSuccess()){
+            for (FieldOfStudy fieldOfStudy: fieldOfStudyTable.getFieldOfStudyList())
+                insertFieldOfStudy(fieldOfStudy);
+        }
+    }
+
+    private void updateGrade() throws Exception {
+        FetchGradeTable gradeTable = new FetchGradeTable();
+        BasicConnection.updateTable(gradeTable);
+        if(gradeTable.isSuccess()){
+            for (Grade grade: gradeTable.getGradeList())
+                inserGrade(grade);
+        }
+    }
+
+    private void updateLecturerCourse() throws Exception {
+        FetchLecturerCourseTable lecturerCourseTable = new FetchLecturerCourseTable();
+        BasicConnection.updateTable(lecturerCourseTable);
+        if(lecturerCourseTable.isSuccess()){
+            for (LecturerCourse lecturerCourse: lecturerCourseTable.getLecturerCourseList())
+                insertLecturerCourse(lecturerCourse);
+        }
+    }
+
+    private void updateLecturer() throws Exception {
+        FetchLecturerTable lecturerTable = new FetchLecturerTable();
+        BasicConnection.updateTable(lecturerTable);
+        if(lecturerTable.isSuccess()){
+            for (Lecturer lecturer: lecturerTable.getLecturerList())
+                insertLecturer(lecturer);
+        }
+    }
+
+    private void updateCourse() throws Exception {
+        FetchCourseTable courseTable = new FetchCourseTable();
+        BasicConnection.updateTable(courseTable);
+        if(courseTable.isSuccess()){
+            for (Course course: courseTable.getCoursesList())
+                insertCourse(course);
+        }
+    }
+
+    private void updateBenefit() throws Exception {
+        FetchBenefitTable benefitTable = new FetchBenefitTable();
+        BasicConnection.updateTable(benefitTable);
+        if (benefitTable.isSuccess()) {
+            for (Benefit benefit: benefitTable.getBenefitList())
+                inserBenefit(benefit);
+        }
+    }
+
+    private void updateStudent() throws Exception {
+        FetchStudentTable studentTable = new FetchStudentTable();
+        BasicConnection.updateTable(studentTable);
+        if (studentTable.isSuccess()) {
+            for (Student student: studentTable.getStudentList())
+                insertStudent(student);
+        }
+    }
+
 
     //TODO insert dla użytkowników jeden w zależności od niu
-    public void insert(Student student) {
+    public void insertStudent(Student student) {
         try {
             InsertUser insertUser = new InsertUser(student);
             insertUser.execute().get(5000,TimeUnit.MILLISECONDS);
@@ -191,7 +266,10 @@ public class VirtualDeaneryRepository {
 
     public void insertFieldOfStudyCourse(FieldOfStudyCourse fieldOfStudyCourse) { new insertFieldOfStudyCourseAsyncTask(mFieldOfStudyCourseDao).execute(fieldOfStudyCourse); }
 
-    public void insertStudentFieldOfStudy(StudentFieldOfStudy studentFieldOfStudy) { new insertStudentFieldOfStudyAsyncTask(mStudentFieldOfStudyDao).execute(studentFieldOfStudy); }
+    public void insertStudentFieldOfStudy(StudentFieldOfStudy studentFieldOfStudy) {
+        //--
+        new insertStudentFieldOfStudyAsyncTask(mStudentFieldOfStudyDao).execute(studentFieldOfStudy);
+    }
 
     public void insertPayment(Payment payment){ new insertPaymentAsyncTask(mPaymentDao).execute(payment);}
 
