@@ -4,22 +4,20 @@ import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
-
 import com.edu.pk.connection.BasicConnection;
 import com.edu.pk.connection.FetchFromExDB.FetchBenefitTable;
 import com.edu.pk.connection.FetchFromExDB.FetchCourseTable;
+import com.edu.pk.connection.FetchFromExDB.FetchFieldOfStudyCourseTable;
+import com.edu.pk.connection.FetchFromExDB.FetchFieldOfStudyTable;
+import com.edu.pk.connection.FetchFromExDB.FetchGradeTable;
 import com.edu.pk.connection.FetchFromExDB.FetchLecturerCourseTable;
 import com.edu.pk.connection.FetchFromExDB.FetchLecturerTable;
+import com.edu.pk.connection.FetchFromExDB.FetchSingleUser;
 import com.edu.pk.connection.FetchFromExDB.FetchStudentFieldOfStudyTable;
 import com.edu.pk.connection.FetchFromExDB.FetchStudentTable;
-import com.edu.pk.connection.FetchFromExDB.FetchFieldOfStudyCourseTable;
 import com.edu.pk.connection.InsertIntoExDB.InsertStudentFieldOfStudy;
 import com.edu.pk.connection.InsertIntoExDB.InsertUser;
-import com.edu.pk.connection.FetchFromExDB.FetchFieldOfStudyTable;
 import com.edu.pk.connection.UpdateExDB.UpdatePassword;
-import com.edu.pk.connection.FetchFromExDB.FetchSingleUser;
-import com.edu.pk.connection.FetchFromExDB.FetchGradeTable;
-
 import com.edu.pk.data.dao.BenefitDao;
 import com.edu.pk.data.dao.CourseDao;
 import com.edu.pk.data.dao.EmployeeDao;
@@ -308,9 +306,13 @@ public class VirtualDeaneryRepository {
 
     public void insertFieldOfStudyCourse(FieldOfStudyCourse fieldOfStudyCourse) { new insertFieldOfStudyCourseAsyncTask(mFieldOfStudyCourseDao).execute(fieldOfStudyCourse); }
 
-    public void insertStudentFieldOfStudy(StudentFieldOfStudy studentFieldOfStudy) throws Exception {
+    public void insertStudentFieldOfStudy(StudentFieldOfStudy studentFieldOfStudy) {
         InsertStudentFieldOfStudy insert = new InsertStudentFieldOfStudy(studentFieldOfStudy);
-        BasicConnection.updateTable(insert);
+        try {
+            BasicConnection.updateTable(insert);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         new insertStudentFieldOfStudyAsyncTask(mStudentFieldOfStudyDao).execute(studentFieldOfStudy);
     }
 
