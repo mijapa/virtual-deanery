@@ -16,15 +16,16 @@ import java.util.List;
 
 public class FetchGradeTable extends BasicConnection {
     List<Grade> gradeList;
-
-    public FetchGradeTable(){
+    Integer niu;
+    public FetchGradeTable(Integer niu){
         super();
+        this.niu = niu;
         gradeList = new ArrayList<>();
     }
 
     @Override
     public void queryFuction(Statement stmt) throws Exception {
-        String query = "SELECT * FROM `grade`";
+        String query = "SELECT * FROM `grade` WHERE niu = "+ niu;
         ResultSet rs = stmt.executeQuery(query);
 
         while (rs.next()) {

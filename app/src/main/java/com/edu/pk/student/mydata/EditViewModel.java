@@ -25,4 +25,7 @@ public class EditViewModel extends AndroidViewModel {
 
     public void setEmail(String email){ mRepository.setEmail(email); }
 
+    public void updateStudentData() {
+        mRepository.updateStudentData();
+    }
 }

@@ -1,58 +1,39 @@
 package com.edu.pk.connection.InsertIntoExDB;
+import com.edu.pk.connection.BasicConnection;
 
-import android.os.AsyncTask;
-
-import com.edu.pk.connection.ConnectionClass;
 import com.edu.pk.data.Lecturer;
 import com.edu.pk.data.Student;
-import com.edu.pk.data.TypeAcc;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class InsertUser extends AsyncTask<String, String, String> {
+public class InsertUser extends BasicConnection {
 
-    ConnectionClass connectionClass = new ConnectionClass();
-    private boolean isSuccess = false;
     Student student = null;
     Lecturer lecturer = null;
 
     public InsertUser(Student student) {
+        super();
         this.student = student;
     }
 
     public InsertUser(Lecturer lecturer) {
+        super();
         this.lecturer = lecturer;
     }
 
-    public boolean isSuccess() {
-        return isSuccess;
-    }
 
     @Override
-    protected String doInBackground(String... params) {
-        try {
-            Connection con = connectionClass.CONN();
-            if (con == null) {
-                throw new Exception("Internet ERROR");
-
-            } else {
-                if(student != null){
-                    insertStudent(student, con);
-                }
-                else if(lecturer != null){
-                    insertLecturer(lecturer, con);
-                }
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            isSuccess = false;
+    public void queryFuction(Statement stmt) throws Exception {
+        if(student != null){
+            insertStudent(stmt);
         }
-        return null;
+        else if(lecturer != null){
+            insertLecturer(stmt);
+        }
     }
 
-    private void insertLecturer(Lecturer lecturer, Connection con) {
+    private void insertLecturer(Statement stmt) {
         String query = "INSERT INTO `lecturer` (" +
                 "`NIU`, " +
                 "`password`, " +
@@ -76,16 +57,13 @@ public class InsertUser extends AsyncTask<String, String, String> {
                 "'   ', " +
                 ""+ lecturer.getPhoneNumber() +")";
         try {
-            Statement stmt = con.createStatement();
             stmt.executeUpdate(query);
-            stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        isSuccess = true;
     }
 
-    private void insertStudent(Student student, Connection con) {
+    private void insertStudent(Statement stmt) {
         String query = "INSERT INTO `student` (" +
                 "`NIU`, " +
                 "`albumNo`, " +
@@ -143,12 +121,9 @@ public class InsertUser extends AsyncTask<String, String, String> {
                 "'"+ student.getDateOfStudyStart()+"', " +
                 "'"+ student.getTerm()+"')";
         try {
-            Statement stmt = con.createStatement();
             stmt.executeUpdate(query);
-            stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        isSuccess = true;
     }
 }

@@ -11,14 +11,16 @@ import java.util.List;
 
 public class FetchBenefitTable extends BasicConnection {
     List<Benefit> benefitList;
+    Integer niu;
 
-    public FetchBenefitTable() {
+    public FetchBenefitTable(Integer niu) {
         super();
+        this.niu = niu;
         this.benefitList = new ArrayList<>();
     }
     @Override
     public void queryFuction(Statement stmt) throws Exception {
-        String query = "SELECT * FROM `benefit`";
+        String query = "SELECT * FROM `Benefit` WHERE idStudent = "+ niu;
         ResultSet rs = stmt.executeQuery(query);
         while (rs.next()) {
             Benefit fetchBenefit = fetchCourseFromDataBase(rs);
@@ -39,6 +41,8 @@ public class FetchBenefitTable extends BasicConnection {
 
             Benefit benefit = new Benefit(idStudent, nameBenefit, sum, status, fromTheDateOf, untilTheDate);
             benefit.setIdBenefit(idBenefit);
+
+            return benefit;
         } catch (SQLException e) {
             e.printStackTrace();
         }

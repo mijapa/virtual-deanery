@@ -22,6 +22,7 @@ import com.edu.pk.connection.UpdateExDB.UpdatePassword;
 import com.edu.pk.connection.FetchFromExDB.FetchSingleUser;
 import com.edu.pk.connection.FetchFromExDB.FetchGradeTable;
 
+import com.edu.pk.connection.UpdateExDB.UpdateStudent;
 import com.edu.pk.data.dao.BenefitDao;
 import com.edu.pk.data.dao.CourseDao;
 import com.edu.pk.data.dao.EmployeeDao;
@@ -162,11 +163,9 @@ public class VirtualDeaneryRepository {
                 switch (TypeAcc.getType(niu)){
                     case STUDENT:{
                         insertStudent(singleUser.getStudent());
-                        updateGrade();
-                        updateCourse();
                         updateBenefit();
                         updatePayment();
-
+                        updateGrade();
                     }break;
                     case EMPLOYEE:{
                         insertEmployee(singleUser.getEmployee());
@@ -189,7 +188,7 @@ public class VirtualDeaneryRepository {
     }
 
     private void updatePayment() throws Exception {
-        FetchPaymentTable paymentTable = new FetchPaymentTable();
+        FetchPaymentTable paymentTable = new FetchPaymentTable(niu);
         BasicConnection.updateTable(paymentTable);
         if (paymentTable.isSuccess()){
             for (Payment payment: paymentTable.getPaymentList())
@@ -225,7 +224,7 @@ public class VirtualDeaneryRepository {
     }
 
     private void updateGrade() throws Exception {
-        FetchGradeTable gradeTable = new FetchGradeTable();
+        FetchGradeTable gradeTable = new FetchGradeTable(niu);
         BasicConnection.updateTable(gradeTable);
         if(gradeTable.isSuccess()){
             for (Grade grade: gradeTable.getGradeList())
@@ -261,7 +260,7 @@ public class VirtualDeaneryRepository {
     }
 
     private void updateBenefit() throws Exception {
-        FetchBenefitTable benefitTable = new FetchBenefitTable();
+        FetchBenefitTable benefitTable = new FetchBenefitTable(niu);
         BasicConnection.updateTable(benefitTable);
         if (benefitTable.isSuccess()) {
             for (Benefit benefit: benefitTable.getBenefitList())
@@ -353,12 +352,12 @@ public class VirtualDeaneryRepository {
     }
 
     public void insertGrade(Grade grade) {
-        try {
+       /* try {
             InsertGrade insertGrade = new InsertGrade(grade);
             BasicConnection.updateTable(insertGrade);
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         new insertGradeAsyncTask(mGradeDao).execute(grade);
     }
 
@@ -409,6 +408,15 @@ public class VirtualDeaneryRepository {
     public LiveData<List<Grade>> getGrades() { return mGradeDao.getGradesListById(niu); }
 
     public void deleteApplication(Integer albumNo, String description) { mStudentApplicationDao.deleteApplication(albumNo, description); }
+
+    public void updateStudentData() {
+        try {
+            UpdateStudent updateStudent = new UpdateStudent(getStudent());
+            BasicConnection.updateTable(updateStudent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private static class insertStudentAsyncTask extends AsyncTask<Student, Void, Void> {
         private StudentDao mStudentAsyncTaskDao;

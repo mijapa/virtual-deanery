@@ -12,15 +12,16 @@ import java.util.List;
 public class FetchPaymentTable extends BasicConnection {
 
     List<Payment> paymentList;
-
-    public FetchPaymentTable() {
+    Integer niu;
+    public FetchPaymentTable(Integer niu) {
         super();
+        this.niu = niu;
         this.paymentList = new ArrayList<>();
     }
 
     @Override
     public void queryFuction(Statement stmt) throws Exception {
-        String query = "SELECT * FROM `payment`";
+        String query = "SELECT * FROM `Payment` WHERE idStudent= "+ niu;
         ResultSet rs = stmt.executeQuery(query);
         while (rs.next()) {
             Payment fetchPayment = fetchPaymentFromDataBase(rs);

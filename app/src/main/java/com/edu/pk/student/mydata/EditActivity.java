@@ -73,6 +73,8 @@ public class EditActivity extends AppCompatActivity {
 
                 if(!TextUtils.isEmpty(email)){ mEditViewModel.setEmail(email); }
 
+                mEditViewModel.updateStudentData();
+
                 mAddress.setText("");
                 mCityOrVillage.setText("");
                 mVoivodeship.setText("");
