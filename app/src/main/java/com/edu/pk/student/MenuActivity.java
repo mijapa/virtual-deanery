@@ -3,6 +3,7 @@ package com.edu.pk.student;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.edu.pk.BaseActivity;
+import com.edu.pk.LoginViewModel;
 import com.edu.pk.PasswordChangeActivity;
 import com.edu.pk.R;
 import com.edu.pk.student.dormitory.MenuDormitoryActivity;
@@ -25,6 +27,7 @@ import com.edu.pk.student.timetable.MenuTimetableActivity;
 public class MenuActivity extends BaseActivity {
 
     private static final String CHANNEL_ID = "channel_id_10";
+    private LoginViewModel mLoginViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,8 @@ public class MenuActivity extends BaseActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+
     }
 
     public void onClick(View view) {
@@ -97,16 +102,18 @@ public class MenuActivity extends BaseActivity {
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
-                .setContentTitle("text")
-                .setContentText("content")
+                .setContentTitle("Nowa ocena")
+                .setContentText("Masz nowe oceny! Sprawdź je teraz!")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setContentIntent(resultPendingIntent);
+                .setContentIntent(resultPendingIntent)
+                .setAutoCancel(true);
 
 
         createNotificationChannel();
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
 
-        // notificationId is a unique int for each notification that you must define
-        notificationManager.notify(0, mBuilder.build());
+        if (mLoginViewModel.getNiu().equals(5))
+            // notificationId is a unique int for each notification that you must define
+            notificationManager.notify(0, mBuilder.build());
     }
 }

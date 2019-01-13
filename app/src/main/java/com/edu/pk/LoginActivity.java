@@ -45,8 +45,6 @@ public class LoginActivity extends AppCompatActivity {
         mPassword = (EditText) findViewById(R.id.password);
         mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
 
-        mAddStudentViewModel = ViewModelProviders.of(this).get(AddStudentViewModel.class);
-
         mPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {

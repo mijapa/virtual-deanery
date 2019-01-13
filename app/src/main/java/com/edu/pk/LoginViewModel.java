@@ -36,4 +36,8 @@ public class LoginViewModel extends AndroidViewModel {
         mRepository.setNiu(NIU);
     }
 
+    public Integer getNiu() {
+        return mRepository.getNiu();
+    }
+
 }
