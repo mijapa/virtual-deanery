@@ -13,9 +13,10 @@ import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.edu.pk.BaseActivity;
 import com.edu.pk.R;
 
-public class EditActivity extends AppCompatActivity {
+public class EditActivity extends BaseActivity {
 
     private AutoCompleteTextView mAddress;
     private AutoCompleteTextView mCityOrVillage;

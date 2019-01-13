@@ -35,10 +35,6 @@ public class MenuFinanceActivity extends BaseActivity {
                 intent = new Intent(this, BenefitActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.declaration_of_installments:
-                intent = new Intent(this, DeclarationOfInstallmentsActivity.class);
-                startActivity(intent);
-                break;
         }
     }
 }

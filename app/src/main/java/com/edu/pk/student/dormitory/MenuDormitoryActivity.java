@@ -35,8 +35,6 @@ public class MenuDormitoryActivity extends BaseActivity {
                 intent = new Intent(this, AccomodationActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.history_about_dorms:
-                break;
         }
     }
 

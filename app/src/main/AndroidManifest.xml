@@ -214,15 +214,6 @@
                 android:value="com.edu.pk.student.finance.MenuFinanceActivity" />
         </activity>
         <activity
-            android:name=".student.finance.DeclarationOfInstallmentsActivity"
-            android:label="@string/title_activity_menu_finance"
-            android:parentActivityName=".student.finance.MenuFinanceActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.edu.pk.student.finance.MenuFinanceActivity" />
-        </activity>
-        <activity
             android:name=".student.timetable.MenuTimetableActivity"
             android:label="@string/my_plan"
             android:parentActivityName=".student.MenuActivity"
