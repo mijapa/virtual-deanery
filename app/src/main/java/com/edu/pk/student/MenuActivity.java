@@ -30,7 +30,6 @@ public class MenuActivity extends BaseActivity {
             case R.id.my_data:
                 intent = new Intent(MenuActivity.this, MyDataActivity.class);
                 startActivity(intent);
-            case R.id.my_studies:
                 break;
             case R.id.my_plan:
                 intent = new Intent(MenuActivity.this, MenuTimetableActivity.class);
@@ -50,6 +49,7 @@ public class MenuActivity extends BaseActivity {
                 intent = new Intent(getApplicationContext(), PasswordChangeActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
+                break;
         }
     }
 

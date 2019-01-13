@@ -155,7 +155,7 @@
     <string name="delete_application_information">Wniosek został anulowany</string>
     <string name="the_application_has_not_been_submitted">Wniosek nie został jeszcze złożony</string>
     <string name="edit_data">Edytuj dane</string>
-    <string name="title_activity_edit">EditActivity</string>
+    <string name="title_activity_edit">Edytuj dane</string>
     <string name="edit_data_student">Dane zaktualizowane</string>
     <string name="add_grade_toast">Dodano ocenę</string>
 
