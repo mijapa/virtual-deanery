@@ -168,6 +168,7 @@ public class VirtualDeaneryRepository {
                         updateBenefit();
                         updatePayment();
                         updateGrade();
+                        updateCourse();
                     }break;
                     case EMPLOYEE:{
                         insertEmployee(singleUser.getEmployee());

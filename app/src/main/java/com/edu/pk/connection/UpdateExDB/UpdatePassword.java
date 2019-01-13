@@ -43,6 +43,7 @@ public class UpdatePassword extends AsyncTask<String, String, String> {
                         break;
                 }
             }
+            con.close();
         } catch (Exception ex) {
             ex.printStackTrace();
             isSuccess = false;

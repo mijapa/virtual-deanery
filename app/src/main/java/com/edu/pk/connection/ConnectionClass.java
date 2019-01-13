@@ -22,7 +22,7 @@ import java.sql.Statement;
 public class ConnectionClass {
     String classs = "com.mysql.jdbc.Driver";
 
-    String url = "jdbc:mysql://sql7.freemysqlhosting.net/sql7272802";
+    String url = "jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7272802";
     String un = "sql7272802";
     String password = "fkS9GvXWws";
 

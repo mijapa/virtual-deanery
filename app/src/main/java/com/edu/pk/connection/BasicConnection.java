@@ -6,6 +6,7 @@ import com.edu.pk.connection.FetchFromExDB.FetchFieldOfStudyTable;
 import com.edu.pk.data.FieldOfStudy;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.concurrent.TimeUnit;
 
@@ -28,11 +29,16 @@ public abstract class BasicConnection extends AsyncTask<String, String, String> 
             } else {
                 queryFuction(con.createStatement());
                 isSuccess = true;
-                con.close();
+
             }
         } catch (Exception ex) {
             ex.printStackTrace();
             isSuccess = false;
+        }
+        try {
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         return null;
