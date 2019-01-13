@@ -151,5 +151,12 @@
     <string name="prompt_course_field_of_study">Kierunek</string>
     <string name="prompt_mark_for_student">Ocena</string>
 
+    <string name="delete_application">Anuluj wniosek</string>
+    <string name="delete_application_information">Wniosek został anulowany</string>
+    <string name="the_application_has_not_been_submitted">Wniosek nie został jeszcze złożony</string>
+    <string name="edit_data">Edytuj dane</string>
+    <string name="title_activity_edit">EditActivity</string>
+    <string name="edit_data_student">Dane zaktualizowane</string>
+
 
 </resources>
