@@ -28,4 +28,8 @@ task clean(type: Delete) {
 ext {
     roomVersion = '1.1.1'
     archLifecycleVersion = '1.1.1'
+    junitVersion = '4.12'
+    mockitoVersion = '1.10.19'
+    powerMockito = '1.6.2'
+    hamcrestVersion = '1.3'
 }
